@@ -24,7 +24,6 @@
 	"main": "dist/index.js",
 	"module": "dist/benchmark.esm.js",
 	"name": "@pizzafox/benchmark",
-	"peerDependencies": {},
 	"private": false,
 	"scripts": {
 		"build": "tsdx build --target node",
@@ -34,12 +33,6 @@
 		"style": "prettier --ignore-path .gitignore --check .",
 		"test": "tsdx test"
 	},
-	"size-limit": [
-		{
-			"limit": "10 KB",
-			"path": "dist/benchmark.cjs.production.min.js"
-		}
-	],
 	"typings": "dist/index.d.ts",
 	"version": "0.0.0-development"
 }
