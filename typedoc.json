@@ -7,6 +7,5 @@
 	"listInvalidSymbolLinks": true,
 	"mode": "file",
 	"name": "@pizzafox/benchmark",
-	"out": "docs_out",
-	"toc": ["Benchmark"]
+	"out": "docs_out"
 }

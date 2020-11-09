@@ -1,6 +1,7 @@
 import {performance, PerformanceObserver} from 'perf_hooks';
 import {expectType} from './util';
 
+/** @private */
 let diagnostics_channel: Record<string, any> | undefined;
 try {
 	diagnostics_channel = require('diagnostics_channel');
@@ -24,6 +25,7 @@ export type AnyFunction = (...optionalParams: any[]) => any;
 
 /**
  * The diagnostics channel used for logging on supported Node.js versions.
+ * @private
  */
 const channel: Record<string, any> | undefined = diagnostics_channel?.channel('@pizzafox/benchmark');
 
