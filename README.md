@@ -25,7 +25,7 @@ console.log(csvReporter(results));
 ### Reporters
 
 Different reporters can be used to convert results into a different format.
-The libray comes with several reporters you can use.
+The library comes with several reporters you can use.
 
 #### `csv`
 
@@ -44,7 +44,7 @@ trial,title,duration_ms
 ```ts
 import {csvReporter} from '@pizzafox/benchmark';
 
-console.log(csv(results));
+console.log(csvReporter(results));
 ```
 
 #### `discord`
