@@ -1,13 +1,16 @@
 import {Results} from '../benchmark';
 
-interface ConsoleTableRow {
+/**
+ * A "row" of data useful in an array for passing to [`console.table`](https://nodejs.org/api/console.html#console_console_table_tabulardata_properties).
+ */
+export interface ConsoleTableRow {
 	trial: number;
 	title: string;
 	'duration (ms)': number;
 }
 
 /**
- * Convert benchmark data into an array suitable for use with [`console.table`](https://nodejs.org/api/console.html#console_console_table_tabulardata_properties)
+ * Convert benchmark data into an array suitable for use with [`console.table`](https://nodejs.org/api/console.html#console_console_table_tabulardata_properties).
  * @param results Benchmark results
  *
  * @returns An array suitable for use with [`console.table`](https://nodejs.org/api/console.html#console_console_table_tabulardata_properties)

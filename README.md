@@ -5,7 +5,7 @@ A simple benchmarking library for Node.js.
 ## Usage
 
 ```ts
-import {Benchmark, csv as csvReporter} from '@pizzafox/benchmark';
+import {Benchmark, csvReporter} from '@pizzafox/benchmark';
 
 // Create a benchmark
 const benchmark = new Benchmark();
