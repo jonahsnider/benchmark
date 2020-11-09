@@ -3,7 +3,7 @@ const _hackery = typeof 'any value';
 type CommonTypes = typeof _hackery;
 
 /**
- * Throw a TypeError is the items aren't the expected type.
+ * Throw a TypeError if the items aren't the expected type.
  *
  * @private
  *
