@@ -125,7 +125,7 @@ jobs:
       - name: Generate documentation
         run: yarn run docs
       - name: Upload documentation
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v2
         with:
           name: typedoc
           path: ./docs_out
