@@ -25,6 +25,9 @@
 	"module": "dist/benchmark.esm.js",
 	"name": "@pizzafox/benchmark",
 	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"build": "tsdx build --target node",
 		"docs": "typedoc --options ./typedoc.json",
