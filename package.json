@@ -1,5 +1,9 @@
 {
-	"author": "Jonah Snider",
+	"author": {
+		"email": "jonah@jonah.pw",
+		"name": "Jonah Snider",
+		"url": "https://jonah.pw"
+	},
 	"devDependencies": {
 		"prettier": "2.1.2",
 		"prettier-config-xo": "1.0.3",
