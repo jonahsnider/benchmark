@@ -107,7 +107,7 @@ export class Benchmark {
 			}
 		}
 
-		// TODO: is this unecessary?
+		// TODO: is this uneccessary?
 		obs.disconnect();
 
 		return results;
