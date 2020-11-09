@@ -78,6 +78,8 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           fail_ci_if_error: true
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
   style:
     name: Check style
 
