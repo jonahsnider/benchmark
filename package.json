@@ -24,7 +24,7 @@
 	"peerDependencies": {},
 	"private": false,
 	"scripts": {
-		"build": "tsdx build",
+		"build": "tsdx build --target node",
 		"docs": "typedoc --options ./typedoc.json",
 		"lint": "tsdx lint",
 		"start": "tsdx watch",
