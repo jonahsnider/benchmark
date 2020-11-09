@@ -9,7 +9,7 @@ interface ConsoleTableRow {
 /**
  * Convert benchmark data into an array suitable for use with [`console.table`](https://nodejs.org/api/console.html#console_console_table_tabulardata_properties)
  * @param results Benchmark results
- * 
+ *
  * @returns An array suitable for use with [`console.table`](https://nodejs.org/api/console.html#console_console_table_tabulardata_properties)
  */
 export default function table(results: Results): ConsoleTableRow[] {

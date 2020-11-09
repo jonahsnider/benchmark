@@ -67,7 +67,6 @@ import {markdownReporter} from '@pizzafox/benchmark';
 console.log(markdownReporter(results));
 ```
 
-
 #### `table`
 
 Unlike other reporters that return a string, this reporter returns output designed for use with [`console.table`](https://nodejs.org/api/console.html#console_console_table_tabulardata_properties).

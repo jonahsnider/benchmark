@@ -4,13 +4,13 @@ type CommonTypes = typeof _hackery;
 
 /**
  * Throw a TypeError is the items aren't the expected type.
- * 
+ *
  * @private
- * 
+ *
  * @example
  * let name = 'benchmark';
  * expectType({name}, 'string');
- * 
+ *
  * @param items An object where the key is the same as the value
  * @param expected Expected type of each item
  */

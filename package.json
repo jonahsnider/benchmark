@@ -1,6 +1,7 @@
 {
 	"author": "Jonah Snider",
 	"devDependencies": {
+		"prettier": "2.1.2",
 		"prettier-config-xo": "1.0.3",
 		"ts-node": "9.0.0",
 		"tsdx": "0.14.1",
@@ -25,8 +26,8 @@
 		"build": "tsdx build",
 		"docs": "typedoc --options ./typedoc.json",
 		"lint": "tsdx lint",
-		"prepare": "tsdx build",
 		"start": "tsdx watch",
+		"style": "prettier --ignore-path .gitignore --check .",
 		"test": "tsdx test"
 	},
 	"size-limit": [
