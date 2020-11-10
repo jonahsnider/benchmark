@@ -95,7 +95,7 @@ export class Benchmark {
 
 		for (let iteration = 0; iteration < trials; iteration++) {
 			for (const [name, script] of this.scripts) {
-				script();
+				await script();
 
 				if (channel?.hasSubscribers) {
 					channel.publish({
