@@ -56,10 +56,8 @@ export class Benchmark {
 			throw new RangeError(`${title} was already added to this benchmark`);
 		}
 
-		// Handle arrow functions
-		if (script.name === '') {
-			Object.defineProperty(script, 'name', {value: title});
-		}
+		// Rename every function to match the title
+		Object.defineProperty(script, 'name', {value: title});
 
 		// TODO: This doesn't work in browser, see https://nodejs.org/api/perf_hooks.html#perf_hooks_performance_timerify_fn
 		this.scripts.set(title, performance.timerify(script));
