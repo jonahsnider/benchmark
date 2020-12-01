@@ -28,6 +28,10 @@
 	"publishConfig": {
 		"access": "public"
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pizzafox/benchmark.git"
+	},
 	"scripts": {
 		"build": "tsdx build --target node",
 		"docs": "typedoc --options ./typedoc.json",
