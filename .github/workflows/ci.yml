@@ -11,9 +11,9 @@ jobs:
     steps:
       - name: Checkout git repository
         uses: actions/checkout@v2
-      - name: Get yarn cache
+      - name: Get Yarn cache
         id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
@@ -22,7 +22,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: Install dependencies with Yarn
-        run: yarn install
+        run: yarn install --immutable
       - name: Build package
         run: yarn run build
       - name: Upload compiled package
@@ -38,9 +38,9 @@ jobs:
     steps:
       - name: Checkout git repository
         uses: actions/checkout@v2
-      - name: Get yarn cache
+      - name: Get Yarn cache
         id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
@@ -49,7 +49,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: Install dependencies with Yarn
-        run: yarn install
+        run: yarn install --immutable
       - name: Lint
         run: yarn run lint
   unit-test:
@@ -60,9 +60,9 @@ jobs:
     steps:
       - name: Checkout git repository
         uses: actions/checkout@v2
-      - name: Get yarn cache
+      - name: Get Yarn cache
         id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
@@ -71,7 +71,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: Install dependencies with Yarn
-        run: yarn install
+        run: yarn install --immutable
       - name: Run tests
         run: yarn test --ci --coverage
       - name: Upload coverage
@@ -88,9 +88,9 @@ jobs:
     steps:
       - name: Checkout git repository
         uses: actions/checkout@v2
-      - name: Get yarn cache
+      - name: Get Yarn cache
         id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
@@ -99,7 +99,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: Install dependencies with Yarn
-        run: yarn install
+        run: yarn install --immutable
       - name: Check style with Prettier
         run: yarn run style
   docs:
@@ -112,9 +112,9 @@ jobs:
     steps:
       - name: Checkout git repository
         uses: actions/checkout@v2
-      - name: Get yarn cache
+      - name: Get Yarn cache
         id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
@@ -123,7 +123,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: Install dependencies with Yarn
-        run: yarn install
+        run: yarn install --immutable
       - name: Generate documentation
         run: yarn run docs
       - name: Upload documentation
@@ -142,7 +142,7 @@ jobs:
       - name: Checkout git repository
         uses: actions/checkout@v2
       - name: Install dependencies with Yarn
-        run: yarn install
+        run: yarn install --immutable
       - name: Compile TypeScript for publishing
         run: yarn run build
       - name: Run semantic release

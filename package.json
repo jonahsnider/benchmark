@@ -24,7 +24,6 @@
 	"main": "dist/index.js",
 	"module": "dist/benchmark.esm.js",
 	"name": "@pizzafox/benchmark",
-	"private": false,
 	"publishConfig": {
 		"access": "public"
 	},
@@ -37,7 +36,7 @@
 		"docs": "typedoc --options ./typedoc.json",
 		"lint": "tsdx lint",
 		"start": "tsdx watch",
-		"style": "prettier --ignore-path .gitignore --check .",
+		"style": "prettier --check .",
 		"test": "tsdx test"
 	},
 	"typings": "dist/index.d.ts",
