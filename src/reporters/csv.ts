@@ -18,10 +18,21 @@ import {Results} from '../benchmark';
  * ```
  */
 export default function csv(results: Results): string {
-	return [
-		'trial,title,duration_ms',
-		Array.from(results.entries())
-			.map(([title, durations]) => durations.map((duration, index) => `${index},${title.replaceAll(',', "\\'")},${duration}`).join('\n'))
-			.join('\n')
-	].join('\n');
+	const keys = [...results.keys()];
+	const values = [...results.values()];
+
+	const {length: trialCount} = values[0];
+
+	const lines: string[] = [`trial,${keys}`];
+	for (let i = 0; i < trialCount; i++) {
+		const executionTimes: number[] = [i];
+
+		for (let j = 0; j < keys.length; j++) {
+			executionTimes.push(values[j][i]);
+		}
+
+		lines.push(executionTimes.join());
+	}
+
+	return lines.join('\n');
 }
