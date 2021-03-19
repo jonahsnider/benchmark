@@ -88,7 +88,7 @@ export class Benchmark {
 				results.set(name, []);
 			}
 
-			results.get(name)?.push(duration);
+			results.get(name)!.push(duration);
 		});
 
 		obs.observe({entryTypes: ['function']});
