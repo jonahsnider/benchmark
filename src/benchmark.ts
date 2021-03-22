@@ -74,7 +74,7 @@ export class Benchmark {
 		//#region validation
 		expectType({trials}, 'number');
 
-		if (Number.isInteger(trials) || trials <= 0) {
+		if (!Number.isInteger(trials) || trials <= 0) {
 			throw new RangeError('trials should be a positive integer');
 		}
 		//#endregion
