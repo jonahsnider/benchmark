@@ -12,8 +12,6 @@ export default function markdown(results: Results): string {
 		'',
 		'| Title | Trial | Duration (ms) |',
 		'| ----- | ----- | ------------- |',
-		...Array.from(results.entries())
-			.map(([title, durations]) => durations.map((duration, index) => `| ${title} | ${index} | ${duration} |`))
-			.flat(1)
+		...[...results.entries()].flatMap(([title, durations]) => durations.map((duration, index) => `| ${title} | ${index} | ${duration} |`))
 	].join('\n');
 }
