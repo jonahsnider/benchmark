@@ -3,6 +3,6 @@
 	"includeVersion": true,
 	"entryPoints": ["./src/index.ts"],
 	"listInvalidSymbolLinks": true,
-	"name": "@pizzafox/benchmark",
+	"name": "@jonahsnider/benchmark",
 	"out": "docs_out"
 }

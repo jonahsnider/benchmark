@@ -1,11 +1,11 @@
-# `@pizzafox/benchmark`
+# `@jonahsnider/benchmark`
 
 A simple benchmarking library for Node.js.
 
 ## Usage
 
 ```ts
-import {Benchmark, csvReporter} from '@pizzafox/benchmark';
+import {Benchmark, csvReporter} from '@jonahsnider/benchmark';
 
 // Create a benchmark
 const benchmark = new Benchmark();
@@ -42,7 +42,7 @@ trial,title,duration_ms
 ```
 
 ```ts
-import {csvReporter} from '@pizzafox/benchmark';
+import {csvReporter} from '@jonahsnider/benchmark';
 
 console.log(csvReporter(results));
 ```
@@ -52,7 +52,7 @@ console.log(csvReporter(results));
 Returns Discord compatible Markdown.
 
 ```ts
-import {discordReporter} from '@pizzafox/benchmark';
+import {discordReporter} from '@jonahsnider/benchmark';
 
 console.log(discordReporter(results));
 ```
@@ -62,7 +62,7 @@ console.log(discordReporter(results));
 Returns Markdown.
 
 ```ts
-import {markdownReporter} from '@pizzafox/benchmark';
+import {markdownReporter} from '@jonahsnider/benchmark';
 
 console.log(markdownReporter(results));
 ```
@@ -72,7 +72,7 @@ console.log(markdownReporter(results));
 Unlike other reporters that return a string, this reporter returns output designed for use with [`console.table`](https://nodejs.org/api/console.html#console_console_table_tabulardata_properties).
 
 ```ts
-import {tableReporter} from '@pizzafox/benchmark';
+import {tableReporter} from '@jonahsnider/benchmark';
 
 console.table(table(results));
 ```

@@ -1451,6 +1451,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jonahsnider/benchmark@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@jonahsnider/benchmark@workspace:."
+  dependencies:
+    prettier: 2.2.1
+    prettier-config-xo: 1.0.3
+    semantic-release: 17.4.2
+    ts-node: 9.1.1
+    tsdx: 0.14.1
+    tslib: 2.2.0
+    typedoc: 0.20.35
+    typescript: 4.2.4
+  languageName: unknown
+  linkType: soft
+
 "@nodelib/fs.scandir@npm:2.1.3":
   version: 2.1.3
   resolution: "@nodelib/fs.scandir@npm:2.1.3"
@@ -1609,21 +1624,6 @@ __metadata:
   checksum: ef5429c90b6d8d4a8816611f39ae469f238f0de76085818081b6185c9a53c9dd8e1e024000c633f935920bdb8075c18cea6475bb2c1fc67aa5d0f50c8e104a12
   languageName: node
   linkType: hard
-
-"@pizzafox/benchmark@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@pizzafox/benchmark@workspace:."
-  dependencies:
-    prettier: 2.2.1
-    prettier-config-xo: 1.0.3
-    semantic-release: 17.4.2
-    ts-node: 9.1.1
-    tsdx: 0.14.1
-    tslib: 2.2.0
-    typedoc: 0.20.35
-    typescript: 4.2.4
-  languageName: unknown
-  linkType: soft
 
 "@rollup/plugin-babel@npm:^5.1.0":
   version: 5.2.1

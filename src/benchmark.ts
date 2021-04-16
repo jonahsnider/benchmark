@@ -27,7 +27,7 @@ export type AnyFunction = (...optionalParams: any[]) => any;
  * The diagnostics channel used for logging on supported Node.js versions.
  * @private
  */
-const channel: Record<string, any> | undefined = diagnostics_channel?.channel('@pizzafox/benchmark');
+const channel: Record<string, any> | undefined = diagnostics_channel?.channel('@jonahsnider/benchmark');
 
 /**
  * A class representing a benchmark, which is a group of functions that do the same thing.
