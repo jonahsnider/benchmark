@@ -5,7 +5,7 @@
 		"url": "https://jonah.pw"
 	},
 	"devDependencies": {
-		"prettier": "2.3.0",
+		"prettier": "2.3.1",
 		"prettier-config-xo": "1.0.4",
 		"semantic-release": "17.4.3",
 		"ts-node": "10.0.0",
