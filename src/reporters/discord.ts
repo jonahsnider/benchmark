@@ -11,6 +11,6 @@ export default function discord(results: Results): string {
 		`__**Benchmark results**__`,
 		...Array.from(results.entries())
 			.map(([title, durations]) => durations.map((duration, index) => `**${title}** - trial ${index.toLocaleString()} - ${duration}ms`))
-			.flat(1)
+			.flat(1),
 	].join('\n');
 }
