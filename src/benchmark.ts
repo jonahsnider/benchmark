@@ -99,7 +99,7 @@ export class Benchmark {
 
 				if (channel?.hasSubscribers) {
 					channel.publish({
-						script: name
+						script: name,
 					});
 				}
 			}

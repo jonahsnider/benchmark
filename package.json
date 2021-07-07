@@ -6,7 +6,7 @@
 	},
 	"devDependencies": {
 		"prettier": "2.3.2",
-		"prettier-config-xo": "1.0.4",
+		"prettier-config-xo": "2.0.0",
 		"semantic-release": "17.4.4",
 		"ts-node": "10.0.0",
 		"tsdx": "0.14.1",
