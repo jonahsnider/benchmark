@@ -40,5 +40,6 @@
 		"test": "tsdx test"
 	},
 	"typings": "dist/index.d.ts",
-	"version": "0.0.0-development"
+	"version": "0.0.0-development",
+	"packageManager": "yarn@3.0.0"
 }
