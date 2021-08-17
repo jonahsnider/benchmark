@@ -1473,7 +1473,7 @@ __metadata:
   dependencies:
     prettier: 2.3.2
     prettier-config-xo: 2.0.0
-    semantic-release: 17.4.4
+    semantic-release: 17.4.5
     ts-node: 10.2.0
     tsdx: 0.14.1
     tslib: 2.3.1
@@ -7878,21 +7878,21 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"marked@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "marked@npm:2.0.0"
-  bin:
-    marked: bin/marked
-  checksum: 80eadb93340cd043b69c1c7ce95836f0f2cb0355121dbd4b4189b6efb7559884e719eaf5cd9300ca51679f54a4f3d8388bc8e7ca0fd0da76619c4f238e72e1ea
-  languageName: node
-  linkType: hard
-
 "marked@npm:^2.1.1":
   version: 2.1.1
   resolution: "marked@npm:2.1.1"
   bin:
     marked: bin/marked
   checksum: 930b5a005b538817929d15e1f0829eb7460f290990ad6346e8b90e3343a1d04220c57f54a12a04520d28e57902ff4e80ab8816de568747334280d91615c42b70
+  languageName: node
+  linkType: hard
+
+"marked@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "marked@npm:3.0.0"
+  bin:
+    marked: bin/marked
+  checksum: 04d5ba7405463f8d8c0c1539dc7e06a253b2ebbdb41363ed8a3d0144bf0522f9a44d2c983fef979bbcf714c4f839f90e237e0a89b3a2fdcd58accc1675c4ec47
   languageName: node
   linkType: hard
 
@@ -10378,9 +10378,9 @@ resolve@1.17.0:
   languageName: node
   linkType: hard
 
-"semantic-release@npm:17.4.4":
-  version: 17.4.4
-  resolution: "semantic-release@npm:17.4.4"
+"semantic-release@npm:17.4.5":
+  version: 17.4.5
+  resolution: "semantic-release@npm:17.4.5"
   dependencies:
     "@semantic-release/commit-analyzer": ^8.0.0
     "@semantic-release/error": ^2.2.0
@@ -10399,7 +10399,7 @@ resolve@1.17.0:
     hook-std: ^2.0.0
     hosted-git-info: ^4.0.0
     lodash: ^4.17.21
-    marked: ^2.0.0
+    marked: ^3.0.0
     marked-terminal: ^4.1.1
     micromatch: ^4.0.2
     p-each-series: ^2.1.0
@@ -10412,7 +10412,7 @@ resolve@1.17.0:
     yargs: ^16.2.0
   bin:
     semantic-release: bin/semantic-release.js
-  checksum: 870b4df485e7aef09cd3dd9d060112c6d04b7ab4b72fbd74a6c8e5b7702920b33d956e3a16a0004c886508545e2385ee1673be481f1b8ae5380882efae03c444
+  checksum: e1b16ce5a43bf9c1dac525e1d95801aa79d08e4435c1e5945a050ac960c5139e060487103184dde24a0a2c1ae4f090866fc22854e7a7bc8ea953ceea1ef94c31
   languageName: node
   linkType: hard
 
