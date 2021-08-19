@@ -1474,7 +1474,7 @@ __metadata:
     prettier: 2.3.2
     prettier-config-xo: 2.0.0
     semantic-release: 17.4.5
-    ts-node: 10.2.0
+    ts-node: 10.2.1
     tsdx: 0.14.1
     tslib: 2.3.1
     typedoc: 0.21.5
@@ -11534,9 +11534,9 @@ resolve@1.17.0:
   languageName: node
   linkType: hard
 
-"ts-node@npm:10.2.0":
-  version: 10.2.0
-  resolution: "ts-node@npm:10.2.0"
+"ts-node@npm:10.2.1":
+  version: 10.2.1
+  resolution: "ts-node@npm:10.2.1"
   dependencies:
     "@cspotcode/source-map-support": 0.6.1
     "@tsconfig/node10": ^1.0.7
@@ -11566,7 +11566,7 @@ resolve@1.17.0:
     ts-node-script: dist/bin-script.js
     ts-node-transpile-only: dist/bin-transpile.js
     ts-script: dist/bin-script-deprecated.js
-  checksum: da767e0fd5c1b4941f0b846c3532147f31cd2ac4d66a4809358e29ed5971a4e699720bd65f9e5a585a10bc7f9c55571a8fce9e485cedce6a224dcba3869bbd3a
+  checksum: f37d2827a583c51d012cdd3d9b96629fba7a5b5dfad2c26ca48c7c89f904118924689ca56f4b9b2136217194870a76f26aae06e3490ee613b0e960f02dc96bbe
   languageName: node
   linkType: hard
 
