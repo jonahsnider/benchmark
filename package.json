@@ -28,7 +28,7 @@
 	"devDependencies": {
 		"prettier": "2.3.2",
 		"prettier-config-xo": "2.0.0",
-		"semantic-release": "17.4.5",
+		"semantic-release": "17.4.6",
 		"ts-node": "10.2.1",
 		"tsdx": "0.14.1",
 		"tslib": "2.3.1",
