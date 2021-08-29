@@ -1477,7 +1477,7 @@ __metadata:
     ts-node: 10.2.1
     tsdx: 0.14.1
     tslib: 2.3.1
-    typedoc: 0.21.7
+    typedoc: 0.21.8
     typescript: 4.4.2
   languageName: unknown
   linkType: soft
@@ -7098,6 +7098,17 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
+"json5@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "json5@npm:2.2.0"
+  dependencies:
+    minimist: ^1.2.5
+  bin:
+    json5: lib/cli.js
+  checksum: e88fc5274bb58fc99547baa777886b069d2dd96d9cfc4490b305fd16d711dabd5979e35a4f90873cefbeb552e216b041a304fe56702bedba76e19bc7845f208d
+  languageName: node
+  linkType: hard
+
 "jsonfile@npm:^4.0.0":
   version: 4.0.0
   resolution: "jsonfile@npm:4.0.0"
@@ -10566,13 +10577,14 @@ resolve@1.17.0:
   languageName: node
   linkType: hard
 
-"shiki@npm:^0.9.3":
-  version: 0.9.3
-  resolution: "shiki@npm:0.9.3"
+"shiki@npm:^0.9.8":
+  version: 0.9.8
+  resolution: "shiki@npm:0.9.8"
   dependencies:
+    json5: ^2.2.0
     onigasm: ^2.2.5
-    vscode-textmate: ^5.2.0
-  checksum: 68e1b4907f9a6924d89c55944c023925d4d57b4940396fe6db4f7943ae759ed04b48eceafa8951c8bdea27aaa4dd9cb7136fd5707081c7952ee6308d213e24a3
+    vscode-textmate: 5.2.0
+  checksum: ffbce5e5e3449b453d7acb7bd728546e4b5ea87e5df4d2ec69dc95c6c5165166c101eb6db2851e5bb333b7194133936b18b440f8dd0d8859de7ef0abe1951131
   languageName: node
   linkType: hard
 
@@ -11770,9 +11782,9 @@ resolve@1.17.0:
   languageName: node
   linkType: hard
 
-"typedoc@npm:0.21.7":
-  version: 0.21.7
-  resolution: "typedoc@npm:0.21.7"
+"typedoc@npm:0.21.8":
+  version: 0.21.8
+  resolution: "typedoc@npm:0.21.8"
   dependencies:
     glob: ^7.1.7
     handlebars: ^4.7.7
@@ -11780,13 +11792,13 @@ resolve@1.17.0:
     marked: ^3.0.2
     minimatch: ^3.0.0
     progress: ^2.0.3
-    shiki: ^0.9.3
+    shiki: ^0.9.8
     typedoc-default-themes: ^0.12.10
   peerDependencies:
     typescript: 4.0.x || 4.1.x || 4.2.x || 4.3.x || 4.4.x
   bin:
     typedoc: bin/typedoc
-  checksum: 695efb85c588851db3238926fa739755a89003a761f1e50a15b13d33f7377e345882dd3bb659307296e90ca28f1827af4fb844f859d20cc7e14e7b4efe852f91
+  checksum: a78c012822fbd34ccbbe9cdb2464661aad0296a59ec70a6ae6ba8d34ed3a8cbe6409811889fe293afd813140d766d868a87ae1944950fb9972964647bfa54298
   languageName: node
   linkType: hard
 
@@ -12130,7 +12142,7 @@ typescript@^3.7.3:
   languageName: node
   linkType: hard
 
-"vscode-textmate@npm:^5.2.0":
+"vscode-textmate@npm:5.2.0":
   version: 5.2.0
   resolution: "vscode-textmate@npm:5.2.0"
   checksum: 5449b42d451080f6f3649b66948f4b5ee4643c4e88cfe3558a3b31c84c78060cfdd288c4958c1690eaa5cd65d09992fa6b7c3bef9d4aa72b3651054a04624d20
