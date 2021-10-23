@@ -1,45 +1,61 @@
 {
 	"name": "@jonahsnider/benchmark",
 	"version": "0.0.0-development",
+	"bugs": {
+		"url": "https://github.com/jonahsnider/benchmark/issues"
+	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/jonahsnider/benchmark.git"
+		"url": "git+https://github.com/jonahsnider/benchmark.git"
 	},
-	"license": "MIT",
+	"license": "Apache-2.0",
 	"author": {
 		"name": "Jonah Snider",
-		"email": "jonah@jonah.pw",
-		"url": "https://jonah.pw"
+		"email": "jonah@jonahsnider.com",
+		"url": "https://jonahsnider.com"
 	},
-	"main": "dist/index.js",
-	"module": "dist/benchmark.esm.js",
-	"typings": "dist/index.d.ts",
+	"type": "commonjs",
+	"main": "./tsc_output/index.js",
 	"files": [
-		"dist"
+		"tsc_output"
 	],
 	"scripts": {
-		"build": "tsdx build --target node",
-		"docs": "typedoc --options ./typedoc.json",
-		"lint": "tsdx lint",
-		"start": "tsdx watch",
+		"prebuild": "rm -rf tsc_output",
+		"build": "tsc",
+		"docs": "typedoc",
+		"lint": "xo",
 		"style": "prettier --check .",
-		"test": "tsdx test"
+		"pretest": "rm -rf coverage .nyc_output",
+		"test": "jest",
+		"test:coverage": "jest --coverage",
+		"validate-api": "api-extractor run",
+		"validate-api:local": "api-extractor run --local --verbose"
+	},
+	"prettier": "@jonahsnider/prettier-config",
+	"dependencies": {
+		"@jonahsnider/util": "8.0.1",
+		"ow": "0.28.0",
+		"tslib": "2.3.1",
+		"type-fest": "2.5.1"
 	},
 	"devDependencies": {
-		"prettier": "2.4.1",
+		"@jonahsnider/prettier-config": "1.1.0",
+		"@jonahsnider/xo-config": "4.1.0",
+		"@microsoft/api-extractor": "7.18.16",
+		"@tsconfig/node16": "1.0.2",
+		"@types/jest": "27.0.2",
+		"@types/node": "16.10.1",
+		"jest": "27.2.2",
+		"prettier": "2.3.2",
 		"prettier-config-xo": "2.0.0",
-		"semantic-release": "18.0.0",
-		"ts-node": "10.4.0",
-		"tsdx": "0.14.1",
-		"tslib": "2.3.1",
-		"typedoc": "0.22.7",
-		"typescript": "4.4.4"
+		"ts-jest": "27.0.5",
+		"ts-node": "10.2.1",
+		"typedoc": "0.22.6",
+		"typescript": "4.3.5",
+		"xo": "0.44.0"
 	},
 	"engines": {
-		"node": ">=10"
+		"node": ">= 16.0.0"
 	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"packageManager": "yarn@3.0.0"
+	"packageManager": "yarn@3.0.2"
 }
