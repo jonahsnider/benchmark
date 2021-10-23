@@ -12,17 +12,14 @@ import type {SuiteName, WorkerData, WorkerMessage} from './types.js';
  */
 export class Thread {
 	public readonly name: SuiteName;
-	#worker: Worker;
+	readonly #workerData: WorkerData;
 
 	constructor(suite: Suite, suitePath: string) {
 		this.name = suite.name;
 
-		const workerData: WorkerData = {
+		this.#workerData = {
 			suitePath,
 		};
-
-		// TODO: consider swapping to `IS_ESM ? import.meta.url : __dirname`
-		this.#worker = new Worker(path.join(__dirname, 'thread-worker.js'), {workerData});
 	}
 
 	public static async init(suitePath: string): Promise<Thread> {
@@ -34,18 +31,24 @@ export class Thread {
 	}
 
 	public async run(): Promise<SuiteResults> {
+		// TODO: consider swapping to `IS_ESM ? import.meta.url : __dirname`
+		const worker = new Worker(path.join(__dirname, 'thread-worker.js'), {workerData: this.#workerData});
+
 		return new Promise((resolve, reject) => {
 			const message: WorkerMessage = {kind: WorkerMessageKind.Run};
 
-			this.#worker.once('message', resolve);
-			this.#worker.once('error', reject);
-			this.#worker.once('exit', code => {
+			worker.once('message', async results => {
+				worker.unref();
+				resolve(results);
+			});
+			worker.once('error', reject);
+			worker.once('exit', code => {
 				if (code !== 0) {
 					reject(new Error(`Worker exited with code ${code}`));
 				}
 			});
 
-			this.#worker.postMessage(message);
+			worker.postMessage(message);
 		});
 	}
 }
