@@ -34,7 +34,6 @@ export class Benchmark {
 			return this;
 		}
 
-		console.log('main thread: Benchmark#addSuite: creating new Thread()');
 		// eslint-disable-next-line promise/prefer-await-to-then
 		return Thread.init(suiteOrPath.toString()).then(threadedSuite => {
 			this.suites.set(threadedSuite.name, threadedSuite);
@@ -49,8 +48,6 @@ export class Benchmark {
 	 * @returns A `Map` where keys are the {@link SuiteName | suite names} and values are the {@link SuiteResults | suite results}.
 	 */
 	public async runAll(): Promise<Map<SuiteName, SuiteResults>> {
-		console.log('main thread: Benchmark#runAll: running suites');
-
 		const results = new Map<SuiteName, SuiteResults>();
 
 		for (const suite of this.suites.values()) {

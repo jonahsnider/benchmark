@@ -21,17 +21,14 @@ export class Thread {
 			suitePath,
 		};
 
-		console.log('creating new Worker()');
 		// TODO: consider swapping to `IS_ESM ? import.meta.url : __dirname`
 		this.#worker = new Worker(path.join(__dirname, 'thread-worker.js'), {workerData});
 	}
 
 	public static async init(suitePath: string): Promise<Thread> {
-		const mod = await compatibleImport(suitePath);
+		const suite = await compatibleImport(suitePath);
 
-		ow<{default: Suite}>(mod, ow.object.partialShape({default: ow.object.instanceOf(Suite)}));
-
-		const {default: suite} = mod;
+		ow<Suite>(suite, ow.object.instanceOf(Suite));
 
 		return new Thread(suite, suitePath);
 	}
@@ -40,14 +37,8 @@ export class Thread {
 		return new Promise((resolve, reject) => {
 			const message: WorkerMessage = {kind: WorkerMessageKind.Run};
 
-			this.#worker.once('message', (...args) => {
-				console.log('message:', ...args);
-				resolve(...args);
-			});
-			this.#worker.once('error', (...args) => {
-				console.log('error:', ...args);
-				reject(...args);
-			});
+			this.#worker.once('message', resolve);
+			this.#worker.once('error', reject);
 			this.#worker.once('exit', code => {
 				if (code !== 0) {
 					reject(new Error(`Worker exited with code ${code}`));
