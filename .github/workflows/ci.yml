@@ -151,3 +151,41 @@ jobs:
         run: yarn run build
       - name: Validate API
         run: yarn run validate-api
+  publish:
+    name: Publish
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    if: ${{ github.ref  == 'refs/heads/main' }}
+
+    needs: [unit-test, validate-api, style, lint]
+
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.0.0'
+      - name: Get Yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install dependencies with Yarn
+        run: yarn install --immutable
+      - name: Compile TypeScript for publishing
+        run: yarn run build
+      - name: Generate TypeScript declaration rollup
+        run: yarn run validate-api
+      - name: Run release
+        run: yarn run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

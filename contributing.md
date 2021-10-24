@@ -2,7 +2,7 @@
 
 ## Prequisites
 
-This project uses [Node.js](https://nodejs.org) to run, so make sure you've got a recent version installed.
+This project uses [Node.js](https://nodejs.org) to run, so make sure you've got a compatible version installed.
 
 [Yarn](https://yarnpkg.com) is used to manage dependencies and run scripts.
 After cloning the repository you can use this command to install dependencies:
@@ -45,5 +45,5 @@ yarn test
 
 ## Coverage
 
-This will generate a `coverage` folder which has a breakdown of coverage of the project.
+Running `yarn test --coverage` will generate a `coverage` folder which has a breakdown of coverage of the project.
 The CI will upload the coverage information to [CodeCov](https://codecov.io) which can be [viewed here](https://codecov.io/gh/jonahsnider/benchmark).
