@@ -11,9 +11,10 @@ import type { RecordableHistogram } from 'node:perf_hooks';
 // @public
 export class Benchmark {
     addSuite(suite: SuiteLike): this;
-    addSuite(suiteWithPath: {
-        default: SuiteLike;
+    addSuite(suite: Suite | (SuiteLike & {
         filename: string;
+    }), options: {
+        threaded: true;
     }): Promise<this>;
     runAll(): Promise<BenchmarkResults>;
     readonly suites: ReadonlyMap<SuiteName, SuiteLike>;
@@ -24,8 +25,11 @@ export type BenchmarkResults = Map<SuiteName, SuiteResults>;
 
 // @public
 export class Suite implements SuiteLike {
-    constructor(name: SuiteName, options: SuiteRunOptions);
+    constructor(name: SuiteName, options: SuiteRunOptions & {
+        filename?: string | undefined;
+    });
     addTest(testName: string, fn: () => unknown): this;
+    readonly filename: string | undefined;
     // (undocumented)
     readonly name: SuiteName;
     readonly options: SuiteRunOptions;

@@ -13,9 +13,15 @@ describe(name(Suite), () => {
 		});
 
 		it(`${name(Suite)}.prototype.options`, () => {
-			const suite = new Suite('name', SKIP_SUITE);
+			const suite = new Suite('suite', {...SKIP_SUITE, filename: 'suite.js'});
 
-			expect(suite.options).toBe(SKIP_SUITE);
+			expect(suite.options).toStrictEqual(SKIP_SUITE);
+		});
+
+		it(`${name(Suite)}.prototype.filename`, () => {
+			const suite = new Suite('suite', {...SKIP_SUITE, filename: 'suite.js'});
+
+			expect(suite.filename).toBe('suite.js');
 		});
 	});
 

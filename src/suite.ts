@@ -64,6 +64,12 @@ export class Suite implements SuiteLike {
 	readonly name: SuiteName;
 
 	/**
+	 * This {@link Suite}'s filename, if it was provided.
+	 * Used for running the {@link Suite} in a separate thread.
+	 */
+	readonly filename: string | undefined;
+
+	/**
 	 * Options for running this {@link Suite} and its warmup.
 	 */
 	public readonly options: RunOptions;
@@ -71,15 +77,20 @@ export class Suite implements SuiteLike {
 	/**
 	 * Creates a new {@link Suite}.
 	 *
-	 * @param name - The name of this {@link Suite}
-	 * @param options - Options for running the {@link Suite} and its warmup.
+	 * @param name - The name of the {@link Suite}
+	 * @param options - Options for the {@link Suite}
 	 */
-	constructor(name: SuiteName, options: RunOptions) {
-		const runOptionsPredicate = ow.any(ow.object.exactShape({trials: ow.number.not.negative}), ow.object.exactShape({durationMs: ow.number.not.negative}));
-		ow(options, ow.object.exactShape({run: runOptionsPredicate, warmup: runOptionsPredicate}));
+	constructor(name: SuiteName, options: RunOptions & {filename?: string | undefined}) {
+		const runOptionsPredicate = ow.any(ow.object.partialShape({trials: ow.number.not.negative}), ow.object.partialShape({durationMs: ow.number.not.negative}));
+		ow(options, ow.object.partialShape({run: runOptionsPredicate, warmup: runOptionsPredicate, filename: ow.optional.string.nonEmpty}));
 
 		this.name = name;
-		this.options = options;
+
+		const {filename, ...rest} = options;
+
+		this.filename = filename;
+
+		this.options = rest;
 	}
 
 	/**

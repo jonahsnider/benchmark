@@ -1,5 +1,3 @@
-const notSuite = {};
+const notSuite = {filename: __filename};
 
 export default notSuite;
-
-export const filename = __filename;

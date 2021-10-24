@@ -1,4 +1,5 @@
 import ow from 'ow';
+import {Suite} from './suite.js';
 import type {SuiteLike, SuiteResults} from './suite.js';
 import {Thread} from './thread.js';
 import type {SuiteName} from './types.js';
@@ -25,9 +26,9 @@ export class Benchmark {
 	readonly suites: ReadonlyMap<SuiteName, SuiteLike> = this.#suites;
 
 	/**
-	 * Add a {@link Suite} to this {@link Benchmark}.
+	 * Add a {@link SuiteLike} to this {@link Benchmark}.
 	 *
-	 * @param suite - The {@link Suite} to add
+	 * @param suite - The {@link SuiteLike} to add
 	 *
 	 * @returns `this`
 	 */
@@ -35,24 +36,24 @@ export class Benchmark {
 	/**
 	 * Add a {@link Suite} to this {@link Benchmark} by passing its filename to be loaded in a separate thread.
 	 *
-	 * @param suiteWithPath - The {@link Suite} and its filepath to add
+	 * @param suite - A {@link Suite} that was created with a filename provided
 	 *
 	 * @returns `this`
 	 */
-	async addSuite(suiteWithPath: {default: SuiteLike; filename: string}): Promise<this>;
-	addSuite(suiteOrSuiteWithPath: {default: SuiteLike; filename: string} | SuiteLike): this | Promise<this> {
-		if ('filename' in suiteOrSuiteWithPath) {
-			ow(suiteOrSuiteWithPath, ow.object.partialShape({default: ow.object, filename: ow.string.nonEmpty}));
+	async addSuite(suite: Suite | (SuiteLike & {filename: string}), options: {threaded: true}): Promise<this>;
+	addSuite(suiteLike: Suite | (SuiteLike & {filename: string}) | SuiteLike, options?: undefined | {threaded: boolean}): this | Promise<this> {
+		if (options?.threaded) {
+			ow(suiteLike, ow.object.partialShape({filename: ow.string.nonEmpty}));
 
 			// eslint-disable-next-line promise/prefer-await-to-then
-			return Thread.init(suiteOrSuiteWithPath.filename).then(threadedSuite => {
+			return Thread.init(suiteLike.filename).then(threadedSuite => {
 				this.#suites.set(threadedSuite.name, threadedSuite);
 
 				return this;
 			});
 		}
 
-		this.#suites.set(suiteOrSuiteWithPath.name, suiteOrSuiteWithPath);
+		this.#suites.set(suiteLike.name, suiteLike);
 		return this;
 	}
 

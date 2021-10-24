@@ -1,5 +1,5 @@
 import {name} from '@jonahsnider/util';
-import * as emptySuite from '../fixtures/suites/empty.js';
+import emptySuite from '../fixtures/suites/empty.js';
 import {Benchmark} from './benchmark.js';
 import {Suite} from './suite.js';
 import {Thread} from './thread.js';
@@ -24,7 +24,7 @@ describe(name(Benchmark), () => {
 
 			expect(benchmark.suites).toStrictEqual(new Map());
 
-			await benchmark.addSuite(emptySuite);
+			await benchmark.addSuite(emptySuite, {threaded: true});
 
 			expect(benchmark.suites).toStrictEqual(new Map([['suite', expect.any(Thread)]]));
 		});
