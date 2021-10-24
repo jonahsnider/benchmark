@@ -1,4 +1,4 @@
-import process from 'node:process';
+import * as process from 'node:process';
 import {Suite} from '../../src/suite';
 import {SHORT_SUITE} from '../../src/utils';
 

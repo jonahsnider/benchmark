@@ -1,9 +1,10 @@
 {
 	"compilerOptions": {
 		"importHelpers": true,
+		"moduleResolution": "Node",
 		"outDir": "tsc_output"
 	},
-	"extends": "@tsconfig/node16/tsconfig.json",
 	"exclude": ["node_modules", "tsc_output", "tsc_types", "coverage"],
+	"extends": "@tsconfig/node16/tsconfig.json",
 	"include": ["src", "examples", "fixtures"]
 }

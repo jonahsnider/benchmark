@@ -1,16 +1,17 @@
-import path from 'node:path';
+import {once} from 'node:events';
+import * as path from 'node:path';
+import {fileURLToPath, pathToFileURL} from 'node:url';
 import type {WorkerOptions} from 'node:worker_threads';
 import {Worker} from 'node:worker_threads';
-import {once} from 'node:events';
 import ow from 'ow';
-import {compatibleImport} from './utils';
 import type {SuiteLike, SuiteResults} from './suite';
 import {Suite} from './suite';
-import {WorkerMessageKind, WorkerResponseKind} from './types';
 import type {SuiteName, WorkerData, WorkerMessage, WorkerResponse} from './types';
+import {WorkerMessageKind, WorkerResponseKind} from './types';
+import {compatibleImport} from './utils';
 
-// eslint-disable-next-line unicorn/prefer-module
-const WORKER_PATH = path.join(__dirname, 'thread-worker.js');
+// @ts-expect-error import.meta
+const WORKER_PATH = pathToFileURL(path.join(path.dirname(fileURLToPath(import.meta.url)), 'thread-worker'));
 
 /**
  * Runs a {@link Suite} in a separate thread.
