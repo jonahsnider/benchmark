@@ -35,9 +35,7 @@ describe(name(Thread), () => {
 		});
 
 		it('handles errors in worker loading', async () => {
-			await expect(Thread.init('missing-file.js')).rejects.toThrow(
-				/^Cannot find module 'missing-file.js' from 'tsc_output\/src\/utils\.js'$/,
-			);
+			await expect(Thread.init('missing-file.js')).rejects.toThrow(/^Cannot find module 'missing-file.js' from 'tsc_output\/src\/utils\.js'$/);
 		});
 	});
 });
