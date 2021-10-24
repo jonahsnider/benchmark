@@ -1,8 +1,12 @@
 {
 	"compilerOptions": {
+		"declaration": true,
+		"declarationDir": "tsc_types",
 		"importHelpers": true,
+		"module": "ESNext",
 		"moduleResolution": "Node",
-		"outDir": "tsc_output"
+		"outDir": "tsc_output",
+		"target": "ESNext"
 	},
 	"exclude": ["node_modules", "tsc_output", "tsc_types", "coverage"],
 	"extends": "@tsconfig/node16/tsconfig.json",

@@ -1,17 +1,15 @@
+import assert from 'node:assert/strict';
 import {once} from 'node:events';
-import * as path from 'node:path';
-import {fileURLToPath, pathToFileURL} from 'node:url';
+import {URL} from 'node:url';
 import type {WorkerOptions} from 'node:worker_threads';
 import {Worker} from 'node:worker_threads';
-import ow from 'ow';
-import type {SuiteLike, SuiteResults} from './suite';
-import {Suite} from './suite';
-import type {SuiteName, WorkerData, WorkerMessage, WorkerResponse} from './types';
-import {WorkerMessageKind, WorkerResponseKind} from './types';
-import {compatibleImport} from './utils';
+import type {SuiteLike, SuiteResults} from './suite.js';
+import {Suite} from './suite.js';
+import type {SuiteName, WorkerData, WorkerMessage, WorkerResponse} from './types.js';
+import {WorkerMessageKind, WorkerResponseKind} from './types.js';
+import {compatibleImport} from './utils.js';
 
-// @ts-expect-error import.meta
-const WORKER_PATH = pathToFileURL(path.join(path.dirname(fileURLToPath(import.meta.url)), 'thread-worker'));
+const WORKER_PATH = new URL('./thread-worker.js', import.meta.url);
 
 /**
  * Runs a {@link Suite} in a separate thread.
@@ -20,7 +18,7 @@ export class Thread implements SuiteLike {
 	static async init(suitePath: string): Promise<Thread> {
 		const suite = await compatibleImport(suitePath);
 
-		ow<Suite>(suite, ow.object.instanceOf(Suite));
+		assert(suite instanceof Suite);
 
 		return new Thread(suite, suitePath);
 	}

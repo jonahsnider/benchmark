@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/prefer-string-slice */
 
-import {Suite} from '../../../src/index';
+import {Suite} from '../../../src/index.js';
 
 const suite = new Suite('substring', {filename: __filename, run: {trials: 1e3}, warmup: {durationMs: 10_000}})
 	.addTest('substring', () => {

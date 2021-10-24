@@ -4,7 +4,9 @@
 
 ```ts
 
-import { RecordableHistogram } from 'node:perf_hooks';
+/// <reference types="node" />
+
+import type { RecordableHistogram } from 'node:perf_hooks';
 
 // @public
 export class Benchmark {
@@ -32,7 +34,7 @@ export class Suite implements SuiteLike {
     readonly name: SuiteName;
     readonly options: SuiteRunOptions;
     run(): Promise<SuiteResults>;
-    // Warning: (ae-incompatible-release-tags) The symbol "tests" is marked as @public, but its signature references "_Test" which is marked as @internal
+    // Warning: (ae-incompatible-release-tags) The symbol "tests" is marked as @public, but its signature references "Test" which is marked as @internal
     tests: ReadonlyMap<TestName, _Test>;
 }
 

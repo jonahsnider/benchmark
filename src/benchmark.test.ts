@@ -1,9 +1,9 @@
 import {name} from '@jonahsnider/util';
-import emptySuite from '../fixtures/suites/empty';
-import {Benchmark} from './benchmark';
-import {Suite} from './suite';
-import {Thread} from './thread';
-import {SHORT_SUITE, SKIP_SUITE} from './utils';
+import emptySuite from '../fixtures/suites/empty.js';
+import {Benchmark} from './benchmark.js';
+import {Suite} from './suite.js';
+import {Thread} from './thread.js';
+import {SHORT_SUITE, SKIP_SUITE} from './utils.js';
 
 describe(name(Benchmark), () => {
 	describe(name(Benchmark, Benchmark.prototype.addSuite), () => {

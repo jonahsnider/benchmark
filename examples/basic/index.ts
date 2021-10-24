@@ -1,4 +1,4 @@
-import {Benchmark, Suite} from '../../src/index';
+import {Benchmark, Suite} from '../../src/index.js';
 
 const benchmark = new Benchmark();
 

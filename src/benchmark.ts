@@ -1,7 +1,7 @@
-import ow from 'ow';
-import type {Suite, SuiteLike, SuiteResults} from './suite';
-import {Thread} from './thread';
-import type {SuiteName} from './types';
+import assert from 'node:assert/strict';
+import type {Suite, SuiteLike, SuiteResults} from './suite.js';
+import {Thread} from './thread.js';
+import type {SuiteName} from './types.js';
 
 /**
  * A `Map` where keys are the {@link SuiteName | suite names} and values are the {@link SuiteResults | suite results}.
@@ -42,7 +42,8 @@ export class Benchmark {
 	async addSuite(suite: Suite | SuiteLike, options: {threaded: true}): Promise<this>;
 	addSuite(suiteLike: Suite | SuiteLike, options?: undefined | {threaded: boolean}): this | Promise<this> {
 		if (options?.threaded) {
-			ow(suiteLike, ow.object.partialShape({filename: ow.string.nonEmpty}));
+			assert('filename' in suiteLike);
+			assert(suiteLike.filename);
 
 			// eslint-disable-next-line promise/prefer-await-to-then
 			return Thread.init(suiteLike.filename).then(threadedSuite => {

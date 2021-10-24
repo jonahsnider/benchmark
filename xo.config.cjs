@@ -9,6 +9,6 @@ config.overrides.push({
 	},
 });
 
-config.rules['import/extensions'] = 'off';
+config.rules['node/no-unsupported-features'] = 'off';
 
 module.exports = config;

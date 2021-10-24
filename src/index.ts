@@ -1,6 +1,6 @@
-export {Benchmark} from './benchmark';
-export type {BenchmarkResults} from './benchmark';
-export {Suite} from './suite';
-export type {SuiteLike, SuiteResults, SuiteRunOptions} from './suite';
-export {Test as _Test} from './test';
-export type {SuiteName, TestName} from './types';
+export {Benchmark} from './benchmark.js';
+export type {BenchmarkResults} from './benchmark.js';
+export {Suite} from './suite.js';
+export type {SuiteLike, SuiteResults, SuiteRunOptions} from './suite.js';
+export {Test as _Test} from './test.js';
+export type {SuiteName, TestName} from './types.js';

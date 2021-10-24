@@ -1,8 +1,8 @@
+import assert from 'node:assert/strict';
 import type {RecordableHistogram} from 'node:perf_hooks';
 import {performance} from 'node:perf_hooks';
-import ow from 'ow';
-import {Test} from './test';
-import type {SuiteName, TestName} from './types';
+import {Test} from './test.js';
+import type {SuiteName, TestName} from './types.js';
 
 /**
  * Results from running a {@link Suite}.
@@ -86,9 +86,6 @@ export class Suite implements SuiteLike {
 	 * @param options - Options for the {@link Suite}
 	 */
 	constructor(name: SuiteName, options: RunOptions & {filename?: string | undefined}) {
-		const runOptionsPredicate = ow.any(ow.object.partialShape({trials: ow.number.not.negative}), ow.object.partialShape({durationMs: ow.number.not.negative}));
-		ow(options, ow.object.partialShape({run: runOptionsPredicate, warmup: runOptionsPredicate, filename: ow.optional.string.nonEmpty}));
-
 		this.name = name;
 
 		const {filename, ...rest} = options;
@@ -107,8 +104,7 @@ export class Suite implements SuiteLike {
 	 * @returns `this`
 	 */
 	addTest(testName: string, fn: () => unknown): this {
-		ow(fn, ow.function);
-		ow.map.not.hasKeys(this.#tests, testName);
+		assert(!this.#tests.has(testName));
 
 		this.#tests.set(testName, new Test(fn));
 

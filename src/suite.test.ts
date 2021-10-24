@@ -1,8 +1,8 @@
 import {performance} from 'node:perf_hooks';
 import {name} from '@jonahsnider/util';
-import {Suite} from './suite';
-import {Test} from './test';
-import {SHORT_SUITE, SHORT_TIMED_SUITE, SKIP_SUITE} from './utils';
+import {Suite} from './suite.js';
+import {Test} from './test.js';
+import {SHORT_SUITE, SHORT_TIMED_SUITE, SKIP_SUITE} from './utils.js';
 
 describe(name(Suite), () => {
 	describe('constructor', () => {

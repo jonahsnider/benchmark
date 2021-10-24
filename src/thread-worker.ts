@@ -1,8 +1,8 @@
 import {isMainThread, parentPort, workerData} from 'node:worker_threads';
-import type {Suite} from './suite';
-import {WorkerMessageKind, WorkerResponseKind} from './types';
-import type {WorkerData, WorkerMessage, WorkerResponse} from './types';
-import {compatibleImport} from './utils';
+import type {Suite} from './suite.js';
+import {WorkerMessageKind, WorkerResponseKind} from './types.js';
+import type {WorkerData, WorkerMessage, WorkerResponse} from './types.js';
+import {compatibleImport} from './utils.js';
 
 if (isMainThread) {
 	throw new Error('This file should be run in a thread');

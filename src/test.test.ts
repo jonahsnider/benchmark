@@ -1,6 +1,6 @@
 import {createHistogram} from 'node:perf_hooks';
 import {name} from '@jonahsnider/util';
-import {Test} from './test';
+import {Test} from './test.js';
 
 describe(name(Test), () => {
 	describe(name(Test, Test.prototype.run), () => {

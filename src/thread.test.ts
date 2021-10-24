@@ -1,8 +1,8 @@
+import {AssertionError} from 'node:assert/strict';
 import {name} from '@jonahsnider/util';
-import {ArgumentError} from 'ow';
-import {Suites} from '../fixtures/index';
-import {Suite} from './suite';
-import {Thread} from './thread';
+import {Suites} from '../fixtures/index.js';
+import {Suite} from './suite.js';
+import {Thread} from './thread.js';
 
 describe(name(Thread), () => {
 	describe(name(Thread, Thread.init), () => {
@@ -14,7 +14,7 @@ describe(name(Thread), () => {
 		});
 
 		it(`throws if given path is not a ${name(Suite)}`, async () => {
-			await expect(Thread.init(Suites.invalid.filename)).rejects.toBeInstanceOf(ArgumentError);
+			await expect(Thread.init(Suites.invalid.filename)).rejects.toBeInstanceOf(AssertionError);
 		});
 	});
 
