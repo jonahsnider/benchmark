@@ -114,10 +114,10 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install dependencies with Yarn
         run: yarn install --immutable
-      - name: Run tests
-        run: yarn run test
       - name: Compile TypeScript
         run: yarn run build
+      - name: Run tests
+        run: yarn test --coverage
       - name: Submit test coverage
         uses: codecov/codecov-action@v2
         with:
