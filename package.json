@@ -15,9 +15,12 @@
 		"url": "https://jonahsnider.com"
 	},
 	"type": "commonjs",
-	"main": "./tsc_output/index.js",
+	"main": "./tsc_output/src/index.js",
 	"files": [
-		"tsc_output"
+		"tsc_output",
+		"!tsc_output/**/*.test.*",
+		"!tsc_output/fixtures",
+		"!tsc_output/examples"
 	],
 	"scripts": {
 		"prebuild": "rm -rf tsc_output",
