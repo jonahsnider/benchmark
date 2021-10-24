@@ -25,11 +25,14 @@ export class Thread implements SuiteLike {
 	}
 
 	readonly name: SuiteName;
+	readonly filepath: string;
+
 	#worker: Worker;
 	readonly #workerOptions: WorkerOptions;
 
 	constructor(suite: Suite, suitePath: string) {
 		this.name = suite.name;
+		this.filepath = suitePath;
 
 		const workerData: WorkerData = {
 			suitePath,

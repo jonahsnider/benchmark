@@ -32,7 +32,7 @@ export class Benchmark {
 	 *
 	 * @returns `this`
 	 */
-	addSuite(suite: SuiteLike): this;
+	addSuite(suite: SuiteLike, options?: undefined | {threaded: false}): this;
 	/**
 	 * Add a {@link Suite} to this {@link Benchmark} by passing its filename to be loaded in a separate thread.
 	 *
@@ -40,8 +40,8 @@ export class Benchmark {
 	 *
 	 * @returns `this`
 	 */
-	async addSuite(suite: Suite | (SuiteLike & {filename: string}), options: {threaded: true}): Promise<this>;
-	addSuite(suiteLike: Suite | (SuiteLike & {filename: string}) | SuiteLike, options?: undefined | {threaded: boolean}): this | Promise<this> {
+	async addSuite(suite: Suite | SuiteLike, options: {threaded: true}): Promise<this>;
+	addSuite(suiteLike: Suite | SuiteLike, options?: undefined | {threaded: boolean}): this | Promise<this> {
 		if (options?.threaded) {
 			ow(suiteLike, ow.object.partialShape({filename: ow.string.nonEmpty}));
 
@@ -62,6 +62,7 @@ export class Benchmark {
 	 *
 	 * @returns A {@link BenchmarkResults} `Map`
 	 */
+	// TODO: consider renaming to run()
 	async runAll(): Promise<Results> {
 		const results: Results = new Map();
 

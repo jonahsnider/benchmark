@@ -20,9 +20,14 @@ export {RunOptions as SuiteRunOptions};
  */
 export interface SuiteLike {
 	/**
-	 * The name of this {@link Suite}.
+	 * The name of this {@link SuiteLike}.
 	 */
 	readonly name: SuiteName;
+
+	/**
+	 * The filepath to this {@link SuiteLike}, when available.
+	 */
+	readonly filepath?: string | undefined;
 
 	/**
 	 * Runs this {@link SuiteLike}.

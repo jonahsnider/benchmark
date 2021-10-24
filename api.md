@@ -10,10 +10,10 @@ import type { RecordableHistogram } from 'node:perf_hooks';
 
 // @public
 export class Benchmark {
-    addSuite(suite: SuiteLike): this;
-    addSuite(suite: Suite | (SuiteLike & {
-        filename: string;
-    }), options: {
+    addSuite(suite: SuiteLike, options?: undefined | {
+        threaded: false;
+    }): this;
+    addSuite(suite: Suite | SuiteLike, options: {
         threaded: true;
     }): Promise<this>;
     runAll(): Promise<BenchmarkResults>;
@@ -40,6 +40,7 @@ export class Suite implements SuiteLike {
 
 // @public
 export interface SuiteLike {
+    readonly filepath?: string | undefined;
     readonly name: SuiteName;
     run(): SuiteResults | Promise<SuiteResults>;
 }
@@ -60,12 +61,12 @@ export type SuiteRunOptions = Record<'run' | 'warmup', {
 }>;
 
 // @internal
-export class _Test {
-    constructor(implementation: () => unknown);
+export class _Test<T = unknown> {
+    constructor(implementation: () => T);
     // (undocumented)
     readonly histogram: RecordableHistogram;
     // (undocumented)
-    run(): Promise<void>;
+    run(): Promise<T>;
 }
 
 // @public

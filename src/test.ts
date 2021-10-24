@@ -6,15 +6,15 @@ import {createHistogram, performance} from 'node:perf_hooks';
  *
  * @internal
  */
-export class Test {
+export class Test<T = unknown> {
 	readonly histogram: RecordableHistogram = createHistogram();
-	readonly #implementation: () => unknown;
+	readonly #implementation: () => T;
 
-	constructor(implementation: () => unknown) {
+	constructor(implementation: () => T) {
 		this.#implementation = performance.timerify(implementation, {histogram: this.histogram});
 	}
 
-	async run(): Promise<void> {
-		await this.#implementation();
+	async run(): Promise<T> {
+		return this.#implementation();
 	}
 }
