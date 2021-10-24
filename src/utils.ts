@@ -12,3 +12,9 @@ export async function compatibleImport<T>(path: string): Promise<T> {
 
 	/* eslint-enable unicorn/prefer-module, node/no-unsupported-features/es-syntax, @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires */
 }
+
+export const SKIP_SUITE = {run: {trials: 0}, warmup: {trials: 0}} as const;
+
+export const SHORT_SUITE = {run: {trials: 1e3}, warmup: {trials: 1e3}} as const;
+
+export const SHORT_TIMED_SUITE = {run: {durationMs: 100}, warmup: {durationMs: 100}} as const;

@@ -6,51 +6,58 @@
 
 /// <reference types="node" />
 
-import type { AnyFunction } from '@jonahsnider/util';
-import type { Histogram } from 'node:perf_hooks';
-import type { Opaque } from 'type-fest';
 import type { RecordableHistogram } from 'node:perf_hooks';
 
 // @public
 export class Benchmark {
-    constructor(suites?: undefined | Iterable<Suite>);
-    addSuite(suite: Suite): this;
-    runAll(): Promise<Map<SuiteName, SuiteResults>>;
+    addSuite(suite: SuiteLike): this;
+    addSuite(suiteWithPath: {
+        default: SuiteLike;
+        filename: string;
+    }): Promise<this>;
+    runAll(): Promise<BenchmarkResults>;
+    readonly suites: ReadonlyMap<SuiteName, SuiteLike>;
 }
 
 // @public
-export class Suite {
-    constructor(name: string, options: {
-        run: SuiteRunOptions;
-        warmup?: SuiteRunOptions | undefined;
-    });
-    addTest(testName: string, fn: AnyFunction): this;
+export type BenchmarkResults = Map<SuiteName, SuiteResults>;
+
+// @public
+export class Suite implements SuiteLike {
+    constructor(name: SuiteName, options: SuiteRunOptions);
+    addTest(testName: string, fn: () => unknown): this;
+    // (undocumented)
     readonly name: SuiteName;
+    readonly options: SuiteRunOptions;
     run(): Promise<SuiteResults>;
-    runOptions: SuiteRunOptions;
-    warmupOptions: SuiteRunOptions;
+    // Warning: (ae-incompatible-release-tags) The symbol "tests" is marked as @public, but its signature references "Test" which is marked as @internal
+    tests: ReadonlyMap<TestName, _Test>;
 }
 
 // @public
-export type SuiteName = Opaque<string, 'SuiteName'>;
+export interface SuiteLike {
+    readonly name: SuiteName;
+    run(): SuiteResults | Promise<SuiteResults>;
+}
 
 // @public
-export type SuiteResults = Map<TestName, Histogram>;
+export type SuiteName = string;
 
 // @public
-export type SuiteRunOptions = {
+export type SuiteResults = Map<TestName, RecordableHistogram>;
+
+// @public
+export type SuiteRunOptions = Record<'run' | 'warmup', {
     trials: number;
     durationMs?: undefined;
 } | {
     trials?: undefined;
     durationMs: number;
-};
+}>;
 
 // @internal
 export class _Test {
-    constructor(implementation: AnyFunction);
-    // (undocumented)
-    clearResults(): void;
+    constructor(implementation: () => unknown);
     // (undocumented)
     readonly histogram: RecordableHistogram;
     // (undocumented)
@@ -58,7 +65,7 @@ export class _Test {
 }
 
 // @public
-export type TestName = Opaque<string, 'TestName'>;
+export type TestName = string;
 
 // (No @packageDocumentation comment for this package)
 

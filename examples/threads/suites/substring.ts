@@ -2,7 +2,7 @@
 
 import {Suite} from '../../../src/index.js';
 
-const suite = new Suite('substring', {run: {trials: 1e3}, warmup: {trials: 1e3}})
+const suite = new Suite('substring', {run: {trials: 1e3}, warmup: {durationMs: 10_000}})
 	.addTest('substring', () => {
 		const string = 'abcdef';
 
@@ -20,3 +20,5 @@ const suite = new Suite('substring', {run: {trials: 1e3}, warmup: {trials: 1e3}}
 	});
 
 export default suite;
+
+export const filename = __filename;

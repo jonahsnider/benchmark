@@ -3,9 +3,11 @@
 		"declaration": true,
 		"declarationDir": "tsc_types",
 		"outDir": "tsc_output",
-		"importHelpers": true
+		"importHelpers": true,
+		"inlineSourceMap": true,
+		"inlineSources": true
 	},
 	"extends": "@tsconfig/node16/tsconfig.json",
 	"exclude": ["node_modules", "tsc_output", "tsc_types", "coverage"],
-	"include": ["src", "examples"]
+	"include": ["src", "examples", "fixtures"]
 }

@@ -1,5 +1,4 @@
-import type {AnyFunction} from '@jonahsnider/util';
-import type {Histogram} from 'node:perf_hooks';
+import type {RecordableHistogram} from 'node:perf_hooks';
 import {performance} from 'node:perf_hooks';
 import ow from 'ow';
 import {Test} from './test.js';
@@ -10,15 +9,36 @@ import type {SuiteName, TestName} from './types.js';
  *
  * @public
  */
-type Results = Map<TestName, Histogram>;
+type Results = Map<TestName, RecordableHistogram>;
 export {Results as SuiteResults};
+export {RunOptions as SuiteRunOptions};
+
+/**
+ * A suite of related tests that can be run together.
+ *
+ * @public
+ */
+export interface SuiteLike {
+	/**
+	 * The name of this {@link Suite}.
+	 */
+	readonly name: SuiteName;
+
+	/**
+	 * Runs this {@link SuiteLike}.
+	 *
+	 * @returns The results of running this {@link SuiteLike}
+	 */
+	run(): Results | Promise<Results>;
+}
 
 /**
  * Options for running a {@link Suite}.
  *
  * @public
  */
-type RunOptions =
+type RunOptions = Record<
+	'run' | 'warmup',
 	| {
 			trials: number;
 			durationMs?: undefined;
@@ -26,41 +46,40 @@ type RunOptions =
 	| {
 			trials?: undefined;
 			durationMs: number;
-	  };
-export {RunOptions as SuiteRunOptions};
+	  }
+>;
 
 /**
  * A collection of {@link _Test}s that are different implementations of the same thing (ex. different ways of sorting an array).
  *
  * @public
  */
-export class Suite {
+export class Suite implements SuiteLike {
 	readonly #tests: Map<TestName, Test> = new Map();
+	/**
+	 * The tests in this {@link Suite}.
+	 */
+	tests: ReadonlyMap<TestName, Test> = this.#tests;
+
+	readonly name: SuiteName;
 
 	/**
-	 * The name of this {@link Suite}.
+	 * Options for running this {@link Suite} and its warmup.
 	 */
-	public readonly name: SuiteName;
-	/**
-	 * Options for running this {@link Suite}.
-	 */
-	public runOptions: RunOptions;
-	/**
-	 * Options for running this {@link Suite}'s warmup.
-	 * Default behavior is to do nothing.
-	 */
-	public warmupOptions: RunOptions = {trials: 0};
+	public readonly options: RunOptions;
 
-	constructor(name: string, options: {run: RunOptions; warmup?: RunOptions | undefined}) {
-		const runOptionsPredicate = ow.any(ow.object.exactShape({trials: ow.number.positive}), ow.object.exactShape({durationMs: ow.number.positive}));
+	/**
+	 * Creates a new {@link Suite}.
+	 *
+	 * @param name - The name of this {@link Suite}
+	 * @param options - Options for running the {@link Suite} and its warmup.
+	 */
+	constructor(name: SuiteName, options: RunOptions) {
+		const runOptionsPredicate = ow.any(ow.object.exactShape({trials: ow.number.not.negative}), ow.object.exactShape({durationMs: ow.number.not.negative}));
 		ow(options, ow.object.exactShape({run: runOptionsPredicate, warmup: runOptionsPredicate}));
 
-		this.name = name as SuiteName;
-		this.runOptions = options.run;
-
-		if (options.warmup) {
-			this.warmupOptions = options.warmup;
-		}
+		this.name = name;
+		this.options = options;
 	}
 
 	/**
@@ -71,70 +90,68 @@ export class Suite {
 	 *
 	 * @returns `this`
 	 */
-	public addTest(testName: string, fn: AnyFunction): this {
+	addTest(testName: string, fn: () => unknown): this {
 		ow(fn, ow.function);
 		ow.map.not.hasKeys(this.#tests, testName);
 
-		this.#tests.set(testName as TestName, new Test(fn));
+		this.#tests.set(testName, new Test(fn));
 
 		return this;
 	}
 
 	/**
-	 * Runs this {@link Suite}.
+	 * Runs this {@link Suite} using {@link Suite.options}.
 	 *
 	 * @returns The results of running this {@link Suite}
 	 */
-	public async run(): Promise<Results> {
-		this.clearResults();
+	async run(): Promise<Results> {
+		this.#clearResults();
 
-		await this.runWarmup();
+		await this.#runWarmup();
 
-		await this.runTests();
+		await this.#runTests();
 
-		return this.results;
+		const results: Results = new Map([...this.#tests.entries()].map(([testName, test]) => [testName, test.histogram]));
+
+		return results;
 	}
 
-	private clearResults() {
+	#clearResults() {
 		for (const tests of this.#tests.values()) {
-			tests.clearResults();
+			tests.histogram.reset();
 		}
 	}
 
-	private get results(): Results {
-		return new Map([...this.#tests.entries()].map(([testName, test]) => [testName, test.histogram]));
-	}
-
-	private async runTestsOnce() {
+	async #runTestsOnce() {
 		for (const test of this.#tests.values()) {
 			// eslint-disable-next-line no-await-in-loop
 			await test.run();
 		}
 	}
 
-	private async runTestsWithOptions(options: RunOptions): Promise<void> {
+	async #runTestsWithOptions(options: RunOptions['run' | 'warmup']): Promise<void> {
 		if (options.durationMs === undefined) {
 			for (let count = 0; count < options.trials; count++) {
 				// eslint-disable-next-line no-await-in-loop
-				await this.runTestsOnce();
+				await this.#runTestsOnce();
 			}
 		} else {
 			const startTime = performance.now();
 
 			while (performance.now() - startTime < options.durationMs) {
 				// eslint-disable-next-line no-await-in-loop
-				await this.runTestsOnce();
+				await this.#runTestsOnce();
 			}
 		}
 	}
 
-	private async runTests() {
-		await this.runTestsWithOptions(this.runOptions);
+	async #runTests() {
+		await this.#runTestsWithOptions(this.options.run);
 	}
 
-	private async runWarmup(): Promise<void> {
-		await this.runTestsWithOptions(this.warmupOptions);
+	async #runWarmup(): Promise<void> {
+		await this.#runTestsWithOptions(this.options.warmup);
 
-		this.clearResults();
+		this.#clearResults();
 	}
 }
