@@ -1,6 +1,6 @@
 import {name} from '@jonahsnider/util';
-import {ModulePaths} from '../fixtures/index.js';
-import {compatibleImport} from './utils.js';
+import {ModulePaths} from '../fixtures/index';
+import {compatibleImport} from './utils';
 
 describe(name(compatibleImport), () => {
 	it('imports ESM modules', async () => {

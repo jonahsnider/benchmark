@@ -1,5 +1,5 @@
-import {Benchmark} from '../../src/index.js';
-import substringSuite from './suites/substring.js';
+import {Benchmark} from '../../src/index';
+import substringSuite from './suites/substring';
 
 const benchmark = new Benchmark();
 

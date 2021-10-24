@@ -1,8 +1,8 @@
 import type {RecordableHistogram} from 'node:perf_hooks';
 import {performance} from 'node:perf_hooks';
 import ow from 'ow';
-import {Test} from './test.js';
-import type {SuiteName, TestName} from './types.js';
+import {Test} from './test';
+import type {SuiteName, TestName} from './types';
 
 /**
  * Results from running a {@link Suite}.

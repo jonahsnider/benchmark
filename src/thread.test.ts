@@ -1,8 +1,8 @@
 import {name} from '@jonahsnider/util';
 import {ArgumentError} from 'ow';
-import {Suites} from '../fixtures/index.js';
-import {Suite} from './suite.js';
-import {Thread} from './thread.js';
+import {Suites} from '../fixtures/index';
+import {Suite} from './suite';
+import {Thread} from './thread';
 
 describe(name(Thread), () => {
 	describe(name(Thread, Thread.init), () => {

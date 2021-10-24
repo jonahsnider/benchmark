@@ -9,4 +9,6 @@ config.overrides.push({
 	},
 });
 
+config.rules['import/extensions'] = 'off';
+
 module.exports = config;

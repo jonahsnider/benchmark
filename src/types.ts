@@ -1,4 +1,4 @@
-import type {SuiteResults} from './suite.js';
+import type {SuiteResults} from './suite';
 
 /**
  * The name of a {@link _Test}.

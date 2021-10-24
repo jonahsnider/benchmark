@@ -3,11 +3,11 @@ import type {WorkerOptions} from 'node:worker_threads';
 import {Worker} from 'node:worker_threads';
 import {once} from 'node:events';
 import ow from 'ow';
-import {compatibleImport} from './utils.js';
-import type {SuiteLike, SuiteResults} from './suite.js';
-import {Suite} from './suite.js';
-import {WorkerMessageKind, WorkerResponseKind} from './types.js';
-import type {SuiteName, WorkerData, WorkerMessage, WorkerResponse} from './types.js';
+import {compatibleImport} from './utils';
+import type {SuiteLike, SuiteResults} from './suite';
+import {Suite} from './suite';
+import {WorkerMessageKind, WorkerResponseKind} from './types';
+import type {SuiteName, WorkerData, WorkerMessage, WorkerResponse} from './types';
 
 // eslint-disable-next-line unicorn/prefer-module
 const WORKER_PATH = path.join(__dirname, 'thread-worker.js');

@@ -1,4 +1,4 @@
 {
-	"javascript.preferences.importModuleSpecifierEnding": "js",
+	"javascript.preferences.importModuleSpecifierEnding": "index",
 	"typescript.tsdk": "node_modules/typescript/lib"
 }

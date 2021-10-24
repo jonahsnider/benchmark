@@ -1,8 +1,8 @@
 import ow from 'ow';
-import {Suite} from './suite.js';
-import type {SuiteLike, SuiteResults} from './suite.js';
-import {Thread} from './thread.js';
-import type {SuiteName} from './types.js';
+import {Suite} from './suite';
+import type {SuiteLike, SuiteResults} from './suite';
+import {Thread} from './thread';
+import type {SuiteName} from './types';
 
 /**
  * A `Map` where keys are the {@link SuiteName | suite names} and values are the {@link SuiteResults | suite results}.

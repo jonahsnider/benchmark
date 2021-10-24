@@ -15,39 +15,48 @@
 		"url": "https://jonahsnider.com"
 	},
 	"type": "commonjs",
-	"main": "./tsc_output/src/index.js",
+	"exports": {
+		"import": "./dist/index.mjs",
+		"require": "./dist/index.js"
+	},
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"source": "./src/index.ts",
+	"types": "./dist/index.d.ts",
 	"files": [
-		"tsc_output",
-		"!tsc_output/**/*.test.*",
-		"!tsc_output/fixtures",
-		"!tsc_output/examples"
+		"dist"
 	],
 	"scripts": {
-		"build": "tsc",
+		"build": "parcel build",
 		"docs": "typedoc",
 		"lint": "xo",
 		"release": "semantic-release",
 		"style": "prettier --check .",
+		"pretest": "tsc",
 		"test": "jest",
+		"typecheck": "tsc --noEmit",
 		"validate-api": "api-extractor run",
-		"validate-api:local": "api-extractor run --local --verbose"
+		"validate-api:local": "api-extractor run --local --verbose",
+		"watch": "parcel watch"
 	},
 	"prettier": "@jonahsnider/prettier-config",
 	"dependencies": {
 		"ow": "0.28.0",
 		"tslib": "2.3.1"
 	},
-	"types": "./tsc_output/index.d.ts",
 	"devDependencies": {
 		"@jonahsnider/prettier-config": "1.1.0",
 		"@jonahsnider/util": "8.4.1",
 		"@jonahsnider/xo-config": "4.1.0",
 		"@microsoft/api-extractor": "7.18.16",
+		"@parcel/packager-ts": "^2.0.0",
+		"@parcel/transformer-typescript-types": "^2.0.0",
 		"@tsconfig/node16": "1.0.2",
 		"@types/jest": "27.0.2",
 		"@types/node": "16.10.1",
 		"eslint-plugin-prettier": "4.0.0",
 		"jest": "27.2.2",
+		"parcel": "2.0.0",
 		"prettier": "2.3.2",
 		"semantic-release": "18.0.0",
 		"ts-node": "10.2.1",

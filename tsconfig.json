@@ -1,11 +1,7 @@
 {
 	"compilerOptions": {
-		"declaration": true,
-		"declarationDir": "tsc_types",
-		"outDir": "tsc_output",
 		"importHelpers": true,
-		"inlineSourceMap": true,
-		"inlineSources": true
+		"outDir": "tsc_output"
 	},
 	"extends": "@tsconfig/node16/tsconfig.json",
 	"exclude": ["node_modules", "tsc_output", "tsc_types", "coverage"],

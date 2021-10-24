@@ -3,6 +3,33 @@ name: CI
 on: [push, pull_request]
 
 jobs:
+  typecheck:
+    name: Typecheck
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.0.0'
+      - name: Get Yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install dependencies with Yarn
+        run: yarn install --immutable
+      - name: Typecheck
+        run: yarn run typecheck
   build:
     name: Build
 
@@ -28,13 +55,13 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install dependencies with Yarn
         run: yarn install --immutable
-      - name: Compile TypeScript
+      - name: Build
         run: yarn run build
-      - name: Upload compiled TypeScript
+      - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: tsc_output
-          path: tsc_output
+          name: dist
+          path: dist
   lint:
     name: Lint
 
@@ -115,7 +142,7 @@ jobs:
       - name: Install dependencies with Yarn
         run: yarn install --immutable
       - name: Compile TypeScript
-        run: yarn run build
+        run: yarn run pretest
       - name: Run tests
         run: yarn test --verbose --coverage
       - name: Submit test coverage
@@ -159,7 +186,7 @@ jobs:
 
     if: ${{ github.ref  == 'refs/heads/main' }}
 
-    needs: [unit-test, validate-api, style, lint]
+    needs: [typecheck, unit-test, validate-api, style, lint]
 
     steps:
       - name: Checkout Git repository
@@ -180,9 +207,9 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install dependencies with Yarn
         run: yarn install --immutable
-      - name: Compile TypeScript for publishing
+      - name: Build
         run: yarn run build
-      - name: Generate TypeScript declaration rollup
+      - name: Generate TSDoc metadata
         run: yarn run validate-api
       - name: Run release
         run: yarn run release
