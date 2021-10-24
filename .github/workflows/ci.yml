@@ -117,7 +117,7 @@ jobs:
       - name: Compile TypeScript
         run: yarn run build
       - name: Run tests
-        run: yarn test --coverage
+        run: yarn test --verbose --coverage
       - name: Submit test coverage
         uses: codecov/codecov-action@v2
         with:
