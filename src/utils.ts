@@ -3,7 +3,7 @@ import {__importDefault} from 'tslib';
 
 export function compatibleImport<T>(path: string): T {
 	// eslint-disable-next-line unicorn/prefer-module, @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
-	const mod = require(fileURLToPath(path)) as T;
+	const mod = require(path.startsWith('file://') ? fileURLToPath(path) : path) as T;
 
 	return (__importDefault(mod) as {default: T}).default;
 }
