@@ -186,7 +186,7 @@ jobs:
 
     if: ${{ github.ref  == 'refs/heads/main' }}
 
-    needs: [typecheck, unit-test, validate-api, style, lint]
+    needs: [typecheck, test, validate-api, style, lint]
 
     steps:
       - name: Checkout Git repository
