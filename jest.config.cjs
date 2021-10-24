@@ -1,5 +1,6 @@
 module.exports = {
 	testEnvironment: 'node',
 	roots: ['tsc_output'],
-	testPathIgnorePatterns: ['tsc_output/src/test.js'],
+	testPathIgnorePatterns: ['<rootDir>/tsc_output/src/test.js'],
+	coveragePathIgnorePatterns: ['<rootDir>/tsc_output/examples/', '<rootDir>/tsc_output/fixtures/'],
 };
