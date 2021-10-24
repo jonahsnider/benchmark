@@ -37,6 +37,7 @@
 		"ow": "0.28.0",
 		"tslib": "2.3.1"
 	},
+	"types": "./tsc_output/index.d.ts",
 	"devDependencies": {
 		"@jonahsnider/prettier-config": "1.1.0",
 		"@jonahsnider/util": "8.4.1",
