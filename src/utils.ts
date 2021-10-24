@@ -1,7 +1,7 @@
 import {fileURLToPath} from 'node:url';
 import {__importDefault} from 'tslib';
 
-export function compatibleImport<T>(path: string): T {
+export async function compatibleImport<T>(path: string): Promise<T> {
 	// eslint-disable-next-line unicorn/prefer-module, @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
 	const mod = require(path.startsWith('file://') ? fileURLToPath(path) : path) as T;
 

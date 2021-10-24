@@ -1,6 +1,5 @@
 import ow from 'ow';
-import {Suite} from './suite';
-import type {SuiteLike, SuiteResults} from './suite';
+import type {Suite, SuiteLike, SuiteResults} from './suite';
 import {Thread} from './thread';
 import type {SuiteName} from './types';
 
