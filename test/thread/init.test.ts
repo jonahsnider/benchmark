@@ -1,4 +1,3 @@
-import {AssertionError} from 'node:assert/strict';
 import {name} from '@jonahsnider/util';
 import test from 'ava';
 import {Suite} from '../../src/suite.js';
