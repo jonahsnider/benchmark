@@ -105,6 +105,8 @@ export class Suite implements SuiteLike {
 	 */
 	addTest(testName: string, fn: () => unknown): this {
 		assert(!this.#tests.has(testName));
+		assert.strictEqual(typeof testName, 'string', new TypeError(`The "testName" argument must be of type string.`));
+		assert.strictEqual(typeof fn, 'function', new TypeError(`The "fn" argument must be of type function.`));
 
 		this.#tests.set(testName, new Test(fn));
 

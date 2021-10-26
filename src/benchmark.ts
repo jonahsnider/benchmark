@@ -44,6 +44,8 @@ export class Benchmark {
 	 */
 	addSuite(suite: Suite | SuiteLike, options: {threaded: true}): Promise<this>;
 	addSuite(suiteLike: Suite | SuiteLike, options?: undefined | {threaded: boolean}): this | Promise<this> {
+		assert(!this.#suites.has(suiteLike.name), new RangeError(`A suite with the name "${suiteLike.name}" already exists`));
+
 		if (options?.threaded) {
 			assert('filename' in suiteLike);
 			assert(suiteLike.filename);

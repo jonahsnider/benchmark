@@ -14,5 +14,8 @@ test(`instantiates a ${name(Thread)}`, async t => {
 });
 
 test(`throws if given path is not a ${name(Suite)}`, async t => {
-	await t.throwsAsync(Thread.init(invalidSuite.filename), {instanceOf: AssertionError});
+	await t.throwsAsync(Thread.init(invalidSuite.filename), {
+		instanceOf: TypeError,
+		message: `Expected "${invalidSuite.filename}" to export a Suite instance`,
+	});
 });

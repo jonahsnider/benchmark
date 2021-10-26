@@ -18,7 +18,7 @@ export class Thread implements SuiteLike {
 	static async init(suitePath: string): Promise<Thread> {
 		const suite = await compatibleImport(suitePath);
 
-		assert(suite instanceof Suite);
+		assert(suite instanceof Suite, new TypeError(`Expected "${suitePath}" to export a Suite instance`));
 
 		return new Thread(suite, suitePath);
 	}
