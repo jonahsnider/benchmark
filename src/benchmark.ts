@@ -1,5 +1,5 @@
-import {partition} from '@jonahsnider/util';
 import assert from 'node:assert/strict';
+import {partition} from '@jonahsnider/util';
 import type {Suite, SuiteLike, SuiteResults} from './suite.js';
 import {Thread} from './thread.js';
 import type {SuiteName} from './types.js';
