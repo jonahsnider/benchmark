@@ -20,8 +20,7 @@
 	"types": "./tsc_output/index.d.ts",
 	"files": [
 		"tsc_output",
-		"!tsc_output/**/*.test.*",
-		"!tsc_output/{fixtures,examples}"
+		"!tsc_output/{test,examples}"
 	],
 	"scripts": {
 		"build": "tsc",
