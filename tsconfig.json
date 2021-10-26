@@ -3,12 +3,13 @@
 		"declaration": true,
 		"declarationDir": "tsc_types",
 		"importHelpers": true,
-		"module": "ESNext",
-		"moduleResolution": "Node",
+		"module": "esnext",
+		"moduleResolution": "node",
 		"outDir": "tsc_output",
-		"target": "ESNext"
+		"target": "esnext",
+		"sourceMap": true
 	},
 	"exclude": ["node_modules", "tsc_output", "tsc_types", "coverage"],
 	"extends": "@tsconfig/node16/tsconfig.json",
-	"include": ["src", "examples", "fixtures"]
+	"include": ["src", "examples", "test"]
 }

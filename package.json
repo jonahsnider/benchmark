@@ -14,12 +14,9 @@
 		"email": "jonah@jonahsnider.com",
 		"url": "https://jonahsnider.com"
 	},
+	"sideEffects": false,
 	"type": "module",
-	"exports": {
-		"import": "./tsc_output/src/index.js"
-	},
-	"main": "./tsc_output/src/index.js",
-	"module": "./tsc_output/src/index.js",
+	"exports": "./tsc_output/src/index.js",
 	"types": "./tsc_output/index.d.ts",
 	"files": [
 		"tsc_output",
@@ -32,28 +29,43 @@
 		"lint": "xo",
 		"release": "semantic-release",
 		"style": "prettier --check .",
-		"test": "NODE_OPTIONS=--experimental-vm-modules jest",
+		"test": "ava",
+		"test:coverage": "c8 --reporter lcov --reporter text-summary --include 'src/**/*.ts' --exclude 'src/index.ts' --all ava",
 		"validate-api": "api-extractor run",
 		"validate-api:local": "api-extractor run --local --verbose"
 	},
 	"prettier": "@jonahsnider/prettier-config",
+	"ava": {
+		"extensions": {
+			"ts": "module"
+		},
+		"files": [
+			"test/**/*.test.ts"
+		],
+		"nodeArguments": [
+			"--loader=ts-node/esm"
+		],
+		"nonSemVerExperiments": {
+			"configurableModuleFormat": true
+		}
+	},
 	"dependencies": {
 		"tslib": "2.3.1"
 	},
 	"devDependencies": {
 		"@jonahsnider/prettier-config": "1.1.0",
 		"@jonahsnider/util": "8.4.1",
-		"@jonahsnider/xo-config": "4.1.0",
+		"@jonahsnider/xo-config": "5.0.0",
 		"@microsoft/api-extractor": "7.18.16",
 		"@tsconfig/node16": "1.0.2",
-		"@types/jest": "27.0.2",
 		"@types/node": "16.10.1",
+		"ava": "3.15.0",
+		"c8": "7.10.0",
 		"eslint-plugin-prettier": "4.0.0",
-		"jest": "27.2.2",
+		"jest-mock": "27.3.0",
 		"prettier": "2.3.2",
 		"semantic-release": "18.0.0",
-		"ts-jest": "27.0.7",
-		"ts-node": "10.2.1",
+		"ts-node": "10.4.0",
 		"typedoc": "0.22.6",
 		"typescript": "4.4.4",
 		"xo": "0.45.0"

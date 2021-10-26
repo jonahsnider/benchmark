@@ -2,7 +2,7 @@
 
 import {Suite} from '../../../src/index.js';
 
-const suite = new Suite('substring', {filename: __filename, run: {trials: 1e3}, warmup: {durationMs: 10_000}})
+const suite = new Suite('substring', {filename: import.meta.url, run: {trials: 1e3}, warmup: {durationMs: 10_000}})
 	.addTest('substring', () => {
 		const string = 'abcdef';
 

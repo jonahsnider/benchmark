@@ -1,4 +1,5 @@
 export async function compatibleImport<T>(path: string): Promise<T> {
+	// eslint-disable-next-line node/no-unsupported-features/es-syntax
 	const mod = (await import(path)) as {default: T};
 
 	return mod.default;

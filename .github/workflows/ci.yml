@@ -7,7 +7,7 @@ jobs:
     name: Typecheck
 
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
 
     steps:
       - name: Checkout Git repository
@@ -34,7 +34,7 @@ jobs:
     name: Build
 
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
 
     steps:
       - name: Checkout Git repository
@@ -66,7 +66,7 @@ jobs:
     name: Lint
 
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
 
     steps:
       - name: Checkout Git repository
@@ -93,7 +93,7 @@ jobs:
     name: Check style
 
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
 
     steps:
       - name: Checkout Git repository
@@ -120,7 +120,7 @@ jobs:
     name: Run unit tests
 
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
 
     steps:
       - name: Checkout Git repository
@@ -141,10 +141,8 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install dependencies with Yarn
         run: yarn install --immutable
-      - name: Compile TypeScript
-        run: yarn run pretest
       - name: Run tests
-        run: yarn test --verbose --coverage
+        run: yarn run test:coverage
       - name: Submit test coverage
         uses: codecov/codecov-action@v2
         with:
@@ -153,7 +151,7 @@ jobs:
     name: Validate API
 
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
 
     steps:
       - name: Checkout Git repository
@@ -182,7 +180,7 @@ jobs:
     name: Publish
 
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15
 
     if: ${{ github.ref  == 'refs/heads/main' }}
 

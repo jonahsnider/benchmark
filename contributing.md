@@ -36,7 +36,7 @@ yarn run lint
 
 ## Testing
 
-Unit tests are stored alongside source files (ex. `config.ts` would have `config.test.ts`).
+Unit tests are stored in the `test/` folder and follow a structure similar to the source code (ex. `src/benchmark.ts` has `test/benchmark/*.test.ts`).
 You can run the tests with the `test` script:
 
 ```sh
@@ -45,5 +45,5 @@ yarn test
 
 ## Coverage
 
-Running `yarn test --coverage` will generate a `coverage` folder which has a breakdown of coverage of the project.
+Running `yarn test:coverage` will generate a `coverage` folder which has a breakdown of coverage of the project.
 The CI will upload the coverage information to [CodeCov](https://codecov.io) which can be [viewed here](https://codecov.io/gh/jonahsnider/benchmark).
