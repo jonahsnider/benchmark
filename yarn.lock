@@ -462,7 +462,7 @@ __metadata:
     semantic-release: 18.0.0
     ts-node: 10.4.0
     tslib: 2.3.1
-    typedoc: 0.22.6
+    typedoc: 0.22.7
     typescript: 4.4.4
     xo: 0.45.0
   languageName: unknown
@@ -8892,9 +8892,9 @@ resolve@~1.19.0:
   languageName: node
   linkType: hard
 
-"typedoc@npm:0.22.6":
-  version: 0.22.6
-  resolution: "typedoc@npm:0.22.6"
+"typedoc@npm:0.22.7":
+  version: 0.22.7
+  resolution: "typedoc@npm:0.22.7"
   dependencies:
     glob: ^7.2.0
     lunr: ^2.3.9
@@ -8905,7 +8905,7 @@ resolve@~1.19.0:
     typescript: 4.0.x || 4.1.x || 4.2.x || 4.3.x || 4.4.x
   bin:
     typedoc: bin/typedoc
-  checksum: bdf099fffbe77bd173164ac9d3700ed88e4eb021ce402a255492065f6cbd03f8f420297743616791062f5d2c3e32b0fa061c52f360956f54306b3cd0719ec702
+  checksum: cff0fc67dd069eabbd161644172e7da66cd4ad772f98c511d5d87d2bcd35851a7f8c232a9a70fdfa55c3d3f5fbcff8a44f263f2bbedeedb4202b9f8cb057d3fa
   languageName: node
   linkType: hard
 
