@@ -5,6 +5,6 @@ const benchmark = new Benchmark();
 
 await benchmark.addSuite(substringSuite, {threaded: true});
 
-const results = await benchmark.runAll();
+const results = await benchmark.runSuites();
 
 console.log(results);

@@ -66,8 +66,7 @@ export class Benchmark {
 	 *
 	 * @returns A {@link BenchmarkResults} `Map`
 	 */
-	// TODO: consider renaming to run()
-	async runAll(): Promise<Results> {
+	async runSuites(): Promise<Results> {
 		const results: Results = new Map();
 
 		const [multithreaded, singleThreaded] = partition(this.#suites.values(), suite => this.#multithreadedSuites.has(suite.name));

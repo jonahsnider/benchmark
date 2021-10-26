@@ -9,6 +9,6 @@ const concatenation = new Suite('concatenation', {run: {durationMs: 3000}, warmu
 
 benchmark.addSuite(concatenation);
 
-const results = await benchmark.runAll();
+const results = await benchmark.runSuites();
 
 console.log(results);

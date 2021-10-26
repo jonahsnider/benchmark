@@ -16,7 +16,7 @@ export class Benchmark {
     addSuite(suite: Suite | SuiteLike, options: {
         threaded: true;
     }): Promise<this>;
-    runAll(): Promise<BenchmarkResults>;
+    runSuites(): Promise<BenchmarkResults>;
     readonly suites: ReadonlyMap<SuiteName, SuiteLike>;
 }
 

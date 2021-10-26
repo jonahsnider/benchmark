@@ -16,7 +16,7 @@ test('runs single threaded suites', async t => {
 
 	benchmark.addSuite(suiteA).addSuite(suiteB);
 
-	const results = await benchmark.runAll();
+	const results = await benchmark.runSuites();
 
 	t.deepEqual(
 		results,
@@ -45,7 +45,7 @@ test('runs multithreaded suites', async t => {
 	benchmark.addSuite(emptySuite);
 	await benchmark.addSuite(regularSuite, {threaded: true});
 
-	const results = await benchmark.runAll();
+	const results = await benchmark.runSuites();
 
 	t.deepEqual(
 		results,
