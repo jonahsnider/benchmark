@@ -1,3 +1,4 @@
+import {partition} from '@jonahsnider/util';
 import assert from 'node:assert/strict';
 import type {Suite, SuiteLike, SuiteResults} from './suite.js';
 import {Thread} from './thread.js';
@@ -19,6 +20,8 @@ export {Results as BenchmarkResults};
  */
 export class Benchmark {
 	readonly #suites: Map<SuiteName, SuiteLike> = new Map();
+	#multithreadedSuites: Set<SuiteName> = new Set();
+
 	/**
 	 * The {@link Suite}s in this {@link Benchmark}.
 	 */
@@ -39,7 +42,7 @@ export class Benchmark {
 	 *
 	 * @returns `this`
 	 */
-	async addSuite(suite: Suite | SuiteLike, options: {threaded: true}): Promise<this>;
+	addSuite(suite: Suite | SuiteLike, options: {threaded: true}): Promise<this>;
 	addSuite(suiteLike: Suite | SuiteLike, options?: undefined | {threaded: boolean}): this | Promise<this> {
 		if (options?.threaded) {
 			assert('filename' in suiteLike);
@@ -48,6 +51,7 @@ export class Benchmark {
 			// eslint-disable-next-line promise/prefer-await-to-then
 			return Thread.init(suiteLike.filename).then(threadedSuite => {
 				this.#suites.set(threadedSuite.name, threadedSuite);
+				this.#multithreadedSuites.add(threadedSuite.name);
 
 				return this;
 			});
@@ -66,10 +70,24 @@ export class Benchmark {
 	async runAll(): Promise<Results> {
 		const results: Results = new Map();
 
-		for (const suite of this.#suites.values()) {
+		const [multithreaded, singleThreaded] = partition(this.#suites.values(), suite => this.#multithreadedSuites.has(suite.name));
+
+		// Single-threaded suites are executed serially to avoid any interference
+		for (const suite of singleThreaded) {
 			// eslint-disable-next-line no-await-in-loop
-			results.set(suite.name, await suite.run());
+			const suiteResults = await suite.run();
+
+			results.set(suite.name, suiteResults);
 		}
+
+		// Multithreaded suites can be run in parallel since they are independent
+		await Promise.all(
+			multithreaded.map(async suite => {
+				const suiteResults = await suite.run();
+
+				results.set(suite.name, suiteResults);
+			}),
+		);
 
 		return results;
 	}

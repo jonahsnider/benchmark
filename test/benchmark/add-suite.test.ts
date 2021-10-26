@@ -25,6 +25,6 @@ test(`adds suites with ${name(Thread)}`, async t => {
 
 	await benchmark.addSuite(emptySuite, {threaded: true});
 
-	t.deepEqual([...benchmark.suites.keys()], ['suite']);
-	t.is(benchmark.suites.get('suite')!.constructor, Thread);
+	t.deepEqual([...benchmark.suites.keys()], ['empty suite']);
+	t.is(benchmark.suites.get('empty suite')!.constructor, Thread);
 });

@@ -3,8 +3,10 @@ import test from 'ava';
 import {Benchmark} from '../../src/benchmark.js';
 import {Suite} from '../../src/suite.js';
 import {SHORT_SUITE} from '../../src/utils.js';
+import regularSuite from './fixtures/suites/regular.js';
+import emptySuite from './fixtures/suites/empty.js';
 
-test('runs suites', async t => {
+test('runs single threaded suites', async t => {
 	const benchmark = new Benchmark();
 
 	// eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -31,6 +33,29 @@ test('runs suites', async t => {
 				new Map([
 					['test b', createHistogram()],
 					['test c', createHistogram()],
+				]),
+			],
+		]),
+	);
+});
+
+test('runs multithreaded suites', async t => {
+	const benchmark = new Benchmark();
+
+	benchmark.addSuite(emptySuite);
+	await benchmark.addSuite(regularSuite, {threaded: true});
+
+	const results = await benchmark.runAll();
+
+	t.deepEqual(
+		results,
+		new Map([
+			['empty suite', new Map()],
+			[
+				'suite',
+				new Map([
+					['test a', createHistogram()],
+					['test b', createHistogram()],
 				]),
 			],
 		]),
