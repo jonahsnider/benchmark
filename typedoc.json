@@ -1,8 +1,6 @@
 {
-	"excludePrivate": true,
-	"includeVersion": true,
 	"entryPoints": ["./src/index.ts"],
-	"listInvalidSymbolLinks": true,
-	"name": "@jonahsnider/benchmark",
-	"out": "docs_out"
+	"name": "@jonahsnider/util",
+	"out": "docs_out",
+	"excludePrivate": true
 }

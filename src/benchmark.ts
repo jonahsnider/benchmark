@@ -1,112 +1,93 @@
-import {performance, PerformanceObserver} from 'perf_hooks';
-import {expectType} from './util';
-
-/** @private */
-let diagnostics_channel: Record<string, any> | undefined;
-try {
-	diagnostics_channel = require('diagnostics_channel');
-} catch {}
+import assert from 'node:assert/strict';
+import {partition} from '@jonahsnider/util';
+import type {Suite, SuiteLike, SuiteResults} from './suite.js';
+import {Thread} from './thread.js';
+import type {SuiteName} from './types.js';
 
 /**
- * The format the results of a benchmark come in.
- * The key is the name of the benchmark, as supplied in {@link Benchmark.add | Benchmark#add}.
- * The value is an array of the execution time of each trial in milliseconds.
+ * A `Map` where keys are the {@link SuiteName | suite names} and values are the {@link SuiteResults | suite results}.
+ *
+ * @public
  */
-export type Results = Map<string, number[]>;
-/**
- * The type signature of a reporter function for displaying results.
- * Not all reporters adhere to this type.
- */
-export type Reporter = (results: Results) => string;
-/**
- * The type for any function.
- */
-export type AnyFunction = (...optionalParams: any[]) => any;
+type Results = Map<SuiteName, SuiteResults>;
+
+export {Results as BenchmarkResults};
 
 /**
- * The diagnostics channel used for logging on supported Node.js versions.
- * @private
- */
-const channel: Record<string, any> | undefined = diagnostics_channel?.channel('@jonahsnider/benchmark');
-
-/**
- * A class representing a benchmark, which is a group of functions that do the same thing.
+ * A benchmark which has many {@link Suite}s.
+ *
+ * @public
  */
 export class Benchmark {
-	private readonly scripts = new Map<string, (...optionalParams: any[]) => any>();
+	readonly #suites: Map<SuiteName, SuiteLike> = new Map();
+	#multithreadedSuites: Set<SuiteName> = new Set();
 
 	/**
-	 * Create a new benchmark.
+	 * The {@link Suite}s in this {@link Benchmark}.
 	 */
-	constructor() {}
+	readonly suites: ReadonlyMap<SuiteName, SuiteLike> = this.#suites;
 
 	/**
-	 * Add a function to the benchmark.
-	 * @param title Title of this script
-	 * @param script The function to benchmark later
-	 * @throws {TypeError} If `title` is not a string
-	 * @throws {TypeError} If `script` is not a function
-	 * @throws {RangeError} If `title` has already been added to this benchmark
+	 * Add a {@link SuiteLike} to this {@link Benchmark}.
+	 *
+	 * @param suite - The {@link SuiteLike} to add
+	 *
+	 * @returns `this`
 	 */
-	public add(title: string, script: AnyFunction): void {
-		expectType({title}, 'string');
-		expectType({script}, 'function');
+	addSuite(suite: SuiteLike, options?: undefined | {threaded: false}): this;
+	/**
+	 * Add a {@link Suite} to this {@link Benchmark} by passing its filename to be loaded in a separate thread.
+	 *
+	 * @param suite - A {@link Suite} that was created with a filename provided
+	 *
+	 * @returns `this`
+	 */
+	addSuite(suite: Suite | SuiteLike, options: {threaded: true}): Promise<this>;
+	addSuite(suiteLike: Suite | SuiteLike, options?: undefined | {threaded: boolean}): this | Promise<this> {
+		if (options?.threaded) {
+			assert('filename' in suiteLike);
+			assert(suiteLike.filename);
 
-		if (this.scripts.has(title)) {
-			throw new RangeError(`${title} was already added to this benchmark`);
+			// eslint-disable-next-line promise/prefer-await-to-then
+			return Thread.init(suiteLike.filename).then(threadedSuite => {
+				this.#suites.set(threadedSuite.name, threadedSuite);
+				this.#multithreadedSuites.add(threadedSuite.name);
+
+				return this;
+			});
 		}
 
-		// Rename every function to match the title
-		Object.defineProperty(script, 'name', {value: title});
-
-		// TODO: This doesn't work in browser, see https://nodejs.org/api/perf_hooks.html#perf_hooks_performance_timerify_fn
-		this.scripts.set(title, performance.timerify(script));
+		this.#suites.set(suiteLike.name, suiteLike);
+		return this;
 	}
 
 	/**
-	 * Run each script that was added the given number of times.
-	 * @param trials Number of trials to perform
-	 * @returns A `Promise` resolving with the results of the benchmark
-	 * @throws {TypeError} if `trials` is not a number
-	 * @throws {RangeError} if `trials` is not a positive integer
+	 * Run all {@link Suite}s for this {@link Benchmark}.
+	 *
+	 * @returns A {@link BenchmarkResults} `Map`
 	 */
-	public async exec(trials: number): Promise<Results> {
-		//#region validation
-		expectType({trials}, 'number');
-
-		if (!Number.isInteger(trials) || trials <= 0) {
-			throw new RangeError('trials should be a positive integer');
-		}
-		//#endregion
-
+	// TODO: consider renaming to run()
+	async runAll(): Promise<Results> {
 		const results: Results = new Map();
 
-		const obs = new PerformanceObserver(list => {
-			const [{name, duration}] = list.getEntries();
+		const [multithreaded, singleThreaded] = partition(this.#suites.values(), suite => this.#multithreadedSuites.has(suite.name));
 
-			if (!results.has(name)) {
-				results.set(name, []);
-			}
+		// Single-threaded suites are executed serially to avoid any interference
+		for (const suite of singleThreaded) {
+			// eslint-disable-next-line no-await-in-loop
+			const suiteResults = await suite.run();
 
-			results.get(name)!.push(duration);
-		});
-
-		obs.observe({entryTypes: ['function']});
-
-		for (let iteration = 0; iteration < trials; iteration++) {
-			for (const [name, script] of this.scripts) {
-				await script();
-
-				if (channel?.hasSubscribers) {
-					channel.publish({
-						script: name,
-					});
-				}
-			}
+			results.set(suite.name, suiteResults);
 		}
 
-		// TODO: is this uneccessary?
-		obs.disconnect();
+		// Multithreaded suites can be run in parallel since they are independent
+		await Promise.all(
+			multithreaded.map(async suite => {
+				const suiteResults = await suite.run();
+
+				results.set(suite.name, suiteResults);
+			}),
+		);
 
 		return results;
 	}

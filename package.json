@@ -1,45 +1,76 @@
 {
 	"name": "@jonahsnider/benchmark",
 	"version": "0.0.0-development",
+	"bugs": {
+		"url": "https://github.com/jonahsnider/benchmark/issues"
+	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/jonahsnider/benchmark.git"
+		"url": "git+https://github.com/jonahsnider/benchmark.git"
 	},
-	"license": "MIT",
+	"license": "Apache-2.0",
 	"author": {
 		"name": "Jonah Snider",
-		"email": "jonah@jonah.pw",
-		"url": "https://jonah.pw"
+		"email": "jonah@jonahsnider.com",
+		"url": "https://jonahsnider.com"
 	},
-	"main": "dist/index.js",
-	"module": "dist/benchmark.esm.js",
-	"typings": "dist/index.d.ts",
+	"sideEffects": false,
+	"type": "module",
+	"exports": "./tsc_output/src/index.js",
+	"types": "./tsc_output/index.d.ts",
 	"files": [
-		"dist"
+		"tsc_output",
+		"!tsc_output/{test,examples}"
 	],
 	"scripts": {
-		"build": "tsdx build --target node",
-		"docs": "typedoc --options ./typedoc.json",
-		"lint": "tsdx lint",
-		"start": "tsdx watch",
+		"build": "tsc",
+		"docs": "typedoc",
+		"lint": "xo",
+		"release": "semantic-release",
 		"style": "prettier --check .",
-		"test": "tsdx test"
+		"test": "ava",
+		"test:coverage": "c8 --reporter lcov --reporter text-summary --include 'src/**/*.ts' --exclude 'src/index.ts' --all ava",
+		"validate-api": "api-extractor run",
+		"validate-api:local": "api-extractor run --local --verbose"
+	},
+	"prettier": "@jonahsnider/prettier-config",
+	"ava": {
+		"extensions": {
+			"ts": "module"
+		},
+		"files": [
+			"test/**/*.test.ts"
+		],
+		"nodeArguments": [
+			"--loader=ts-node/esm"
+		],
+		"nonSemVerExperiments": {
+			"configurableModuleFormat": true
+		}
+	},
+	"dependencies": {
+		"@jonahsnider/util": "8.4.1",
+		"tslib": "2.3.1"
 	},
 	"devDependencies": {
-		"prettier": "2.4.1",
-		"prettier-config-xo": "2.0.0",
+		"@jonahsnider/prettier-config": "1.1.0",
+		"@jonahsnider/xo-config": "5.0.0",
+		"@microsoft/api-extractor": "7.18.16",
+		"@tsconfig/node16": "1.0.2",
+		"@types/node": "16.10.1",
+		"ava": "3.15.0",
+		"c8": "7.10.0",
+		"eslint-plugin-prettier": "4.0.0",
+		"jest-mock": "27.3.0",
+		"prettier": "2.3.2",
 		"semantic-release": "18.0.0",
 		"ts-node": "10.4.0",
-		"tsdx": "0.14.1",
-		"tslib": "2.3.1",
-		"typedoc": "0.22.7",
-		"typescript": "4.4.4"
+		"typedoc": "0.22.6",
+		"typescript": "4.4.4",
+		"xo": "0.45.0"
 	},
 	"engines": {
-		"node": ">=10"
+		"node": ">= 16.0.0"
 	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"packageManager": "yarn@3.0.0"
+	"packageManager": "yarn@3.0.2"
 }
