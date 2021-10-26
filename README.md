@@ -50,7 +50,7 @@ concatenation
 	.addTest('.concat()', () => 'a'.concat('b'));
 
 // 4. Run benchmark
-const results = await benchmark.runAll();
+const results = await benchmark.runSuites();
 
 console.log(results);
 // Map(1) {
@@ -139,7 +139,7 @@ const benchmark = new Benchmark();
 await benchmark.addSuite(substringSuite, {threaded: true});
 
 // 5. Run benchmark
-const results = await benchmark.runAll();
+const results = await benchmark.runSuites();
 
 console.log(results);
 // Map(1) {
