@@ -3,11 +3,8 @@ import substringSuite from './suites/substring.js';
 
 const benchmark = new Benchmark();
 
-async function main() {
-	await benchmark.addSuite(substringSuite, {threaded: true});
+await benchmark.addSuite(substringSuite, {threaded: true});
 
-	const results = await benchmark.runAll();
-	console.log(results);
-}
+const results = await benchmark.runAll();
 
-void main();
+console.log(results);
