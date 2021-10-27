@@ -57,7 +57,7 @@
 		"@jonahsnider/xo-config": "5.0.0",
 		"@microsoft/api-extractor": "7.18.16",
 		"@tsconfig/node16": "1.0.2",
-		"@types/node": "16.10.1",
+		"@types/node": "16.0.3",
 		"ava": "3.15.0",
 		"c8": "7.10.0",
 		"eslint-plugin-prettier": "4.0.0",
@@ -70,7 +70,7 @@
 		"xo": "0.45.0"
 	},
 	"engines": {
-		"node": ">= 16.0.0"
+		"node": ">=16.0.0"
 	},
 	"packageManager": "yarn@3.0.2"
 }

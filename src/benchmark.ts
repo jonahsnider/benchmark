@@ -44,11 +44,11 @@ export class Benchmark {
 	 */
 	addSuite(suite: Suite | SuiteLike, options: {threaded: true}): Promise<this>;
 	addSuite(suiteLike: Suite | SuiteLike, options?: undefined | {threaded: boolean}): this | Promise<this> {
-		assert(!this.#suites.has(suiteLike.name), new RangeError(`A suite with the name "${suiteLike.name}" already exists`));
+		assert.ok(!this.#suites.has(suiteLike.name), new RangeError(`A suite with the name "${suiteLike.name}" already exists`));
 
 		if (options?.threaded) {
-			assert('filename' in suiteLike);
-			assert(suiteLike.filename);
+			assert.ok('filename' in suiteLike);
+			assert.ok(suiteLike.filename);
 
 			// eslint-disable-next-line promise/prefer-await-to-then
 			return Thread.init(suiteLike.filename).then(threadedSuite => {
