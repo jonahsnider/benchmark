@@ -50,7 +50,6 @@ export class Benchmark {
 			assert.ok('filename' in suiteLike);
 			assert.ok(suiteLike.filename);
 
-			// eslint-disable-next-line promise/prefer-await-to-then
 			return Thread.init(suiteLike.filename).then(threadedSuite => {
 				this.#suites.set(threadedSuite.name, threadedSuite);
 				this.#multithreadedSuites.add(threadedSuite.name);
