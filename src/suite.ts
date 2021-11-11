@@ -32,6 +32,18 @@ export interface SuiteLike {
 	/**
 	 * Runs this {@link SuiteLike}.
 	 *
+	 * @example
+	 * A synchronous implementation:
+	 * ```js
+	 * const results = suite.run();
+	 * ```
+	 *
+	 * @example
+	 * An asynchronous implementation:
+	 * ```js
+	 * const results = await suite.run();
+	 * ```
+	 *
 	 * @returns The results of running this {@link SuiteLike}
 	 */
 	run(): Results | Promise<Results>;
@@ -56,6 +68,20 @@ type RunOptions = Record<
 
 /**
  * A collection of {@link _Test}s that are different implementations of the same thing (ex. different ways of sorting an array).
+ *
+ * @example
+ * ```js
+ * import { Suite } from '@jonahsnider/benchmark';
+ *
+ * const suite = new Suite('concatenation', { warmup: { durationMs: 10_000 }, run: { durationMs: 10_000 } })
+ *   .addTest('+', () => 'a' + 'b')
+ *   .addTest('templates', () => `${'a'}${'b'}`)
+ *   .addTest('.concat()', () => 'a'.concat('b'));
+ *
+ * const results = await suite.run();
+ *
+ * console.log(results);
+ * ```
  *
  * @public
  */
@@ -82,6 +108,25 @@ export class Suite implements SuiteLike {
 	/**
 	 * Creates a new {@link Suite}.
 	 *
+	 * @example
+	 * ```js
+	 * import { Suite } from '@jonahsnider/benchmark';
+	 *
+	 * const suite = new Suite('concatenation', { warmup: { durationMs: 10_000 }, run: { durationMs: 10_000 } });
+	 * ```
+	 *
+	 * @example
+	 * Suites that specify a filename can be run in a separate thread in a {@link Benchmark}.
+	 * ```js
+	 * import { Suite } from '@jonahsnider/benchmark';
+	 *
+	 * const suite = new Suite('concatenation', {
+	 *   warmup: { durationMs: 10_000 },
+	 *   run: { durationMs: 10_000 },
+	 *   filename: import.meta.url
+	 * });
+	 * ```
+	 *
 	 * @param name - The name of the {@link Suite}
 	 * @param options - Options for the {@link Suite}
 	 */
@@ -97,6 +142,11 @@ export class Suite implements SuiteLike {
 
 	/**
 	 * Adds a test to this {@link Suite}.
+	 *
+	 * @example
+	 * ```js
+	 * suite.addTest('+', () => 'a' + 'b');
+	 * ```
 	 *
 	 * @param testName - The name of the test
 	 * @param fn - The function to run
@@ -115,6 +165,11 @@ export class Suite implements SuiteLike {
 
 	/**
 	 * Runs this {@link Suite} using {@link Suite.options}.
+	 *
+	 * @example
+	 * ```js
+	 * const results = await suite.run();
+	 * ```
 	 *
 	 * @returns The results of running this {@link Suite}
 	 */

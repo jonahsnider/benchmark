@@ -1,6 +1,5 @@
 {
 	"entryPoints": ["./src/index.ts"],
-	"name": "@jonahsnider/util",
 	"out": "docs_out",
 	"excludePrivate": true
 }

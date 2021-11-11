@@ -16,6 +16,24 @@ export {Results as BenchmarkResults};
 /**
  * A benchmark which has many {@link Suite}s.
  *
+ * @example
+ * ```js
+ * import { Benchmark, Suite } from '@jonahsnider/benchmark';
+ *
+ * const benchmark = new Benchmark();
+ *
+ * const suite = new Suite('concatenation', { warmup: { durationMs: 10_000 }, run: { durationMs: 10_000 } })
+ *   .addTest('+', () => 'a' + 'b')
+ *   .addTest('templates', () => `${'a'}${'b'}`)
+ *   .addTest('.concat()', () => 'a'.concat('b'));
+ *
+ * benchmark.addSuite(suite);
+ *
+ * const results = await benchmark.run();
+ *
+ * console.log(results);
+ * ```
+ *
  * @public
  */
 export class Benchmark {
@@ -23,12 +41,17 @@ export class Benchmark {
 	#multithreadedSuites: Set<SuiteName> = new Set();
 
 	/**
-	 * The {@link Suite}s in this {@link Benchmark}.
+	 * The {@link SuiteLike}s in this {@link Benchmark}.
 	 */
 	readonly suites: ReadonlyMap<SuiteName, SuiteLike> = this.#suites;
 
 	/**
 	 * Add a {@link SuiteLike} to this {@link Benchmark}.
+	 *
+	 * @example
+	 * ```js
+	 * benchmark.addSuite(suite);
+	 * ```
 	 *
 	 * @param suite - The {@link SuiteLike} to add
 	 *
@@ -38,7 +61,12 @@ export class Benchmark {
 	/**
 	 * Add a {@link Suite} to this {@link Benchmark} by passing its filename to be loaded in a separate thread.
 	 *
-	 * @param suite - A {@link Suite} that was created with a filename provided
+	 * @example
+	 * ```js
+	 * await benchmark.addSuite(suite);
+	 * ```
+	 *
+	 * @param suite - A {@link Suite} with a filename provided
 	 *
 	 * @returns `this`
 	 */
@@ -64,6 +92,11 @@ export class Benchmark {
 
 	/**
 	 * Run all {@link Suite}s for this {@link Benchmark}.
+	 *
+	 * @example
+	 * ```js
+	 * const results = await benchmark.run();
+	 * ```
 	 *
 	 * @returns A {@link BenchmarkResults} `Map`
 	 */
