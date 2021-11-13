@@ -1,4 +1,3 @@
-import type {Benchmark} from './benchmark.js';
 import type {Suite} from './suite.js';
 import {Test} from './test.js';
 
@@ -43,12 +42,3 @@ export type SuiteResults = Suite.Results;
  * @public
  */
 export type SuiteRunOptions = Suite.RunOptions;
-
-/**
- * {@inheritDoc (Benchmark:namespace).Results}
- *
- * @deprecated Renamed to {@link (Benchmark:namespace).Results}.
- *
- * @public
- */
-export type BenchmarkResults = Benchmark.Results;

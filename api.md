@@ -25,9 +25,6 @@ export class Benchmark {
     readonly suites: ReadonlyMap<Suite.Name, SuiteLike>;
 }
 
-// @public @deprecated
-export type BenchmarkResults = Benchmark.Results;
-
 // @public (undocumented)
 export namespace Suite {
     export type Name = string;
