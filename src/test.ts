@@ -8,9 +8,9 @@ import {createHistogram, performance} from 'node:perf_hooks';
  */
 export class Test<T = unknown> {
 	readonly histogram: RecordableHistogram = createHistogram();
-	readonly #implementation: () => T;
+	readonly #implementation: () => T | PromiseLike<T>;
 
-	constructor(implementation: () => T) {
+	constructor(implementation: () => T | PromiseLike<T>) {
 		this.#implementation = performance.timerify(implementation, {histogram: this.histogram});
 	}
 

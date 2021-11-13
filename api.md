@@ -62,7 +62,7 @@ export type SuiteRunOptions = Record<'run' | 'warmup', {
 
 // @internal
 export class _Test<T = unknown> {
-    constructor(implementation: () => T);
+    constructor(implementation: () => T | PromiseLike<T>);
     // (undocumented)
     readonly histogram: RecordableHistogram;
     // (undocumented)
