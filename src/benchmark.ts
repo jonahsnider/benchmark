@@ -101,7 +101,7 @@ export class Benchmark {
 	 * const results = await benchmark.run();
 	 * ```
 	 *
-	 * @returns A {@link BenchmarkResults} `Map`
+	 * @returns A {@link (Benchmark:namespace).Results} `Map`
 	 */
 	async runSuites(): Promise<Benchmark.Results> {
 		const results: Benchmark.Results = new Map();
