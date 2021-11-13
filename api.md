@@ -60,9 +60,6 @@ export interface SuiteLike {
     run(): Suite.Results | PromiseLike<Suite.Results>;
 }
 
-// @public @deprecated
-export type SuiteName = Suite.Name;
-
 // @public (undocumented)
 export namespace Test {
     export type Name = string;

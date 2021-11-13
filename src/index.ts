@@ -1,4 +1,3 @@
-import type {Suite} from './suite.js';
 import {Test} from './test.js';
 
 export {Benchmark} from './benchmark.js';
@@ -15,12 +14,3 @@ export {Test} from './test.js';
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const _Test = Test;
-
-/**
- * {@inheritDoc (Suite:namespace).Name}
- *
- * @deprecated Renamed to {@link (Suite:namespace).Name}.
- *
- * @public
- */
-export type SuiteName = Suite.Name;
