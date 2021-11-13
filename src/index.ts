@@ -24,12 +24,3 @@ export const _Test = Test;
  * @public
  */
 export type SuiteName = Suite.Name;
-
-/**
- * {@inheritDoc (Suite:namespace).Results}
- *
- * @deprecated Renamed to {@link (Suite:namespace).Results}.
- *
- * @public
- */
-export type SuiteResults = Suite.Results;

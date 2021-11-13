@@ -63,9 +63,6 @@ export interface SuiteLike {
 // @public @deprecated
 export type SuiteName = Suite.Name;
 
-// @public @deprecated
-export type SuiteResults = Suite.Results;
-
 // @public (undocumented)
 export namespace Test {
     export type Name = string;
