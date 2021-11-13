@@ -60,7 +60,7 @@ export class Suite implements SuiteLike {
 export interface SuiteLike {
     readonly filepath?: string | undefined;
     readonly name: Suite.Name;
-    run(): Suite.Results | Promise<Suite.Results>;
+    run(): Suite.Results | PromiseLike<Suite.Results>;
 }
 
 // @public @deprecated

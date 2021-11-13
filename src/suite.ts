@@ -36,7 +36,7 @@ export interface SuiteLike {
 	 *
 	 * @returns The results of running this {@link SuiteLike}
 	 */
-	run(): Suite.Results | Promise<Suite.Results>;
+	run(): Suite.Results | PromiseLike<Suite.Results>;
 }
 
 /**
