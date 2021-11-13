@@ -52,12 +52,3 @@ export type SuiteRunOptions = Suite.RunOptions;
  * @public
  */
 export type BenchmarkResults = Benchmark.Results;
-
-/**
- * {@inheritDoc (Test:namespace).Name}
- *
- * @deprecated Renamed to {@link (Test:namespace).Name}.
- *
- * @public
- */
-export type TestName = Test.Name;

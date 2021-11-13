@@ -87,9 +87,6 @@ export class Test<T = unknown> {
 // @public @deprecated
 export const _Test: typeof Test;
 
-// @public @deprecated
-export type TestName = Test.Name;
-
 // (No @packageDocumentation comment for this package)
 
 ```
