@@ -72,9 +72,6 @@ export class Test<T = unknown> {
     run(): Promise<T>;
 }
 
-// @public @deprecated
-export const _Test: typeof Test;
-
 // (No @packageDocumentation comment for this package)
 
 ```
