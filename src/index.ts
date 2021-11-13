@@ -1,11 +1,21 @@
 import type {Benchmark} from './benchmark.js';
 import type {Suite} from './suite.js';
-import type {Test} from './test.js';
+import {Test} from './test.js';
 
 export {Benchmark} from './benchmark.js';
 export {Suite} from './suite.js';
 export type {SuiteLike} from './suite.js';
-export {Test as _Test} from './test.js';
+export {Test} from './test.js';
+
+/**
+ * {@inheritdoc (Test:class)}
+ *
+ * @deprecated Renamed to {@link (Test:class)}.
+ *
+ * @public
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const _Test = Test;
 
 /**
  * {@inheritDoc (Suite:namespace).Name}
@@ -44,9 +54,9 @@ export type SuiteRunOptions = Suite.RunOptions;
 export type BenchmarkResults = Benchmark.Results;
 
 /**
- * {@inheritDoc (_Test:namespace).Name}
+ * {@inheritDoc (Test:namespace).Name}
  *
- * @deprecated Renamed to {@link (_Test:namespace).Name}.
+ * @deprecated Renamed to {@link (Test:namespace).Name}.
  *
  * @public
  */

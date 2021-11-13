@@ -31,8 +31,7 @@ export type BenchmarkResults = Benchmark.Results;
 // @public (undocumented)
 export namespace Suite {
     export type Name = string;
-    // Warning: (ae-incompatible-release-tags) The symbol "Results" is marked as @public, but its signature references "Test" which is marked as @internal
-    export type Results = Map<_Test.Name, RecordableHistogram>;
+    export type Results = Map<Test.Name, RecordableHistogram>;
     export type RunOptions = Record<'run' | 'warmup', {
         trials: number;
         durationMs?: undefined;
@@ -53,8 +52,7 @@ export class Suite implements SuiteLike {
     readonly name: Suite.Name;
     readonly options: Suite.RunOptions;
     run(): Promise<Suite.Results>;
-    // Warning: (ae-incompatible-release-tags) The symbol "tests" is marked as @public, but its signature references "Test" which is marked as @internal
-    tests: ReadonlyMap<_Test.Name, _Test>;
+    tests: ReadonlyMap<Test.Name, Test>;
 }
 
 // @public
@@ -73,14 +71,13 @@ export type SuiteResults = Suite.Results;
 // @public @deprecated
 export type SuiteRunOptions = Suite.RunOptions;
 
-// @internal (undocumented)
-export namespace _Test {
-    // @public
+// @public (undocumented)
+export namespace Test {
     export type Name = string;
 }
 
-// @internal
-export class _Test<T = unknown> {
+// @public
+export class Test<T = unknown> {
     constructor(implementation: () => T | PromiseLike<T>);
     // (undocumented)
     readonly histogram: RecordableHistogram;
@@ -88,10 +85,11 @@ export class _Test<T = unknown> {
     run(): Promise<T>;
 }
 
-// Warning: (ae-incompatible-release-tags) The symbol "TestName" is marked as @public, but its signature references "Test" which is marked as @internal
-//
 // @public @deprecated
-export type TestName = _Test.Name;
+export const _Test: typeof Test;
+
+// @public @deprecated
+export type TestName = Test.Name;
 
 // (No @packageDocumentation comment for this package)
 

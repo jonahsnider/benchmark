@@ -2,12 +2,12 @@ import type {RecordableHistogram} from 'node:perf_hooks';
 import {createHistogram, performance} from 'node:perf_hooks';
 
 /**
- * @internal
+ * @public
  */
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Test {
 	/**
-	 * The name of a {@link (_Test:class)}.
+	 * The name of a {@link (Test:class)}.
 	 *
 	 * @public
 	 */
@@ -16,8 +16,9 @@ export namespace Test {
 
 /**
  * A single implementation of a test function.
+ * You probably don't want to instantiate this class directly, instead you can register tests with {@link (Suite:class).addTest}.
  *
- * @internal
+ * @public
  */
 export class Test<T = unknown> {
 	readonly histogram: RecordableHistogram = createHistogram();

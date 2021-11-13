@@ -77,7 +77,7 @@ export namespace Suite {
 }
 
 /**
- * A collection of {@link (_Test:class)}s that are different implementations of the same thing (ex. different ways of sorting an array).
+ * A collection of {@link (Test:class)}s that are different implementations of the same thing (ex. different ways of sorting an array).
  *
  * @example
  * ```js
