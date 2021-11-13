@@ -33,12 +33,3 @@ export type SuiteName = Suite.Name;
  * @public
  */
 export type SuiteResults = Suite.Results;
-
-/**
- * {@inheritDoc (Suite:namespace).RunOptions}
- *
- * @deprecated Renamed to {@link (Suite:namespace).RunOptions}.
- *
- * @public
- */
-export type SuiteRunOptions = Suite.RunOptions;

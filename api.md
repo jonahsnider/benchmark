@@ -66,9 +66,6 @@ export type SuiteName = Suite.Name;
 // @public @deprecated
 export type SuiteResults = Suite.Results;
 
-// @public @deprecated
-export type SuiteRunOptions = Suite.RunOptions;
-
 // @public (undocumented)
 export namespace Test {
     export type Name = string;
