@@ -3,16 +3,16 @@ import {once} from 'node:events';
 import {URL} from 'node:url';
 import type {WorkerOptions} from 'node:worker_threads';
 import {Worker} from 'node:worker_threads';
-import type {SuiteLike, SuiteResults} from './suite.js';
+import type {SuiteLike} from './suite.js';
 import {Suite} from './suite.js';
-import type {SuiteName, WorkerData, WorkerMessage, WorkerResponse} from './types.js';
+import type {WorkerData, WorkerMessage, WorkerResponse} from './types.js';
 import {WorkerMessageKind, WorkerResponseKind} from './types.js';
 import {compatibleImport} from './utils.js';
 
 const WORKER_PATH = new URL('./thread-worker.js', import.meta.url);
 
 /**
- * Runs a {@link Suite} in a separate thread.
+ * Runs a {@link (Suite:class)} in a separate thread.
  */
 export class Thread implements SuiteLike {
 	static async init(suitePath: string): Promise<Thread> {
@@ -23,7 +23,7 @@ export class Thread implements SuiteLike {
 		return new Thread(suite, suitePath);
 	}
 
-	readonly name: SuiteName;
+	readonly name: Suite.Name;
 	readonly filepath: string;
 
 	#worker: Worker;
@@ -52,7 +52,7 @@ export class Thread implements SuiteLike {
 		return new Worker(WORKER_PATH, this.#workerOptions);
 	}
 
-	async run(): Promise<SuiteResults> {
+	async run(): Promise<Suite.Results> {
 		const message: WorkerMessage = {kind: WorkerMessageKind.Run};
 
 		this.#worker.postMessage(message);

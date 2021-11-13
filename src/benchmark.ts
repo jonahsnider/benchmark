@@ -1,20 +1,23 @@
 import assert from 'node:assert/strict';
 import {partition} from '@jonahsnider/util';
-import type {Suite, SuiteLike, SuiteResults} from './suite.js';
+import type {Suite, SuiteLike} from './suite.js';
 import {Thread} from './thread.js';
-import type {SuiteName} from './types.js';
 
 /**
- * A `Map` where keys are the {@link SuiteName | suite names} and values are the {@link SuiteResults | suite results}.
- *
  * @public
  */
-type Results = Map<SuiteName, SuiteResults>;
-
-export {Results as BenchmarkResults};
+// eslint-disable-next-line @typescript-eslint/no-namespace
+export namespace Benchmark {
+	/**
+	 * A `Map` where keys are the {@link (Suite:namespace).Name | suite names} and values are the {@link (Suite:namespace).Results | suite results}.
+	 *
+	 * @public
+	 */
+	export type Results = Map<Suite.Name, Suite.Results>;
+}
 
 /**
- * A benchmark which has many {@link Suite}s.
+ * A benchmark which has many {@link (Suite:class)}s.
  *
  * @example
  * ```js
@@ -37,16 +40,16 @@ export {Results as BenchmarkResults};
  * @public
  */
 export class Benchmark {
-	readonly #suites: Map<SuiteName, SuiteLike> = new Map();
-	#multithreadedSuites: Set<SuiteName> = new Set();
+	readonly #suites: Map<Suite.Name, SuiteLike> = new Map();
+	#multithreadedSuites: Set<Suite.Name> = new Set();
 
 	/**
-	 * The {@link SuiteLike}s in this {@link Benchmark}.
+	 * The {@link SuiteLike}s in this {@link (Benchmark:class)}.
 	 */
-	readonly suites: ReadonlyMap<SuiteName, SuiteLike> = this.#suites;
+	readonly suites: ReadonlyMap<Suite.Name, SuiteLike> = this.#suites;
 
 	/**
-	 * Add a {@link SuiteLike} to this {@link Benchmark}.
+	 * Add a {@link SuiteLike} to this {@link (Benchmark:class)}.
 	 *
 	 * @example
 	 * ```js
@@ -59,14 +62,14 @@ export class Benchmark {
 	 */
 	addSuite(suite: SuiteLike, options?: undefined | {threaded: false}): this;
 	/**
-	 * Add a {@link Suite} to this {@link Benchmark} by passing its filename to be loaded in a separate thread.
+	 * Add a {@link (Suite:class)} to this {@link (Benchmark:class)} by passing its filename to be loaded in a separate thread.
 	 *
 	 * @example
 	 * ```js
 	 * await benchmark.addSuite(suite);
 	 * ```
 	 *
-	 * @param suite - A {@link Suite} with a filename provided
+	 * @param suite - A {@link (Suite:class)} with a filename provided
 	 *
 	 * @returns `this`
 	 */
@@ -91,7 +94,7 @@ export class Benchmark {
 	}
 
 	/**
-	 * Run all {@link Suite}s for this {@link Benchmark}.
+	 * Run all {@link (Suite:class)}s for this {@link (Benchmark:class)}.
 	 *
 	 * @example
 	 * ```js
@@ -100,8 +103,8 @@ export class Benchmark {
 	 *
 	 * @returns A {@link BenchmarkResults} `Map`
 	 */
-	async runSuites(): Promise<Results> {
-		const results: Results = new Map();
+	async runSuites(): Promise<Benchmark.Results> {
+		const results: Benchmark.Results = new Map();
 
 		const [multithreaded, singleThreaded] = partition(this.#suites.values(), suite => this.#multithreadedSuites.has(suite.name));
 

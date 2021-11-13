@@ -1,17 +1,4 @@
-import type {SuiteResults} from './suite.js';
-
-/**
- * The name of a {@link _Test}.
- *
- * @public
- */
-export type TestName = string;
-/**
- * The name of a {@link Suite}.
- *
- * @public
- */
-export type SuiteName = string;
+import type {Suite} from './suite.js';
 
 export interface WorkerData {
 	suitePath: string;
@@ -33,7 +20,7 @@ export enum WorkerResponseKind {
 export type WorkerResponse =
 	| {
 			kind: WorkerResponseKind.Results;
-			results: SuiteResults;
+			results: Suite.Results;
 	  }
 	| {
 			kind: WorkerResponseKind.Error;

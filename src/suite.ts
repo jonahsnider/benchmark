@@ -2,16 +2,6 @@ import assert from 'node:assert/strict';
 import type {RecordableHistogram} from 'node:perf_hooks';
 import {performance} from 'node:perf_hooks';
 import {Test} from './test.js';
-import type {SuiteName, TestName} from './types.js';
-
-/**
- * Results from running a {@link Suite}.
- *
- * @public
- */
-type Results = Map<TestName, RecordableHistogram>;
-export {Results as SuiteResults};
-export {RunOptions as SuiteRunOptions};
 
 /**
  * A suite of related tests that can be run together.
@@ -22,7 +12,7 @@ export interface SuiteLike {
 	/**
 	 * The name of this {@link SuiteLike}.
 	 */
-	readonly name: SuiteName;
+	readonly name: Suite.Name;
 
 	/**
 	 * The filepath to this {@link SuiteLike}, when available.
@@ -46,28 +36,48 @@ export interface SuiteLike {
 	 *
 	 * @returns The results of running this {@link SuiteLike}
 	 */
-	run(): Results | Promise<Results>;
+	run(): Suite.Results | Promise<Suite.Results>;
 }
 
 /**
- * Options for running a {@link Suite}.
- *
  * @public
  */
-type RunOptions = Record<
-	'run' | 'warmup',
-	| {
-			trials: number;
-			durationMs?: undefined;
-	  }
-	| {
-			trials?: undefined;
-			durationMs: number;
-	  }
->;
+// eslint-disable-next-line @typescript-eslint/no-namespace
+export namespace Suite {
+	/**
+	 * The name of a {@link (Suite:class)}.
+	 *
+	 * @public
+	 */
+	export type Name = string;
+
+	/**
+	 * Results from running a {@link (Suite:class)}.
+	 *
+	 * @public
+	 */
+	export type Results = Map<Test.Name, RecordableHistogram>;
+
+	/**
+	 * Options for running a {@link (Suite:class)}.
+	 *
+	 * @public
+	 */
+	export type RunOptions = Record<
+		'run' | 'warmup',
+		| {
+				trials: number;
+				durationMs?: undefined;
+		  }
+		| {
+				trials?: undefined;
+				durationMs: number;
+		  }
+	>;
+}
 
 /**
- * A collection of {@link _Test}s that are different implementations of the same thing (ex. different ways of sorting an array).
+ * A collection of {@link (_Test:class)}s that are different implementations of the same thing (ex. different ways of sorting an array).
  *
  * @example
  * ```js
@@ -86,27 +96,27 @@ type RunOptions = Record<
  * @public
  */
 export class Suite implements SuiteLike {
-	readonly #tests: Map<TestName, Test> = new Map();
+	readonly #tests: Map<Test.Name, Test> = new Map();
 	/**
-	 * The tests in this {@link Suite}.
+	 * The tests in this {@link (Suite:class)}.
 	 */
-	tests: ReadonlyMap<TestName, Test> = this.#tests;
+	tests: ReadonlyMap<Test.Name, Test> = this.#tests;
 
-	readonly name: SuiteName;
+	readonly name: Suite.Name;
 
 	/**
-	 * This {@link Suite}'s filename, if it was provided.
-	 * Used for running the {@link Suite} in a separate thread.
+	 * This {@link (Suite:class)}'s filename, if it was provided.
+	 * Used for running the {@link (Suite:class)} in a separate thread.
 	 */
 	readonly filename: string | undefined;
 
 	/**
-	 * Options for running this {@link Suite} and its warmup.
+	 * Options for running this {@link (Suite:class)} and its warmup.
 	 */
-	public readonly options: RunOptions;
+	public readonly options: Suite.RunOptions;
 
 	/**
-	 * Creates a new {@link Suite}.
+	 * Creates a new {@link (Suite:class)}.
 	 *
 	 * @example
 	 * ```js
@@ -116,7 +126,7 @@ export class Suite implements SuiteLike {
 	 * ```
 	 *
 	 * @example
-	 * Suites that specify a filename can be run in a separate thread in a {@link Benchmark}.
+	 * Suites that specify a filename can be run in a separate thread in a {@link (Benchmark:class)}.
 	 * ```js
 	 * import { Suite } from '@jonahsnider/benchmark';
 	 *
@@ -127,10 +137,10 @@ export class Suite implements SuiteLike {
 	 * });
 	 * ```
 	 *
-	 * @param name - The name of the {@link Suite}
-	 * @param options - Options for the {@link Suite}
+	 * @param name - The name of the {@link (Suite:class)}
+	 * @param options - Options for the {@link (Suite:class)}
 	 */
-	constructor(name: SuiteName, options: RunOptions & {filename?: string | undefined}) {
+	constructor(name: Suite.Name, options: Suite.RunOptions & {filename?: string | undefined}) {
 		this.name = name;
 
 		const {filename, ...rest} = options;
@@ -141,7 +151,7 @@ export class Suite implements SuiteLike {
 	}
 
 	/**
-	 * Adds a test to this {@link Suite}.
+	 * Adds a test to this {@link (Suite:class)}.
 	 *
 	 * @example
 	 * ```js
@@ -164,23 +174,23 @@ export class Suite implements SuiteLike {
 	}
 
 	/**
-	 * Runs this {@link Suite} using {@link Suite.options}.
+	 * Runs this {@link (Suite:class)} using {@link (Suite:class).options}.
 	 *
 	 * @example
 	 * ```js
 	 * const results = await suite.run();
 	 * ```
 	 *
-	 * @returns The results of running this {@link Suite}
+	 * @returns The results of running this {@link (Suite:class)}
 	 */
-	async run(): Promise<Results> {
+	async run(): Promise<Suite.Results> {
 		this.#clearResults();
 
 		await this.#runWarmup();
 
 		await this.#runTests();
 
-		const results: Results = new Map([...this.#tests.entries()].map(([testName, test]) => [testName, test.histogram]));
+		const results: Suite.Results = new Map([...this.#tests.entries()].map(([testName, test]) => [testName, test.histogram]));
 
 		return results;
 	}
@@ -198,7 +208,7 @@ export class Suite implements SuiteLike {
 		}
 	}
 
-	async #runTestsWithOptions(options: RunOptions['run' | 'warmup']): Promise<void> {
+	async #runTestsWithOptions(options: Suite.RunOptions['run' | 'warmup']): Promise<void> {
 		if (options.durationMs === undefined) {
 			for (let count = 0; count < options.trials; count++) {
 				// eslint-disable-next-line no-await-in-loop

@@ -8,6 +8,11 @@
 
 import type { RecordableHistogram } from 'node:perf_hooks';
 
+// @public (undocumented)
+export namespace Benchmark {
+    export type Results = Map<Suite.Name, Suite.Results>;
+}
+
 // @public
 export class Benchmark {
     addSuite(suite: SuiteLike, options?: undefined | {
@@ -16,49 +21,63 @@ export class Benchmark {
     addSuite(suite: Suite | SuiteLike, options: {
         threaded: true;
     }): Promise<this>;
-    runSuites(): Promise<BenchmarkResults>;
-    readonly suites: ReadonlyMap<SuiteName, SuiteLike>;
+    runSuites(): Promise<Benchmark.Results>;
+    readonly suites: ReadonlyMap<Suite.Name, SuiteLike>;
+}
+
+// @public @deprecated
+export type BenchmarkResults = Benchmark.Results;
+
+// @public (undocumented)
+export namespace Suite {
+    export type Name = string;
+    // Warning: (ae-incompatible-release-tags) The symbol "Results" is marked as @public, but its signature references "Test" which is marked as @internal
+    export type Results = Map<_Test.Name, RecordableHistogram>;
+    export type RunOptions = Record<'run' | 'warmup', {
+        trials: number;
+        durationMs?: undefined;
+    } | {
+        trials?: undefined;
+        durationMs: number;
+    }>;
 }
 
 // @public
-export type BenchmarkResults = Map<SuiteName, SuiteResults>;
-
-// @public
 export class Suite implements SuiteLike {
-    constructor(name: SuiteName, options: SuiteRunOptions & {
+    constructor(name: Suite.Name, options: Suite.RunOptions & {
         filename?: string | undefined;
     });
     addTest(testName: string, fn: () => unknown): this;
     readonly filename: string | undefined;
     // (undocumented)
-    readonly name: SuiteName;
-    readonly options: SuiteRunOptions;
-    run(): Promise<SuiteResults>;
+    readonly name: Suite.Name;
+    readonly options: Suite.RunOptions;
+    run(): Promise<Suite.Results>;
     // Warning: (ae-incompatible-release-tags) The symbol "tests" is marked as @public, but its signature references "Test" which is marked as @internal
-    tests: ReadonlyMap<TestName, _Test>;
+    tests: ReadonlyMap<_Test.Name, _Test>;
 }
 
 // @public
 export interface SuiteLike {
     readonly filepath?: string | undefined;
-    readonly name: SuiteName;
-    run(): SuiteResults | Promise<SuiteResults>;
+    readonly name: Suite.Name;
+    run(): Suite.Results | Promise<Suite.Results>;
 }
 
-// @public
-export type SuiteName = string;
+// @public @deprecated
+export type SuiteName = Suite.Name;
 
-// @public
-export type SuiteResults = Map<TestName, RecordableHistogram>;
+// @public @deprecated
+export type SuiteResults = Suite.Results;
 
-// @public
-export type SuiteRunOptions = Record<'run' | 'warmup', {
-    trials: number;
-    durationMs?: undefined;
-} | {
-    trials?: undefined;
-    durationMs: number;
-}>;
+// @public @deprecated
+export type SuiteRunOptions = Suite.RunOptions;
+
+// @internal (undocumented)
+export namespace _Test {
+    // @public
+    export type Name = string;
+}
 
 // @internal
 export class _Test<T = unknown> {
@@ -69,8 +88,10 @@ export class _Test<T = unknown> {
     run(): Promise<T>;
 }
 
-// @public
-export type TestName = string;
+// Warning: (ae-incompatible-release-tags) The symbol "TestName" is marked as @public, but its signature references "Test" which is marked as @internal
+//
+// @public @deprecated
+export type TestName = _Test.Name;
 
 // (No @packageDocumentation comment for this package)
 
