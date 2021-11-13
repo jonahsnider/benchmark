@@ -46,6 +46,7 @@ export class Suite implements SuiteLike {
     constructor(name: Suite.Name, options: Suite.RunOptions & {
         filename?: string | undefined;
     });
+    addTest(testName: string, test: Test): this;
     addTest(testName: string, fn: () => unknown): this;
     readonly filename: string | undefined;
     // (undocumented)
@@ -79,9 +80,7 @@ export namespace Test {
 // @public
 export class Test<T = unknown> {
     constructor(implementation: () => T | PromiseLike<T>);
-    // (undocumented)
     readonly histogram: RecordableHistogram;
-    // (undocumented)
     run(): Promise<T>;
 }
 

@@ -155,6 +155,22 @@ export class Suite implements SuiteLike {
 	 *
 	 * @example
 	 * ```js
+	 * const test = new Test(() => 'a' + 'b');
+	 *
+	 * suite.addTest('+', test);
+	 * ```
+	 *
+	 * @param testName - The name of the test
+	 * @param test - The test to add
+	 *
+	 * @returns `this`
+	 */
+	addTest(testName: string, test: Test): this;
+	/**
+	 * Creates and adds a test to this {@link (Suite:class)}.
+	 *
+	 * @example
+	 * ```js
 	 * suite.addTest('+', () => 'a' + 'b');
 	 * ```
 	 *
@@ -163,12 +179,19 @@ export class Suite implements SuiteLike {
 	 *
 	 * @returns `this`
 	 */
-	addTest(testName: string, fn: () => unknown): this {
+	// eslint-disable-next-line @typescript-eslint/unified-signatures
+	addTest(testName: string, fn: () => unknown): this;
+	addTest(testName: string, fnOrTest: Test | (() => unknown)): this {
 		assert.ok(!this.#tests.has(testName));
 		assert.strictEqual(typeof testName, 'string', new TypeError(`The "testName" argument must be of type string.`));
-		assert.strictEqual(typeof fn, 'function', new TypeError(`The "fn" argument must be of type function.`));
 
-		this.#tests.set(testName, new Test(fn));
+		if (fnOrTest instanceof Test) {
+			this.#tests.set(testName, fnOrTest);
+		} else {
+			assert.strictEqual(typeof fnOrTest, 'function', new TypeError(`The "fn" argument must be of type function.`));
+
+			this.#tests.set(testName, new Test(fnOrTest));
+		}
 
 		return this;
 	}
