@@ -98,7 +98,7 @@ export class Benchmark {
 	 *
 	 * @example
 	 * ```js
-	 * const results = await benchmark.run();
+	 * const results = await benchmark.runSuites();
 	 * ```
 	 *
 	 * @returns A {@link (Benchmark:namespace).Results} `Map`
