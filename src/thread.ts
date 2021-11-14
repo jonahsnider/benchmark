@@ -52,10 +52,22 @@ export class Thread implements SuiteLike {
 		return new Worker(WORKER_PATH, this.#workerOptions);
 	}
 
-	async run(): Promise<Suite.Results> {
-		const message: WorkerMessage = {kind: WorkerMessageKind.Run};
+	async run(abortSignal?: AbortSignal | undefined): Promise<Suite.Results> {
+		const runMessage: WorkerMessage = {kind: WorkerMessageKind.Run};
 
-		this.#worker.postMessage(message);
+		// Worker must be run before an abort signal is sent
+		this.#worker.postMessage(runMessage);
+
+		// TODO: This may be a memory leak
+		abortSignal?.addEventListener(
+			'abort',
+			() => {
+				const abortMessage = {kind: WorkerMessageKind.Abort};
+
+				this.#worker.postMessage(abortMessage);
+			},
+			{once: true},
+		);
 
 		const [response] = (await once(this.#worker, 'message')) as [WorkerResponse];
 
@@ -65,16 +77,9 @@ export class Thread implements SuiteLike {
 			}
 
 			case WorkerResponseKind.Error: {
-				// When the error comes over the wire it seems to be exactly like an Error
-				// Except the constructor is not *our* Error constructor
-				// That means `response.error instanceof Error` is `false` in the main thread but `true` in the worker
-				// So we need to build a new object with our Error constructor for better compatibility with the main thread
+				// Note: Structured clone algorithm has weird behavior with Error instances - see https://github.com/nodejs/help/issues/1558#issuecomment-431142715 and https://github.com/nodejs/node/issues/26692#issuecomment-658010376
 
-				const error = new Error(response.error.message);
-
-				error.stack = response.error.stack;
-
-				throw error;
+				throw response.error;
 			}
 
 			default: {

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import type {RecordableHistogram} from 'node:perf_hooks';
 import {performance} from 'node:perf_hooks';
 import {Test} from './test.js';
+import {AbortError} from './utils.js';
 
 /**
  * A suite of related tests that can be run together.
@@ -34,9 +35,27 @@ export interface SuiteLike {
 	 * const results = await suite.run();
 	 * ```
 	 *
+	 * @example
+	 * Using an `AbortSignal` to cancel the suite:
+	 * ```js
+	 * const ac = new AbortController();
+	 * const signal = ac.signal;
+	 *
+	 * suite
+	 *   .run(signal)
+	 *   .then(console.log)
+	 *   .catch(error => {
+	 *   	if (error.name === 'AbortError') {
+	 *   		console.log('The suite was aborted');
+	 *   	}
+	 *   });
+	 *
+	 * ac.abort();
+	 * ```
+	 *
 	 * @returns The results of running this {@link SuiteLike}
 	 */
-	run(): Suite.Results | PromiseLike<Suite.Results>;
+	run(abortSignal?: AbortSignal | undefined): Suite.Results | PromiseLike<Suite.Results>;
 }
 
 /**
@@ -204,14 +223,32 @@ export class Suite implements SuiteLike {
 	 * const results = await suite.run();
 	 * ```
 	 *
+	 * @example
+	 * Using an `AbortSignal` to cancel the suite:
+	 * ```js
+	 * const ac = new AbortController();
+	 * const signal = ac.signal;
+	 *
+	 * suite
+	 *   .run(signal)
+	 *   .then(console.log)
+	 *   .catch(error => {
+	 *   	if (error.name === 'AbortError') {
+	 *   		console.log('The suite was aborted');
+	 *   	}
+	 *   });
+	 *
+	 * ac.abort();
+	 * ```
+	 *
 	 * @returns The results of running this {@link (Suite:class)}
 	 */
-	async run(): Promise<Suite.Results> {
+	async run(abortSignal?: AbortSignal | undefined): Promise<Suite.Results> {
 		this.#clearResults();
 
-		await this.#runWarmup();
+		await this.#runWarmup(abortSignal);
 
-		await this.#runTests();
+		await this.#runTests(abortSignal);
 
 		const results: Suite.Results = new Map([...this.#tests.entries()].map(([testName, test]) => [testName, test.histogram]));
 
@@ -231,9 +268,13 @@ export class Suite implements SuiteLike {
 		}
 	}
 
-	async #runTestsWithOptions(options: Suite.RunOptions['run' | 'warmup']): Promise<void> {
+	async #runTestsWithOptions(options: Suite.RunOptions['run' | 'warmup'], abortSignal?: AbortSignal | undefined): Promise<void> {
 		if (options.durationMs === undefined) {
 			for (let count = 0; count < options.trials; count++) {
+				if (abortSignal?.aborted) {
+					throw new AbortError();
+				}
+
 				// eslint-disable-next-line no-await-in-loop
 				await this.#runTestsOnce();
 			}
@@ -241,18 +282,22 @@ export class Suite implements SuiteLike {
 			const startTime = performance.now();
 
 			while (performance.now() - startTime < options.durationMs) {
+				if (abortSignal?.aborted) {
+					throw new AbortError();
+				}
+
 				// eslint-disable-next-line no-await-in-loop
 				await this.#runTestsOnce();
 			}
 		}
 	}
 
-	async #runTests() {
-		await this.#runTestsWithOptions(this.options.run);
+	async #runTests(abortSignal?: AbortSignal | undefined) {
+		await this.#runTestsWithOptions(this.options.run, abortSignal);
 	}
 
-	async #runWarmup(): Promise<void> {
-		await this.#runTestsWithOptions(this.options.warmup);
+	async #runWarmup(abortSignal?: AbortSignal | undefined): Promise<void> {
+		await this.#runTestsWithOptions(this.options.warmup, abortSignal);
 
 		this.#clearResults();
 	}

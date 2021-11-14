@@ -3,7 +3,7 @@ import {toDigits} from '@jonahsnider/util';
 import test from 'ava';
 import * as mock from 'jest-mock';
 import {Suite} from '../../src/suite.js';
-import {SHORT_SUITE, SHORT_TIMED_SUITE} from '../../src/utils.js';
+import {AbortError, SHORT_SUITE, SHORT_TIMED_SUITE} from '../../src/utils.js';
 
 test('runs tests with given number of runs', async t => {
 	const TOTAL_TRIALS = SHORT_SUITE.warmup.trials + SHORT_SUITE.run.trials;
@@ -70,4 +70,32 @@ test('handles errors in tests', async t => {
 	});
 
 	await t.throwsAsync(suite.run(), {instanceOf: Error, message: 'test error'});
+});
+
+test('uses AbortSignals when running with trials', async t => {
+	const ac = new AbortController();
+	const suite = new Suite('name', SHORT_SUITE);
+
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	suite.addTest('test', () => {});
+
+	const assertion = t.throwsAsync(suite.run(ac.signal), {instanceOf: AbortError});
+
+	ac.abort();
+
+	await assertion;
+});
+
+test('uses AbortSignals when running with duration', async t => {
+	const ac = new AbortController();
+	const suite = new Suite('name', SHORT_TIMED_SUITE);
+
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	suite.addTest('test', () => {});
+
+	const assertion = t.throwsAsync(suite.run(ac.signal), {instanceOf: AbortError});
+
+	ac.abort();
+
+	await assertion;
 });

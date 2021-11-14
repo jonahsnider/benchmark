@@ -21,7 +21,7 @@ export class Benchmark {
     addSuite(suite: Suite | SuiteLike, options: {
         threaded: true;
     }): Promise<this>;
-    runSuites(): Promise<Benchmark.Results>;
+    runSuites(abortSignal?: AbortSignal | undefined): Promise<Benchmark.Results>;
     readonly suites: ReadonlyMap<Suite.Name, SuiteLike>;
 }
 
@@ -49,7 +49,7 @@ export class Suite implements SuiteLike {
     // (undocumented)
     readonly name: Suite.Name;
     readonly options: Suite.RunOptions;
-    run(): Promise<Suite.Results>;
+    run(abortSignal?: AbortSignal | undefined): Promise<Suite.Results>;
     tests: ReadonlyMap<Test.Name, Test>;
 }
 
@@ -57,7 +57,7 @@ export class Suite implements SuiteLike {
 export interface SuiteLike {
     readonly filepath?: string | undefined;
     readonly name: Suite.Name;
-    run(): Suite.Results | PromiseLike<Suite.Results>;
+    run(abortSignal?: AbortSignal | undefined): Suite.Results | PromiseLike<Suite.Results>;
 }
 
 // @public (undocumented)

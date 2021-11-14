@@ -6,11 +6,16 @@ export interface WorkerData {
 
 export enum WorkerMessageKind {
 	Run,
+	Abort,
 }
 
-export type WorkerMessage = {
-	kind: WorkerMessageKind.Run;
-};
+export type WorkerMessage =
+	| {
+			kind: WorkerMessageKind.Run;
+	  }
+	| {
+			kind: WorkerMessageKind.Abort;
+	  };
 
 export enum WorkerResponseKind {
 	Results,
@@ -24,5 +29,5 @@ export type WorkerResponse =
 	  }
 	| {
 			kind: WorkerResponseKind.Error;
-			error: Error;
+			error: unknown;
 	  };

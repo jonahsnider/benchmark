@@ -2,7 +2,7 @@ import {createHistogram} from 'node:perf_hooks';
 import test from 'ava';
 import {Benchmark} from '../../src/benchmark.js';
 import {Suite} from '../../src/suite.js';
-import {SHORT_SUITE} from '../../src/utils.js';
+import {AbortError, SHORT_SUITE} from '../../src/utils.js';
 import regularSuite from './fixtures/suites/regular.js';
 import emptySuite from './fixtures/suites/empty.js';
 
@@ -60,4 +60,30 @@ test('runs multithreaded suites', async t => {
 			],
 		]),
 	);
+});
+
+test('uses AbortSignals without threads', async t => {
+	const ac = new AbortController();
+	const benchmark = new Benchmark();
+
+	benchmark.addSuite(regularSuite);
+
+	const assertion = t.throwsAsync(benchmark.runSuites(ac.signal), {instanceOf: AbortError});
+
+	ac.abort();
+
+	await assertion;
+});
+
+test('uses AbortSignals with threads', async t => {
+	const ac = new AbortController();
+	const benchmark = new Benchmark();
+
+	await benchmark.addSuite(regularSuite, {threaded: true});
+
+	const assertion = t.throwsAsync(benchmark.runSuites(ac.signal), {name: 'Error', message: 'The operation was aborted'});
+
+	ac.abort();
+
+	await assertion;
 });

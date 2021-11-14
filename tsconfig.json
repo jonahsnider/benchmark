@@ -3,11 +3,12 @@
 		"declaration": true,
 		"declarationDir": "tsc_types",
 		"importHelpers": true,
+		"lib": ["WebWorker"],
 		"module": "esnext",
 		"moduleResolution": "node",
 		"outDir": "tsc_output",
-		"target": "esnext",
-		"sourceMap": true
+		"sourceMap": true,
+		"target": "esnext"
 	},
 	"exclude": ["node_modules", "tsc_output", "tsc_types", "coverage"],
 	"extends": "@tsconfig/node16/tsconfig.json",

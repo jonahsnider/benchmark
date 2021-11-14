@@ -101,9 +101,29 @@ export class Benchmark {
 	 * const results = await benchmark.runSuites();
 	 * ```
 	 *
+	 * @example
+	 * Using an `AbortSignal` to cancel the benchmark:
+	 * ```js
+	 * const ac = new AbortController();
+	 * const signal = ac.signal;
+	 *
+	 * benchmark
+	 *   .runSuites(signal)
+	 *   .then(console.log)
+	 *   .catch(error => {
+	 *   	if (error.name === 'AbortError') {
+	 *   		console.log('The benchmark was aborted');
+	 *   	}
+	 *   });
+	 *
+	 * ac.abort();
+	 * ```
+	 *
+	 * @param abortSignal - An optional `AbortSignal` that can be used to cancel the running suites
+	 *
 	 * @returns A {@link (Benchmark:namespace).Results} `Map`
 	 */
-	async runSuites(): Promise<Benchmark.Results> {
+	async runSuites(abortSignal?: AbortSignal | undefined): Promise<Benchmark.Results> {
 		const results: Benchmark.Results = new Map();
 
 		const [multithreaded, singleThreaded] = partition(this.#suites.values(), suite => this.#multithreadedSuites.has(suite.name));
@@ -111,7 +131,7 @@ export class Benchmark {
 		// Single-threaded suites are executed serially to avoid any interference
 		for (const suite of singleThreaded) {
 			// eslint-disable-next-line no-await-in-loop
-			const suiteResults = await suite.run();
+			const suiteResults = await suite.run(abortSignal);
 
 			results.set(suite.name, suiteResults);
 		}
@@ -119,7 +139,7 @@ export class Benchmark {
 		// Multithreaded suites can be run in parallel since they are independent
 		await Promise.all(
 			multithreaded.map(async suite => {
-				const suiteResults = await suite.run();
+				const suiteResults = await suite.run(abortSignal);
 
 				results.set(suite.name, suiteResults);
 			}),
