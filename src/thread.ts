@@ -90,7 +90,6 @@ export class Thread implements SuiteLike {
 		// Create a new worker
 		this.#worker = this.#createWorker();
 
-		const error = new Error(`Worker exited with code ${code}`);
-		throw error;
+		throw new Error(`Worker exited with code ${code}`);
 	}
 }
