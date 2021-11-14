@@ -113,7 +113,7 @@ export class Suite implements SuiteLike {
 	/**
 	 * Options for running this {@link (Suite:class)} and its warmup.
 	 */
-	public readonly options: Suite.RunOptions;
+	readonly options: Suite.RunOptions;
 
 	/**
 	 * Creates a new {@link (Suite:class)}.
