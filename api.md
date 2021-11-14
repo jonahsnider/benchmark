@@ -28,27 +28,30 @@ export class Benchmark {
 // @public (undocumented)
 export namespace Suite {
     export type Name = string;
+    export type Options = {
+        run: RunOptions;
+        warmup: RunOptions;
+        filename?: string | undefined;
+    };
     export type Results = Map<Test.Name, RecordableHistogram>;
-    export type RunOptions = Record<'run' | 'warmup', {
+    export type RunOptions = {
         trials: number;
         durationMs?: undefined;
     } | {
         trials?: undefined;
         durationMs: number;
-    }>;
+    };
 }
 
 // @public
 export class Suite implements SuiteLike {
-    constructor(name: Suite.Name, options: Suite.RunOptions & {
-        filename?: string | undefined;
-    });
+    constructor(name: Suite.Name, options: Suite.Options);
     addTest(testName: string, test: Test): this;
     addTest(testName: string, fn: () => unknown): this;
-    readonly filename: string | undefined;
+    get filename(): string | undefined;
     // (undocumented)
     readonly name: Suite.Name;
-    readonly options: Suite.RunOptions;
+    readonly options: Suite.Options;
     run(abortSignal?: AbortSignal | undefined): Promise<Suite.Results>;
     tests: ReadonlyMap<Test.Name, Test>;
 }

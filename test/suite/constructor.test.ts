@@ -10,9 +10,11 @@ test(`${name(Suite)}.prototype.name`, t => {
 });
 
 test(`${name(Suite)}.prototype.options`, t => {
-	const suite = new Suite('suite', {...SKIP_SUITE, filename: 'suite.js'});
+	const options = {...SKIP_SUITE, filename: 'suite.js'};
 
-	t.deepEqual(suite.options, SKIP_SUITE);
+	const suite = new Suite('suite', options);
+
+	t.is(suite.options, options);
 });
 
 test(`${name(Suite)}.prototype.filename`, t => {

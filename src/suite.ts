@@ -78,12 +78,11 @@ export namespace Suite {
 	export type Results = Map<Test.Name, RecordableHistogram>;
 
 	/**
-	 * Options for running a {@link (Suite:class)}.
+	 * Options for running {@link (Test:class)}s.
 	 *
 	 * @public
 	 */
-	export type RunOptions = Record<
-		'run' | 'warmup',
+	export type RunOptions =
 		| {
 				trials: number;
 				durationMs?: undefined;
@@ -91,8 +90,18 @@ export namespace Suite {
 		| {
 				trials?: undefined;
 				durationMs: number;
-		  }
-	>;
+		  };
+
+	/**
+	 * Options for running a {@link (Suite:class)}.
+	 *
+	 * @public
+	 */
+	export type Options = {
+		run: RunOptions;
+		warmup: RunOptions;
+		filename?: string | undefined;
+	};
 }
 
 /**
@@ -127,12 +136,14 @@ export class Suite implements SuiteLike {
 	 * This {@link (Suite:class)}'s filename, if it was provided.
 	 * Used for running the {@link (Suite:class)} in a separate thread.
 	 */
-	readonly filename: string | undefined;
+	get filename(): string | undefined {
+		return this.options.filename;
+	}
 
 	/**
 	 * Options for running this {@link (Suite:class)} and its warmup.
 	 */
-	readonly options: Suite.RunOptions;
+	readonly options: Suite.Options;
 
 	/**
 	 * Creates a new {@link (Suite:class)}.
@@ -159,14 +170,10 @@ export class Suite implements SuiteLike {
 	 * @param name - The name of the {@link (Suite:class)}
 	 * @param options - Options for the {@link (Suite:class)}
 	 */
-	constructor(name: Suite.Name, options: Suite.RunOptions & {filename?: string | undefined}) {
+	constructor(name: Suite.Name, options: Suite.Options) {
 		this.name = name;
 
-		const {filename, ...rest} = options;
-
-		this.filename = filename;
-
-		this.options = rest;
+		this.options = options;
 	}
 
 	/**
@@ -268,7 +275,7 @@ export class Suite implements SuiteLike {
 		}
 	}
 
-	async #runTestsWithOptions(options: Suite.RunOptions['run' | 'warmup'], abortSignal?: AbortSignal | undefined): Promise<void> {
+	async #runTestsWithOptions(options: Suite.RunOptions, abortSignal?: AbortSignal | undefined): Promise<void> {
 		if (options.durationMs === undefined) {
 			for (let count = 0; count < options.trials; count++) {
 				if (abortSignal?.aborted) {
