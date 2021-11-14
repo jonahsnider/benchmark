@@ -5,8 +5,7 @@ import type {WorkerOptions} from 'node:worker_threads';
 import {Worker} from 'node:worker_threads';
 import type {SuiteLike} from './suite.js';
 import {Suite} from './suite.js';
-import type {WorkerData, WorkerMessage, WorkerResponse} from './types.js';
-import {WorkerMessageKind, WorkerResponseKind} from './types.js';
+import {ThreadWorker} from './types/index.js';
 import {compatibleImport} from './utils.js';
 
 const WORKER_PATH = new URL('./thread-worker.js', import.meta.url);
@@ -33,7 +32,7 @@ export class Thread implements SuiteLike {
 		this.name = suite.name;
 		this.filepath = suitePath;
 
-		const workerData: WorkerData = {
+		const workerData: ThreadWorker.Data = {
 			suitePath,
 		};
 
@@ -53,7 +52,7 @@ export class Thread implements SuiteLike {
 	}
 
 	async run(abortSignal?: AbortSignal | undefined): Promise<Suite.Results> {
-		const runMessage: WorkerMessage = {kind: WorkerMessageKind.Run};
+		const runMessage: ThreadWorker.Message = {kind: ThreadWorker.Message.Kind.Run};
 
 		// Worker must be run before an abort signal is sent
 		this.#worker.postMessage(runMessage);
@@ -62,21 +61,21 @@ export class Thread implements SuiteLike {
 		abortSignal?.addEventListener(
 			'abort',
 			() => {
-				const abortMessage = {kind: WorkerMessageKind.Abort};
+				const abortMessage = {kind: ThreadWorker.Message.Kind.Abort};
 
 				this.#worker.postMessage(abortMessage);
 			},
 			{once: true},
 		);
 
-		const [response] = (await once(this.#worker, 'message')) as [WorkerResponse];
+		const [response] = (await once(this.#worker, 'message')) as [ThreadWorker.Response];
 
 		switch (response.kind) {
-			case WorkerResponseKind.Results: {
+			case ThreadWorker.Response.Kind.Results: {
 				return response.results;
 			}
 
-			case WorkerResponseKind.Error: {
+			case ThreadWorker.Response.Kind.Error: {
 				// Note: Structured clone algorithm has weird behavior with Error instances - see https://github.com/nodejs/help/issues/1558#issuecomment-431142715 and https://github.com/nodejs/node/issues/26692#issuecomment-658010376
 
 				throw response.error;
