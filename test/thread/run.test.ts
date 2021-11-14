@@ -2,7 +2,6 @@ import {createHistogram} from 'node:perf_hooks';
 import {fileURLToPath, URL} from 'node:url';
 import test from 'ava';
 import {Thread} from '../../src/thread.js';
-import {AbortError} from '../../src/utils.js';
 
 test('runs', async t => {
 	const thread = await Thread.init(fileURLToPath(new URL('./fixtures/suites/regular.ts', import.meta.url)));
