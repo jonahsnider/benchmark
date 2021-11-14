@@ -15,12 +15,12 @@ const WORKER_PATH = new URL('./thread-worker.js', import.meta.url);
  * Runs a {@link (Suite:class)} in a separate thread.
  */
 export class Thread implements SuiteLike {
-	static async init(suitePath: string): Promise<Thread> {
-		const suite = await compatibleImport(suitePath);
+	static async init(suiteFilepath: string): Promise<Thread> {
+		const suite = await compatibleImport(suiteFilepath);
 
-		assert.ok(suite instanceof Suite, new TypeError(`Expected "${suitePath}" to export a Suite instance`));
+		assert.ok(suite instanceof Suite, new TypeError(`Expected "${suiteFilepath}" to export a Suite instance`));
 
-		return new Thread(suite, suitePath);
+		return new Thread(suite, suiteFilepath);
 	}
 
 	readonly name: Suite.Name;
