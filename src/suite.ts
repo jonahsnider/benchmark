@@ -100,7 +100,7 @@ export namespace Suite {
 	export type Options = {
 		run: RunOptions;
 		warmup: RunOptions;
-		filename?: string | undefined;
+		filepath?: string | undefined;
 	};
 }
 
@@ -133,11 +133,11 @@ export class Suite implements SuiteLike {
 	readonly name: Suite.Name;
 
 	/**
-	 * This {@link (Suite:class)}'s filename, if it was provided.
+	 * This {@link (Suite:class)}'s filepath, if it was provided.
 	 * Used for running the {@link (Suite:class)} in a separate thread.
 	 */
-	get filename(): string | undefined {
-		return this.options.filename;
+	get filepath(): string | undefined {
+		return this.options.filepath;
 	}
 
 	/**
@@ -156,14 +156,14 @@ export class Suite implements SuiteLike {
 	 * ```
 	 *
 	 * @example
-	 * Suites that specify a filename can be run in a separate thread in a {@link (Benchmark:class)}.
+	 * Suites that specify a filepath can be run in a separate thread in a {@link (Benchmark:class)}.
 	 * ```js
 	 * import { Suite } from '@jonahsnider/benchmark';
 	 *
 	 * const suite = new Suite('concatenation', {
 	 *   warmup: { durationMs: 10_000 },
 	 *   run: { durationMs: 10_000 },
-	 *   filename: import.meta.url
+	 *   filepath: import.meta.url
 	 * });
 	 * ```
 	 *

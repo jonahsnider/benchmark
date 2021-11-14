@@ -62,26 +62,25 @@ export class Benchmark {
 	 */
 	addSuite(suite: SuiteLike, options?: undefined | {threaded: false}): this;
 	/**
-	 * Add a {@link (Suite:class)} to this {@link (Benchmark:class)} by passing its filename to be loaded in a separate thread.
+	 * Add a {@link SuiteLike} to this {@link (Benchmark:class)} by loading it in a separate thread via its filepath.
 	 *
 	 * @example
 	 * ```js
 	 * await benchmark.addSuite(suite);
 	 * ```
 	 *
-	 * @param suite - A {@link (Suite:class)} with a filename provided
+	 * @param suite - A {@link (Suite:class)} with a filepath provided
 	 *
 	 * @returns `this`
 	 */
-	addSuite(suite: Suite | SuiteLike, options: {threaded: true}): Promise<this>;
-	addSuite(suiteLike: Suite | SuiteLike, options?: undefined | {threaded: boolean}): this | Promise<this> {
+	addSuite(suite: SuiteLike, options: {threaded: true}): Promise<this>;
+	addSuite(suiteLike: SuiteLike, options?: undefined | {threaded: boolean}): this | Promise<this> {
 		assert.ok(!this.#suites.has(suiteLike.name), new RangeError(`A suite with the name "${suiteLike.name}" already exists`));
 
 		if (options?.threaded) {
-			assert.ok('filename' in suiteLike);
-			assert.ok(suiteLike.filename);
+			assert.ok(suiteLike.filepath);
 
-			return Thread.init(suiteLike.filename).then(threadedSuite => {
+			return Thread.init(suiteLike.filepath).then(threadedSuite => {
 				this.#suites.set(threadedSuite.name, threadedSuite);
 				this.#multithreadedSuites.add(threadedSuite.name);
 

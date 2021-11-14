@@ -18,7 +18,7 @@ export class Benchmark {
     addSuite(suite: SuiteLike, options?: undefined | {
         threaded: false;
     }): this;
-    addSuite(suite: Suite | SuiteLike, options: {
+    addSuite(suite: SuiteLike, options: {
         threaded: true;
     }): Promise<this>;
     runSuites(abortSignal?: AbortSignal | undefined): Promise<Benchmark.Results>;
@@ -31,7 +31,7 @@ export namespace Suite {
     export type Options = {
         run: RunOptions;
         warmup: RunOptions;
-        filename?: string | undefined;
+        filepath?: string | undefined;
     };
     export type Results = Map<Test.Name, RecordableHistogram>;
     export type RunOptions = {
@@ -48,7 +48,7 @@ export class Suite implements SuiteLike {
     constructor(name: Suite.Name, options: Suite.Options);
     addTest(testName: string, test: Test): this;
     addTest(testName: string, fn: () => unknown): this;
-    get filename(): string | undefined;
+    get filepath(): string | undefined;
     // (undocumented)
     readonly name: Suite.Name;
     readonly options: Suite.Options;

@@ -10,15 +10,15 @@ test(`${name(Suite)}.prototype.name`, t => {
 });
 
 test(`${name(Suite)}.prototype.options`, t => {
-	const options = {...SKIP_SUITE, filename: 'suite.js'};
+	const options = {...SKIP_SUITE, filepath: 'suite.js'};
 
 	const suite = new Suite('suite', options);
 
 	t.is(suite.options, options);
 });
 
-test(`${name(Suite)}.prototype.filename`, t => {
-	const suite = new Suite('suite', {...SKIP_SUITE, filename: 'suite.js'});
+test(`${name(Suite)}.prototype.filepath`, t => {
+	const suite = new Suite('suite', {...SKIP_SUITE, filepath: 'suite.js'});
 
-	t.is(suite.filename, 'suite.js');
+	t.is(suite.filepath, 'suite.js');
 });
