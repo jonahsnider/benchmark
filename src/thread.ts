@@ -57,18 +57,12 @@ export class Thread implements SuiteLike {
 		// Worker must be run before an abort signal is sent
 		this.#worker.postMessage(runMessage);
 
-		// TODO: This may be a memory leak
-		abortSignal?.addEventListener(
-			'abort',
-			() => {
-				const abortMessage = {kind: ThreadWorker.Message.Kind.Abort};
+		const onAbortListener = this.#onAbort.bind(this);
 
-				this.#worker.postMessage(abortMessage);
-			},
-			{once: true},
-		);
+		abortSignal?.addEventListener('abort', onAbortListener, {once: true});
 
-		const [response] = (await once(this.#worker, 'message')) as [ThreadWorker.Response];
+		const message = once(this.#worker, 'message').finally(() => abortSignal?.removeEventListener('abort', onAbortListener));
+		const [response] = (await message) as [ThreadWorker.Response];
 
 		switch (response.kind) {
 			case ThreadWorker.Response.Kind.Results: {
@@ -95,5 +89,11 @@ export class Thread implements SuiteLike {
 		this.#worker = this.#createWorker();
 
 		throw new Error(`Worker exited with code ${code}`);
+	}
+
+	#onAbort() {
+		const abortMessage = {kind: ThreadWorker.Message.Kind.Abort};
+
+		this.#worker.postMessage(abortMessage);
 	}
 }
