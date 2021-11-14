@@ -17,7 +17,7 @@ export namespace Benchmark {
 }
 
 /**
- * A benchmark which has many {@link (Suite:class)}s.
+ * A benchmark which has many {@link SuiteLike}s.
  *
  * @example
  * ```js
