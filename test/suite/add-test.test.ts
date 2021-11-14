@@ -11,6 +11,20 @@ test('adds a test', t => {
 	// eslint-disable-next-line @typescript-eslint/no-empty-function
 	suite.addTest('test', () => {});
 
-	t.deepEqual([...suite.tests.keys()], ['test']);
-	t.is(suite.tests.get('test')!.constructor, Test);
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	t.deepEqual(suite.tests, new Map([['test', new Test(() => {})]]));
+});
+
+test('adds a Test instance', t => {
+	const suite = new Suite('name', SKIP_SUITE);
+
+	t.deepEqual(suite.tests, new Map());
+
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	const test = new Test(() => {});
+
+	suite.addTest('test', test);
+
+	t.deepEqual(suite.tests, new Map([['test', test]]));
+	t.is(suite.tests.get('test'), test);
 });
