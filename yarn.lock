@@ -405,16 +405,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/types@npm:^27.2.5":
-  version: 27.2.5
-  resolution: "@jest/types@npm:27.2.5"
+"@jest/types@npm:^27.4.2":
+  version: 27.4.2
+  resolution: "@jest/types@npm:27.4.2"
   dependencies:
     "@types/istanbul-lib-coverage": ^2.0.0
     "@types/istanbul-reports": ^3.0.0
     "@types/node": "*"
     "@types/yargs": ^16.0.0
     chalk: ^4.0.0
-  checksum: 322603c24354a5333b5b7a670464422a46e0244a5a96a35552a7018eb4ac2e84c3b7657336b0ea6aa114963f9b6d0da8b8f6f963cb044fea9e7bc04d464b0ab1
+  checksum: 1191022023e32763063cc1c8b1143fa316fb05db2f9698280a7bdbafcabd989e5fd64f8eb875b8a2e54c53f25dba45ed2eea8ced394d9e484da0fda674cd17a5
   languageName: node
   linkType: hard
 
@@ -431,7 +431,7 @@ __metadata:
     ava: 3.15.0
     c8: 7.10.0
     eslint-plugin-prettier: 4.0.0
-    jest-mock: 27.3.0
+    jest-mock: 27.4.2
     prettier: 2.5.0
     semantic-release: 18.0.1
     ts-node: 10.4.0
@@ -5190,13 +5190,13 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"jest-mock@npm:27.3.0":
-  version: 27.3.0
-  resolution: "jest-mock@npm:27.3.0"
+"jest-mock@npm:27.4.2":
+  version: 27.4.2
+  resolution: "jest-mock@npm:27.4.2"
   dependencies:
-    "@jest/types": ^27.2.5
+    "@jest/types": ^27.4.2
     "@types/node": "*"
-  checksum: 904b9116e03cbcd3baba08a18be88e29749c5b715ec7659665079b4aa9f54b7b87c4c7e7bf5b99fb966fefa08a25b3886e15ad31ba453104e681075ec9d8418c
+  checksum: 4ad4a870ec771410b708e955ef2526e7becb91a1d19c4699dcf8fe43a9f6d1231e0c47b87d6b80ee9ad3194ad54dc9abf158588a4a542ad9f9ce8c23eda6048e
   languageName: node
   linkType: hard
 
