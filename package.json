@@ -62,7 +62,7 @@
 		"c8": "7.10.0",
 		"eslint-plugin-prettier": "4.0.0",
 		"jest-mock": "27.4.2",
-		"prettier": "2.5.0",
+		"prettier": "2.5.1",
 		"semantic-release": "18.0.1",
 		"ts-node": "10.4.0",
 		"typedoc": "0.22.10",
