@@ -173,7 +173,7 @@ Each test in a suite should be a different implementation for the same thing.
 For example, you could make a suite for "sorting an array" and your tests could be "insertion sort", "selection sort", and "bubble sort".
 
 A test is a single function that is run many times while its performance is recorded.
-Internally it's represented as a `_Test` class which _is_ exported by the package but you really shouldn't use it.
+Internally it's represented with the `Test` class which _is_ exported by the package but you probably don't need to use it directly.
 
 [api-overview]: ./api.md
 [docs]: https://benchmark.jonah.pw
