@@ -431,7 +431,7 @@ __metadata:
     ava: 3.15.0
     c8: 7.11.0
     eslint-plugin-prettier: 4.0.0
-    jest-mock: 27.4.2
+    jest-mock: 27.4.6
     prettier: 2.5.1
     semantic-release: 18.0.1
     ts-node: 10.4.0
@@ -5190,13 +5190,13 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"jest-mock@npm:27.4.2":
-  version: 27.4.2
-  resolution: "jest-mock@npm:27.4.2"
+"jest-mock@npm:27.4.6":
+  version: 27.4.6
+  resolution: "jest-mock@npm:27.4.6"
   dependencies:
     "@jest/types": ^27.4.2
     "@types/node": "*"
-  checksum: 4ad4a870ec771410b708e955ef2526e7becb91a1d19c4699dcf8fe43a9f6d1231e0c47b87d6b80ee9ad3194ad54dc9abf158588a4a542ad9f9ce8c23eda6048e
+  checksum: 34df5ec502fa0db5ef36e2b2e96a522de730e7be907c6df5d4ec8ab1292d9be71f1e269e8bcdafd020239edaf3ca6f9c464eb0b4aca6986420a1f392976fc0ab
   languageName: node
   linkType: hard
 
