@@ -62,7 +62,7 @@ console.log(results);
 // }
 
 // 5. You can also run individual suites
-const suiteResults = await suite.run();
+const suiteResults = await concatenation.run();
 
 console.log(suiteResults);
 // Map(3) {
