@@ -89,8 +89,8 @@ import {Suite} from '@jonahsnider/benchmark';
 
 // 1. Create suite
 const suite = new Suite('substring', {
-	// Easy way to pass this suite's filename to the thread
-	filename: import.meta.url,
+	// Easy way to pass this suite's filepath to the thread
+	filepath: import.meta.url,
 	run: {
 		// Run 1000 benchmark trials
 		trials: 1000,
