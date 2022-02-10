@@ -8,7 +8,7 @@ import {Suite} from './suite.js';
 import {ThreadWorker} from './types/index.js';
 import {compatibleImport} from './utils.js';
 
-const WORKER_PATH = new URL('./thread-worker.js', import.meta.url);
+const WORKER_PATH = new URL('thread-worker.js', import.meta.url);
 
 /**
  * Runs a {@link (Suite:class)} in a separate thread.
