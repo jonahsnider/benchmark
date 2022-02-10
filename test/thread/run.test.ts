@@ -4,7 +4,7 @@ import test from 'ava';
 import {Thread} from '../../src/thread.js';
 
 test('runs', async t => {
-	const thread = await Thread.init(fileURLToPath(new URL('./fixtures/suites/regular.ts', import.meta.url)));
+	const thread = await Thread.init(fileURLToPath(new URL('fixtures/suites/regular.ts', import.meta.url)));
 
 	const results = await thread.run();
 
@@ -18,7 +18,7 @@ test('runs', async t => {
 });
 
 test('handles errors in tests', async t => {
-	const thread = await Thread.init(fileURLToPath(new URL('./fixtures/suites/broken.ts', import.meta.url)));
+	const thread = await Thread.init(fileURLToPath(new URL('fixtures/suites/broken.ts', import.meta.url)));
 
 	await t.throwsAsync(thread.run(), {instanceOf: Error, message: 'broken test'});
 });
@@ -29,7 +29,7 @@ test('handles errors in worker loading', async t => {
 
 test('uses AbortSignals', async t => {
 	const ac = new AbortController();
-	const thread = await Thread.init(fileURLToPath(new URL('./fixtures/suites/regular.ts', import.meta.url)));
+	const thread = await Thread.init(fileURLToPath(new URL('fixtures/suites/regular.ts', import.meta.url)));
 
 	// Structured clone algorithm or worker_threads removes the error code property and changes the name
 	const assertion = t.throwsAsync(thread.run(ac.signal), {name: 'Error', message: 'The operation was aborted'});
