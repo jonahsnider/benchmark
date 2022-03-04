@@ -31,7 +31,7 @@ jobs:
       - name: Build
         run: yarn run build
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: dist
           path: tsc_output
