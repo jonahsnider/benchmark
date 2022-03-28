@@ -54,7 +54,7 @@
 	},
 	"devDependencies": {
 		"@jonahsnider/prettier-config": "1.1.0",
-		"@jonahsnider/xo-config": "5.0.4",
+		"@jonahsnider/xo-config": "5.1.0",
 		"@microsoft/api-extractor": "7.19.5",
 		"@tsconfig/node16": "1.0.2",
 		"@types/node": "16.0.3",
@@ -62,7 +62,7 @@
 		"c8": "7.11.0",
 		"eslint-plugin-prettier": "4.0.0",
 		"jest-mock": "27.5.1",
-		"prettier": "2.5.1",
+		"prettier": "2.6.1",
 		"semantic-release": "18.0.1",
 		"ts-node": "10.6.0",
 		"typedoc": "0.22.13",
