@@ -160,7 +160,7 @@ __metadata:
     "@jonahsnider/xo-config": 5.1.0
     "@microsoft/api-extractor": 7.22.2
     "@tsconfig/node16": 1.0.2
-    "@types/node": 16.0.3
+    "@types/node": 16.11.33
     ava: 3.15.0
     c8: 7.11.2
     eslint-plugin-prettier: 4.0.0
@@ -978,10 +978,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:16.0.3":
-  version: 16.0.3
-  resolution: "@types/node@npm:16.0.3"
-  checksum: b91ee69dbcf2c4b8a3c421439c5045a9903236506dae056d098587eec18770b867692018bb21ed8c911105c575670d88b8797f0a7fbca53e0899e2f3ad28d826
+"@types/node@npm:16.11.33":
+  version: 16.11.33
+  resolution: "@types/node@npm:16.11.33"
+  checksum: 5c86d3f1e3b996607b41405d368d2e19d410eee0054595cef73d230368a609a2863926e75ad19f5091f0fd742cd018b667d54c51292018dd8020a202a5b29fa9
   languageName: node
   linkType: hard
 
