@@ -29,25 +29,11 @@
 		"release": "semantic-release",
 		"style": "prettier --check .",
 		"test": "ava",
-		"test:coverage": "c8 --reporter lcov --reporter text-summary --include 'src/**/*.ts' --exclude 'src/index.ts' --all ava",
+		"test:coverage": "c8 --reporter lcov --reporter text-summary --include 'tsc_output/src/**/*.js' --exclude 'tsc_output/src/index.js' --all ava",
 		"validate-api": "api-extractor run",
 		"validate-api:local": "api-extractor run --local --verbose"
 	},
 	"prettier": "@jonahsnider/prettier-config",
-	"ava": {
-		"extensions": {
-			"ts": "module"
-		},
-		"files": [
-			"test/**/*.test.ts"
-		],
-		"nodeArguments": [
-			"--loader=ts-node/esm"
-		],
-		"nonSemVerExperiments": {
-			"configurableModuleFormat": true
-		}
-	},
 	"dependencies": {
 		"@jonahsnider/util": "9.0.0",
 		"tslib": "2.4.0"
@@ -64,7 +50,6 @@
 		"jest-mock": "28.1.0",
 		"prettier": "2.6.2",
 		"semantic-release": "19.0.2",
-		"ts-node": "10.8.0",
 		"typedoc": "0.22.17",
 		"typescript": "4.7.2",
 		"xo": "0.49.0"
