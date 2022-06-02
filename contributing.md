@@ -15,6 +15,10 @@ yarn
 
 Run the `build` script to compile the TypeScript source code into JavaScript in the `tsc_output` folder.
 
+```sh
+yarn run build
+```
+
 ## Style
 
 This project uses [Prettier](https://prettier.io) to validate the formatting and style across the codebase.
@@ -41,6 +45,24 @@ You can run the tests with the `test` script:
 
 ```sh
 yarn test
+```
+
+Tests use the compiled output of the library, so before running the tests you'll need to run the build script:
+
+```sh
+yarn run build
+```
+
+When working with tests locally you may want to run one terminal with
+
+```sh
+yarn run build --watch
+```
+
+and another with
+
+```sh
+yarn test --watch
 ```
 
 ## Coverage
