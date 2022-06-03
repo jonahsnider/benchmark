@@ -13,7 +13,7 @@ let suite: Suite;
 
 let ac: AbortController;
 
-async function run() {
+async function run(): Promise<void> {
 	ac = new AbortController();
 
 	suite ??= await compatibleImport<Suite>(suitePath);

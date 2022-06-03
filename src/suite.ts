@@ -262,13 +262,13 @@ export class Suite implements SuiteLike {
 		return results;
 	}
 
-	#clearResults() {
+	#clearResults(): void {
 		for (const tests of this.#tests.values()) {
 			tests.histogram.reset();
 		}
 	}
 
-	async #runTestsOnce() {
+	async #runTestsOnce(): Promise<void> {
 		for (const test of this.#tests.values()) {
 			// eslint-disable-next-line no-await-in-loop
 			await test.run();
@@ -299,7 +299,7 @@ export class Suite implements SuiteLike {
 		}
 	}
 
-	async #runTests(abortSignal?: AbortSignal | undefined) {
+	async #runTests(abortSignal?: AbortSignal | undefined): Promise<void> {
 		await this.#runTestsWithOptions(this.options.run, abortSignal);
 	}
 

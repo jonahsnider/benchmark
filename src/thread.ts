@@ -81,7 +81,7 @@ export class Thread implements SuiteLike {
 		}
 	}
 
-	async #onExit(code: number) {
+	async #onExit(code: number): Promise<void> {
 		// This prevents the main thread from hanging when the worker is not `unref`'d
 		await this.#worker.terminate();
 
@@ -91,7 +91,7 @@ export class Thread implements SuiteLike {
 		throw new Error(`Worker exited with code ${code}`);
 	}
 
-	#onAbort() {
+	#onAbort(): void {
 		const abortMessage = {kind: ThreadWorker.Message.Kind.Abort};
 
 		this.#worker.postMessage(abortMessage);
