@@ -129,9 +129,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/types@npm:^29.0.1":
-  version: 29.0.1
-  resolution: "@jest/types@npm:29.0.1"
+"@jest/types@npm:^29.2.0":
+  version: 29.2.0
+  resolution: "@jest/types@npm:29.2.0"
   dependencies:
     "@jest/schemas": ^29.0.0
     "@types/istanbul-lib-coverage": ^2.0.0
@@ -139,7 +139,7 @@ __metadata:
     "@types/node": "*"
     "@types/yargs": ^17.0.8
     chalk: ^4.0.0
-  checksum: 50a3658d69cad32fe270ef22e9a21cbad38c387d0b17cb1f23b144f9c9081e81623feda940b6b23459df656f88153ffe7765f36cd3bc3f3b2d8cd0ca246d75b2
+  checksum: 6b04cbb23306f16eaf4f0d158cfcb7cc905b352e2e44a0a4618c46cf3bdf7a1da64cea8fbc731a19e8a86dc5b80a75aec985cf8764b3178939b5d850ccc68b57
   languageName: node
   linkType: hard
 
@@ -156,7 +156,7 @@ __metadata:
     ava: 4.3.1
     c8: 7.11.3
     eslint-plugin-prettier: 4.2.1
-    jest-mock: 29.0.1
+    jest-mock: 29.2.0
     prettier: 2.7.1
     semantic-release: 19.0.2
     tslib: 2.4.0
@@ -1846,6 +1846,13 @@ __metadata:
   version: 2.0.1
   resolution: "chunkd@npm:2.0.1"
   checksum: bab8cc08c752a3648984385dc6f61d751e89dbeef648d22a3b661e1d470eaa0f5182f0b4303710f13ae83d2f85144f8eb2dde7a975861d9021b5c56b881f457b
+  languageName: node
+  linkType: hard
+
+"ci-info@npm:^3.2.0":
+  version: 3.5.0
+  resolution: "ci-info@npm:3.5.0"
+  checksum: 7def3789706ec18db3dc371dc699bd0df12057d54b796201f50ba87200e0849d3d83c68da00ab2ab8cdd738d91b25ab9e31620588f8d7e64ffaa1f760fd121cf
   languageName: node
   linkType: hard
 
@@ -4571,13 +4578,28 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"jest-mock@npm:29.0.1":
-  version: 29.0.1
-  resolution: "jest-mock@npm:29.0.1"
+"jest-mock@npm:29.2.0":
+  version: 29.2.0
+  resolution: "jest-mock@npm:29.2.0"
   dependencies:
-    "@jest/types": ^29.0.1
+    "@jest/types": ^29.2.0
     "@types/node": "*"
-  checksum: a81974c381112f4316e0e9491936b0a11d283959f7bb238ce8b99bb38d243828fedfa084d3cefc7a7e2f4d7fd3ac546a556085d5f17262b1667e2ca348c0ccd6
+    jest-util: ^29.2.0
+  checksum: 6c65e89860e5d1a74291c6276b1a12902189f4fa63adb226a811621725bf27487696fb366f3855b84afddbfa6cd36c7d4d0b61f5a05bbddb63ff00c8f95046a7
+  languageName: node
+  linkType: hard
+
+"jest-util@npm:^29.2.0":
+  version: 29.2.0
+  resolution: "jest-util@npm:29.2.0"
+  dependencies:
+    "@jest/types": ^29.2.0
+    "@types/node": "*"
+    chalk: ^4.0.0
+    ci-info: ^3.2.0
+    graceful-fs: ^4.2.9
+    picomatch: ^2.2.3
+  checksum: c1fc26008b3199387dbd28f145f692f48b7c8e911c6a71892e579544ee62819ecc2c693f7fc5e41284119a6f742130ef5c92f485caed89eea47c5e627003ad2d
   languageName: node
   linkType: hard
 
