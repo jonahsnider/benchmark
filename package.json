@@ -44,7 +44,7 @@
 		"@microsoft/api-extractor": "7.33.1",
 		"@tsconfig/node16": "1.0.3",
 		"@types/node": "16.11.66",
-		"ava": "4.3.3",
+		"ava": "5.0.1",
 		"c8": "7.12.0",
 		"eslint-plugin-prettier": "4.2.1",
 		"jest-mock": "29.2.0",
