@@ -1,8 +1,8 @@
 import type {Suite} from '../suite.js';
 
-export interface Data {
+export type Data = {
 	suitePath: string;
-}
+};
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Message {

@@ -1,4 +1,4 @@
-import {fileURLToPath, URL} from 'node:url';
+import {fileURLToPath} from 'node:url';
 import test from 'ava';
 import {compatibleImport} from '../../src/utils.js';
 
