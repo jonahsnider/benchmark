@@ -1,6 +1,5 @@
 import assert from 'node:assert/strict';
 import {once} from 'node:events';
-import {URL} from 'node:url';
 import type {WorkerOptions} from 'node:worker_threads';
 import {Worker} from 'node:worker_threads';
 import type {SuiteLike} from './suite.js';

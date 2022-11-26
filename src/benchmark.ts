@@ -40,8 +40,8 @@ export namespace Benchmark {
  * @public
  */
 export class Benchmark {
-	readonly #suites: Map<Suite.Name, SuiteLike> = new Map();
-	#multithreadedSuites: Set<Suite.Name> = new Set();
+	readonly #suites = new Map<Suite.Name, SuiteLike>();
+	#multithreadedSuites = new Set<Suite.Name>();
 
 	/**
 	 * The {@link SuiteLike}s in this {@link (Benchmark:class)}.

@@ -9,7 +9,7 @@ import {AbortError} from './utils.js';
  *
  * @public
  */
-export interface SuiteLike {
+export type SuiteLike = {
 	/**
 	 * The name of this {@link SuiteLike}.
 	 */
@@ -56,7 +56,7 @@ export interface SuiteLike {
 	 * @returns The results of running this {@link SuiteLike}
 	 */
 	run(abortSignal?: AbortSignal | undefined): Suite.Results | PromiseLike<Suite.Results>;
-}
+};
 
 /**
  * @public
@@ -124,13 +124,11 @@ export namespace Suite {
  * @public
  */
 export class Suite implements SuiteLike {
-	readonly #tests: Map<Test.Name, Test> = new Map();
+	readonly #tests = new Map<Test.Name, Test>();
 	/**
 	 * The tests in this {@link (Suite:class)}.
 	 */
 	tests: ReadonlyMap<Test.Name, Test> = this.#tests;
-
-	readonly name: Suite.Name;
 
 	/**
 	 * This {@link (Suite:class)}'s filepath, if it was provided.
@@ -139,11 +137,6 @@ export class Suite implements SuiteLike {
 	get filepath(): string | undefined {
 		return this.options.filepath;
 	}
-
-	/**
-	 * Options for running this {@link (Suite:class)} and its warmup.
-	 */
-	readonly options: Suite.Options;
 
 	/**
 	 * Creates a new {@link (Suite:class)}.
@@ -170,11 +163,13 @@ export class Suite implements SuiteLike {
 	 * @param name - The name of the {@link (Suite:class)}
 	 * @param options - Options for the {@link (Suite:class)}
 	 */
-	constructor(name: Suite.Name, options: Suite.Options) {
-		this.name = name;
-
-		this.options = options;
-	}
+	constructor(
+		public readonly name: Suite.Name,
+		/**
+		 * Options for running this {@link (Suite:class)} and its warmup.
+		 */
+		public readonly options: Suite.Options,
+	) {}
 
 	/**
 	 * Adds a test to this {@link (Suite:class)}.
@@ -205,7 +200,7 @@ export class Suite implements SuiteLike {
 	 *
 	 * @returns `this`
 	 */
-	// eslint-disable-next-line @typescript-eslint/unified-signatures
+
 	addTest(testName: string, fn: () => unknown): this;
 	addTest(testName: string, fnOrTest: Test | (() => unknown)): this {
 		assert.ok(!this.#tests.has(testName));

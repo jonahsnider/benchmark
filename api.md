@@ -45,7 +45,8 @@ export namespace Suite {
 
 // @public
 export class Suite implements SuiteLike {
-    constructor(name: Suite.Name, options: Suite.Options);
+    constructor(name: Suite.Name,
+    options: Suite.Options);
     addTest(testName: string, test: Test): this;
     addTest(testName: string, fn: () => unknown): this;
     get filepath(): string | undefined;
@@ -57,11 +58,11 @@ export class Suite implements SuiteLike {
 }
 
 // @public
-export interface SuiteLike {
-    readonly filepath?: string | undefined;
+export type SuiteLike = {
     readonly name: Suite.Name;
+    readonly filepath?: string | undefined;
     run(abortSignal?: AbortSignal | undefined): Suite.Results | PromiseLike<Suite.Results>;
-}
+};
 
 // @public (undocumented)
 export namespace Test {

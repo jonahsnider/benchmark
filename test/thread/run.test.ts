@@ -1,5 +1,5 @@
 import {createHistogram} from 'node:perf_hooks';
-import {fileURLToPath, URL} from 'node:url';
+import {fileURLToPath} from 'node:url';
 import test from 'ava';
 import {Thread} from '../../src/thread.js';
 
