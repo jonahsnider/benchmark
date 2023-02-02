@@ -157,7 +157,7 @@ __metadata:
     "@jonahsnider/prettier-config": 1.1.2
     "@jonahsnider/util": 10.0.0
     "@jonahsnider/xo-config": 5.3.0
-    "@microsoft/api-extractor": 7.33.6
+    "@microsoft/api-extractor": 7.34.2
     "@tsconfig/node16": 1.0.3
     "@types/node": 18.11.9
     ava: 5.0.1
@@ -225,36 +225,36 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@microsoft/api-extractor-model@npm:7.25.2":
-  version: 7.25.2
-  resolution: "@microsoft/api-extractor-model@npm:7.25.2"
+"@microsoft/api-extractor-model@npm:7.26.2":
+  version: 7.26.2
+  resolution: "@microsoft/api-extractor-model@npm:7.26.2"
   dependencies:
     "@microsoft/tsdoc": 0.14.2
     "@microsoft/tsdoc-config": ~0.16.1
-    "@rushstack/node-core-library": 3.53.2
-  checksum: b91782eacbe5cc519bbb048289237bef4fdd49fcd2e5c9bd716d6ee63360d1ab4279c0b64deeb83b5df54b074372edb64631fb7d2395757980240031c83f3097
+    "@rushstack/node-core-library": 3.55.0
+  checksum: 14c03a9b6acc49f0b5d783cc6cbf897e9469f0ace035c1b48b761c5f8c01fe7bebf8441c87b457eaf29c8a1e4ced89c098a86777f46bfb8f8f5d54897ecf84e9
   languageName: node
   linkType: hard
 
-"@microsoft/api-extractor@npm:7.33.6":
-  version: 7.33.6
-  resolution: "@microsoft/api-extractor@npm:7.33.6"
+"@microsoft/api-extractor@npm:7.34.2":
+  version: 7.34.2
+  resolution: "@microsoft/api-extractor@npm:7.34.2"
   dependencies:
-    "@microsoft/api-extractor-model": 7.25.2
+    "@microsoft/api-extractor-model": 7.26.2
     "@microsoft/tsdoc": 0.14.2
     "@microsoft/tsdoc-config": ~0.16.1
-    "@rushstack/node-core-library": 3.53.2
+    "@rushstack/node-core-library": 3.55.0
     "@rushstack/rig-package": 0.3.17
     "@rushstack/ts-command-line": 4.13.1
     colors: ~1.2.1
     lodash: ~4.17.15
-    resolve: ~1.17.0
+    resolve: ~1.22.1
     semver: ~7.3.0
     source-map: ~0.6.1
     typescript: ~4.8.4
   bin:
     api-extractor: bin/api-extractor
-  checksum: f279f316e9dbabb269afde1f8b06068f60d8e3bb3969185758218b8a5a54adac99f563eb5ca9dd75f4028c774613e0246fc5fb0e29ae1cb9576ef912fbae7cba
+  checksum: cc9a13d64d0ff2e68fb9522ee4505538d36f886ca00b2cd05fc1f2d0ecbad645804a9f2d9c91fcff031a4113022cae8d7efdeeb7388df11177be3e9a25925ea0
   languageName: node
   linkType: hard
 
@@ -696,19 +696,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rushstack/node-core-library@npm:3.53.2":
-  version: 3.53.2
-  resolution: "@rushstack/node-core-library@npm:3.53.2"
+"@rushstack/node-core-library@npm:3.55.0":
+  version: 3.55.0
+  resolution: "@rushstack/node-core-library@npm:3.55.0"
   dependencies:
-    "@types/node": 12.20.24
     colors: ~1.2.1
     fs-extra: ~7.0.1
     import-lazy: ~4.0.0
     jju: ~1.4.0
-    resolve: ~1.17.0
+    resolve: ~1.22.1
     semver: ~7.3.0
     z-schema: ~5.0.2
-  checksum: eca9ef5dd099649c7e54ac7c6f1019c831e9405ce66210f76d6a597d83341bcd8de197d69539042029ea8aa9862e0515b8102e16a4980c66812f599f7c63479d
+  peerDependencies:
+    "@types/node": ^14.18.36
+  peerDependenciesMeta:
+    "@types/node":
+      optional: true
+  checksum: 138ab94dc5a0919a22982762040138d8762c3b316f4a46b14c10308451744d57022e58f97d98f8edd66a10b1226d456b7d7fe182a37b29906b2b21e590ebec02
   languageName: node
   linkType: hard
 
@@ -953,13 +957,6 @@ __metadata:
   version: 16.11.6
   resolution: "@types/node@npm:16.11.6"
   checksum: 6e19634766ff589d3d2f361c2196b671f8f133cdadc5ad347a621c360d8994b6c4fbccfb2ad9c60c588c593831a96497c9c6b77d2b7e91be723384b94f6368e7
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:12.20.24":
-  version: 12.20.24
-  resolution: "@types/node@npm:12.20.24"
-  checksum: e7a13460e2f5b0b5a32c0f3af7daf1a05201552a66d542d3cc3b1ea8b52d4730250f9eb1961d755e31cfe5d03c78340911a6242657a0a9a17d6f7e341fc9f366
   languageName: node
   linkType: hard
 
@@ -6986,7 +6983,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"resolve@npm:^1.22.1":
+"resolve@npm:^1.22.1, resolve@npm:~1.22.1":
   version: 1.22.1
   resolution: "resolve@npm:1.22.1"
   dependencies:
@@ -7022,7 +7019,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>":
+"resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>, resolve@patch:resolve@~1.22.1#~builtin<compat/resolve>":
   version: 1.22.1
   resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=c3c19d"
   dependencies:
