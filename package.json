@@ -47,7 +47,7 @@
 		"ava": "5.1.1",
 		"c8": "7.12.0",
 		"eslint-plugin-prettier": "4.2.1",
-		"jest-mock": "29.4.2",
+		"jest-mock": "29.4.3",
 		"prettier": "2.8.3",
 		"semantic-release": "20.1.0",
 		"typedoc": "0.23.24",
