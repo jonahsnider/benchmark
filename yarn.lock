@@ -136,7 +136,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/types@npm:^29.6.1":
+"@jest/types@npm:^29.4.3, @jest/types@npm:^29.6.1":
   version: 29.6.1
   resolution: "@jest/types@npm:29.6.1"
   dependencies:
@@ -159,11 +159,11 @@ __metadata:
     "@jonahsnider/xo-config": 5.3.0
     "@microsoft/api-extractor": 7.36.1
     "@tsconfig/node16": 1.0.4
-    "@types/node": 18.13.0
+    "@types/node": 18.16.20
     ava: 5.3.1
     c8: 7.14.0
     eslint-plugin-prettier: 4.2.1
-    jest-mock: 29.6.1
+    jest-mock: 29.4.3
     prettier: 2.8.3
     semantic-release: 20.1.0
     tslib: 2.4.0
@@ -960,10 +960,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.13.0":
-  version: 18.13.0
-  resolution: "@types/node@npm:18.13.0"
-  checksum: 4ea10f8802848b01672bce938f678b6774ca2cee0c9774f12275ab064ae07818419c3e2e41d6257ce7ba846d1ea26c63214aa1dfa4166fa3746291752b8c6416
+"@types/node@npm:18.16.20":
+  version: 18.16.20
+  resolution: "@types/node@npm:18.16.20"
+  checksum: 00ea5668e12047447b20bb31408ae717823e5b879c4c6296036216756874b2dc7976086343ffb6a717eb52e8d73dc6972d90b9134ef464b7361673228a02ed41
   languageName: node
   linkType: hard
 
@@ -4684,18 +4684,18 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"jest-mock@npm:29.6.1":
-  version: 29.6.1
-  resolution: "jest-mock@npm:29.6.1"
+"jest-mock@npm:29.4.3":
+  version: 29.4.3
+  resolution: "jest-mock@npm:29.4.3"
   dependencies:
-    "@jest/types": ^29.6.1
+    "@jest/types": ^29.4.3
     "@types/node": "*"
-    jest-util: ^29.6.1
-  checksum: 5e902f1a7eba1eb1a64eb6c19947fe1316834359d9869d0e2644d8979b9cad0465885dc4c9909c471888cddeea835c938cec6263d386d3d1aad720fc74e52ea1
+    jest-util: ^29.4.3
+  checksum: 8eb4a29b02d2cd03faac0290b6df6d23b4ffa43f72b21c7fff3c7dd04a2797355b1e85862b70b15341dd33ee3a693b17db5520a6f6e6b81ee75601987de6a1a2
   languageName: node
   linkType: hard
 
-"jest-util@npm:^29.6.1":
+"jest-util@npm:^29.4.3":
   version: 29.6.1
   resolution: "jest-util@npm:29.6.1"
   dependencies:
