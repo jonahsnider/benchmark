@@ -184,7 +184,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/types@npm:^29.4.3, @jest/types@npm:^29.6.1":
+"@jest/types@npm:^29.6.1":
   version: 29.6.1
   resolution: "@jest/types@npm:29.6.1"
   dependencies:
@@ -207,11 +207,11 @@ __metadata:
     "@jonahsnider/xo-config": 5.3.0
     "@microsoft/api-extractor": 7.36.1
     "@tsconfig/node16": 16.1.0
-    "@types/node": 18.17.1
+    "@types/node": 18.16.20
     ava: 5.3.1
     c8: 8.0.0
     eslint-plugin-prettier: 4.2.1
-    jest-mock: 29.4.3
+    jest-mock: 29.6.2
     prettier: 2.8.3
     semantic-release: 21.0.7
     tslib: 2.4.0
@@ -1090,10 +1090,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.17.1":
-  version: 18.17.1
-  resolution: "@types/node@npm:18.17.1"
-  checksum: 56201bda9a2d05d68602df63b4e67b0545ac8c6d0280bd5fb31701350a978a577a027501fbf49db99bf177f2242ebd1244896bfd35e89042d5bd7dfebff28d4e
+"@types/node@npm:18.16.20":
+  version: 18.16.20
+  resolution: "@types/node@npm:18.16.20"
+  checksum: 00ea5668e12047447b20bb31408ae717823e5b879c4c6296036216756874b2dc7976086343ffb6a717eb52e8d73dc6972d90b9134ef464b7361673228a02ed41
   languageName: node
   linkType: hard
 
@@ -4941,20 +4941,20 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"jest-mock@npm:29.4.3":
-  version: 29.4.3
-  resolution: "jest-mock@npm:29.4.3"
+"jest-mock@npm:29.6.2":
+  version: 29.6.2
+  resolution: "jest-mock@npm:29.6.2"
   dependencies:
-    "@jest/types": ^29.4.3
+    "@jest/types": ^29.6.1
     "@types/node": "*"
-    jest-util: ^29.4.3
-  checksum: 8eb4a29b02d2cd03faac0290b6df6d23b4ffa43f72b21c7fff3c7dd04a2797355b1e85862b70b15341dd33ee3a693b17db5520a6f6e6b81ee75601987de6a1a2
+    jest-util: ^29.6.2
+  checksum: 0bacb5d58441462c0e531ec4d2f7377eecbe21f664d8a460e72f94ba61d22635028931678e7a0f1c3e3f5894973db8e409432f7db4c01283456c8fdbd85f5b3b
   languageName: node
   linkType: hard
 
-"jest-util@npm:^29.4.3":
-  version: 29.6.1
-  resolution: "jest-util@npm:29.6.1"
+"jest-util@npm:^29.6.2":
+  version: 29.6.2
+  resolution: "jest-util@npm:29.6.2"
   dependencies:
     "@jest/types": ^29.6.1
     "@types/node": "*"
@@ -4962,7 +4962,7 @@ fsevents@~2.3.2:
     ci-info: ^3.2.0
     graceful-fs: ^4.2.9
     picomatch: ^2.2.3
-  checksum: fc553556c1350c443449cadaba5fb9d604628e8b5ceb6ceaf4e7e08975b24277d0a14bf2e0f956024e03c23e556fcb074659423422a06fbedf2ab52978697ac7
+  checksum: 8aedc0c80083d0cabd6c6c4f04dea1cbcac609fd7bc3b1fc05a3999291bd6e63dd52b0c806f9378d5cae28eff5a6191709a4987861001293f8d03e53984adca4
   languageName: node
   linkType: hard
 
