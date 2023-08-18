@@ -184,7 +184,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/types@npm:^29.6.1":
+"@jest/types@npm:^29.4.3, @jest/types@npm:^29.6.1":
   version: 29.6.1
   resolution: "@jest/types@npm:29.6.1"
   dependencies:
@@ -211,10 +211,10 @@ __metadata:
     ava: 5.3.1
     c8: 8.0.0
     eslint-plugin-prettier: 4.2.1
-    jest-mock: 29.6.2
+    jest-mock: 29.4.3
     prettier: 2.8.3
     semantic-release: 21.0.7
-    tslib: 2.4.0
+    tslib: 2.6.2
     typedoc: 0.24.8
     typescript: 4.9.5
     xo: 0.53.1
@@ -4941,18 +4941,18 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"jest-mock@npm:29.6.2":
-  version: 29.6.2
-  resolution: "jest-mock@npm:29.6.2"
+"jest-mock@npm:29.4.3":
+  version: 29.4.3
+  resolution: "jest-mock@npm:29.4.3"
   dependencies:
-    "@jest/types": ^29.6.1
+    "@jest/types": ^29.4.3
     "@types/node": "*"
-    jest-util: ^29.6.2
-  checksum: 0bacb5d58441462c0e531ec4d2f7377eecbe21f664d8a460e72f94ba61d22635028931678e7a0f1c3e3f5894973db8e409432f7db4c01283456c8fdbd85f5b3b
+    jest-util: ^29.4.3
+  checksum: 8eb4a29b02d2cd03faac0290b6df6d23b4ffa43f72b21c7fff3c7dd04a2797355b1e85862b70b15341dd33ee3a693b17db5520a6f6e6b81ee75601987de6a1a2
   languageName: node
   linkType: hard
 
-"jest-util@npm:^29.6.2":
+"jest-util@npm:^29.4.3":
   version: 29.6.2
   resolution: "jest-util@npm:29.6.2"
   dependencies:
@@ -8487,10 +8487,10 @@ resolve@~1.19.0:
   languageName: node
   linkType: hard
 
-"tslib@npm:2.4.0":
-  version: 2.4.0
-  resolution: "tslib@npm:2.4.0"
-  checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
+"tslib@npm:2.6.2":
+  version: 2.6.2
+  resolution: "tslib@npm:2.6.2"
+  checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
   languageName: node
   linkType: hard
 
