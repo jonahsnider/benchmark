@@ -36,7 +36,7 @@
 	"prettier": "@jonahsnider/prettier-config",
 	"dependencies": {
 		"@jonahsnider/util": "10.0.1",
-		"tslib": "2.6.2"
+		"tslib": "2.4.0"
 	},
 	"devDependencies": {
 		"@jonahsnider/prettier-config": "1.1.2",
@@ -57,5 +57,5 @@
 	"engines": {
 		"node": ">=16.0.0"
 	},
-	"packageManager": "yarn@3.4.1"
+	"packageManager": "yarn@3.6.3"
 }
