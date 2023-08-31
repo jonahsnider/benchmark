@@ -125,9 +125,11 @@ export namespace Suite {
  */
 export class Suite implements SuiteLike {
 	readonly #tests = new Map<Test.Name, Test>();
+
 	/**
 	 * The tests in this {@link (Suite:class)}.
 	 */
+	// eslint-disable-next-line @typescript-eslint/member-ordering
 	tests: ReadonlyMap<Test.Name, Test> = this.#tests;
 
 	/**
