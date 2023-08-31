@@ -50,7 +50,7 @@
 		"jest-mock": "29.4.3",
 		"prettier": "3.0.3",
 		"semantic-release": "21.0.7",
-		"typedoc": "0.24.8",
+		"typedoc": "0.25.0",
 		"typescript": "5.2.2",
 		"xo": "0.53.1"
 	},
