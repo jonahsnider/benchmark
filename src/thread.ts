@@ -46,10 +46,6 @@ export class Thread implements SuiteLike {
 		this.#worker.unref();
 	}
 
-	#createWorker(): Worker {
-		return new Worker(WORKER_PATH, this.#workerOptions);
-	}
-
 	async run(abortSignal?: AbortSignal | undefined): Promise<Suite.Results> {
 		const runMessage: ThreadWorker.Message = {kind: ThreadWorker.Message.Kind.Run};
 
@@ -78,6 +74,10 @@ export class Thread implements SuiteLike {
 				throw new RangeError(`Unknown response kind`);
 			}
 		}
+	}
+
+	#createWorker(): Worker {
+		return new Worker(WORKER_PATH, this.#workerOptions);
 	}
 
 	async #onExit(code: number): Promise<void> {

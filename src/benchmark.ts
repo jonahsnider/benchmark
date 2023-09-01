@@ -46,6 +46,7 @@ export class Benchmark {
 	/**
 	 * The {@link SuiteLike}s in this {@link (Benchmark:class)}.
 	 */
+	// eslint-disable-next-line @typescript-eslint/member-ordering
 	readonly suites: ReadonlyMap<Suite.Name, SuiteLike> = this.#suites;
 
 	/**
