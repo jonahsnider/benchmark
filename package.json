@@ -36,7 +36,7 @@
 	"prettier": "@jonahsnider/prettier-config",
 	"dependencies": {
 		"@jonahsnider/util": "10.0.2",
-		"tslib": "2.4.0"
+		"tslib": "2.6.2"
 	},
 	"devDependencies": {
 		"@jonahsnider/prettier-config": "1.1.2",
