@@ -47,7 +47,7 @@
 		"ava": "5.3.1",
 		"c8": "8.0.0",
 		"eslint-plugin-prettier": "5.0.0",
-		"jest-mock": "29.7.0",
+		"jest-mock": "29.4.3",
 		"prettier": "3.0.3",
 		"semantic-release": "22.0.0",
 		"typedoc": "0.25.0",
@@ -57,5 +57,5 @@
 	"engines": {
 		"node": ">=16.0.0"
 	},
-	"packageManager": "yarn@3.4.1"
+	"packageManager": "yarn@3.6.4"
 }
