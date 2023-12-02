@@ -19,9 +19,10 @@
 	"exports": {
 		".": {
 			"types": "./tsc_output/index.d.ts",
-			"default": "./tsc_output/index.js"
+			"default": "./tsc_output/src/index.js"
 		}
 	},
+	"main": "./tsc_output/src/index.js",
 	"types": "./tsc_output/index.d.ts",
 	"files": [
 		"tsc_output",
