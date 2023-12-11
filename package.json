@@ -51,7 +51,7 @@
 		"@tsconfig/node16": "16.1.1",
 		"@types/node": "18.19.3",
 		"ava": "6.0.1",
-		"c8": "8.0.0",
+		"c8": "8.0.1",
 		"eslint-plugin-prettier": "5.0.0",
 		"jest-mock": "29.7.0",
 		"prettier": "3.0.3",
