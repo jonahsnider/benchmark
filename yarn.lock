@@ -259,7 +259,7 @@ __metadata:
     eslint-plugin-prettier: 5.0.0
     jest-mock: 29.7.0
     prettier: 3.0.3
-    semantic-release: 22.0.10
+    semantic-release: 22.0.11
     tslib: 2.6.2
     typedoc: 0.25.4
     typescript: 5.2.2
@@ -2570,18 +2570,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cosmiconfig@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "cosmiconfig@npm:8.0.0"
-  dependencies:
-    import-fresh: ^3.2.1
-    js-yaml: ^4.1.0
-    parse-json: ^5.0.0
-    path-type: ^4.0.0
-  checksum: ff4cdf89ac1ae52e7520816622c21a9e04380d04b82d653f5139ec581aa4f7f29e096d46770bc76c4a63c225367e88a1dfa233ea791669a35101f5f9b972c7d1
-  languageName: node
-  linkType: hard
-
 "cosmiconfig@npm:^8.2.0":
   version: 8.2.0
   resolution: "cosmiconfig@npm:8.2.0"
@@ -2591,6 +2579,23 @@ __metadata:
     parse-json: ^5.0.0
     path-type: ^4.0.0
   checksum: 836d5d8efa750f3fb17b03d6ca74cd3154ed025dffd045304b3ef59637f662bde1e5dc88f8830080d180ec60841719cf4ea2ce73fb21ec694b16865c478ff297
+  languageName: node
+  linkType: hard
+
+"cosmiconfig@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "cosmiconfig@npm:9.0.0"
+  dependencies:
+    env-paths: ^2.2.1
+    import-fresh: ^3.3.0
+    js-yaml: ^4.1.0
+    parse-json: ^5.2.0
+  peerDependencies:
+    typescript: ">=4.9.5"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: a30c424b53d442ea0bdd24cb1b3d0d8687c8dda4a17ab6afcdc439f8964438801619cdb66e8e79f63b9caa3e6586b60d8bab9ce203e72df6c5e80179b971fe8f
   languageName: node
   linkType: hard
 
@@ -2920,7 +2925,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"env-paths@npm:^2.2.0":
+"env-paths@npm:^2.2.0, env-paths@npm:^2.2.1":
   version: 2.2.1
   resolution: "env-paths@npm:2.2.1"
   checksum: 65b5df55a8bab92229ab2b40dad3b387fad24613263d103a97f91c9fe43ceb21965cd3392b1ccb5d77088021e525c4e0481adb309625d0cb94ade1d1fb8dc17e
@@ -4562,7 +4567,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"import-fresh@npm:^3.2.1":
+"import-fresh@npm:^3.2.1, import-fresh@npm:^3.3.0":
   version: 3.3.0
   resolution: "import-fresh@npm:3.3.0"
   dependencies:
@@ -7063,7 +7068,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"parse-json@npm:^5.0.0":
+"parse-json@npm:^5.0.0, parse-json@npm:^5.2.0":
   version: 5.2.0
   resolution: "parse-json@npm:5.2.0"
   dependencies:
@@ -7855,9 +7860,9 @@ resolve@~1.19.0:
   languageName: node
   linkType: hard
 
-"semantic-release@npm:22.0.10":
-  version: 22.0.10
-  resolution: "semantic-release@npm:22.0.10"
+"semantic-release@npm:22.0.11":
+  version: 22.0.11
+  resolution: "semantic-release@npm:22.0.11"
   dependencies:
     "@semantic-release/commit-analyzer": ^11.0.0
     "@semantic-release/error": ^4.0.0
@@ -7865,7 +7870,7 @@ resolve@~1.19.0:
     "@semantic-release/npm": ^11.0.0
     "@semantic-release/release-notes-generator": ^12.0.0
     aggregate-error: ^5.0.0
-    cosmiconfig: ^8.0.0
+    cosmiconfig: ^9.0.0
     debug: ^4.0.0
     env-ci: ^10.0.0
     execa: ^8.0.0
@@ -7890,7 +7895,7 @@ resolve@~1.19.0:
     yargs: ^17.5.1
   bin:
     semantic-release: bin/semantic-release.js
-  checksum: 14d22ed21c0ba5ff94dcabc77b3f0ae02b52e01e97174bfa08ba44ab9f84c286768153968cdd154957baeb11ace4ada69993d180de4c065d058c2a38d4b6ffc3
+  checksum: 1d0fc77984de0359c1527a240b5f1d77d59e46daf93f07090e25829ed7a1c65b758c4bc15a535c077165a59f560ba5964a6671fd9078966c0dc6017bd21553a2
   languageName: node
   linkType: hard
 
