@@ -251,7 +251,7 @@ __metadata:
     "@jonahsnider/prettier-config": 1.1.2
     "@jonahsnider/util": 10.3.0
     "@jonahsnider/xo-config": 5.3.0
-    "@microsoft/api-extractor": 7.39.5
+    "@microsoft/api-extractor": 7.40.0
     "@tsconfig/node16": 16.1.1
     "@types/node": 18.19.14
     ava: 6.1.1
@@ -349,9 +349,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@microsoft/api-extractor@npm:7.39.5":
-  version: 7.39.5
-  resolution: "@microsoft/api-extractor@npm:7.39.5"
+"@microsoft/api-extractor@npm:7.40.0":
+  version: 7.40.0
+  resolution: "@microsoft/api-extractor@npm:7.40.0"
   dependencies:
     "@microsoft/api-extractor-model": 7.28.8
     "@microsoft/tsdoc": 0.14.2
@@ -367,7 +367,7 @@ __metadata:
     typescript: 5.3.3
   bin:
     api-extractor: bin/api-extractor
-  checksum: 9961b1dcf3f192ffc83e1e72e47cdc9578a8870385127b468cf5b00cead8521c75f7659a3fd9633f434731bc9e2a04b2862d7ea80f8a7e5082bb416e7c3295b5
+  checksum: 0dc254d988c1dc400b16eef9d2b770d054c385d30e1c72508f250b91f82f799e23da5ac3587ccfa184cc5e0ab1507e106bb1ec55cf800103d8c3ffbbe34afbeb
   languageName: node
   linkType: hard
 
