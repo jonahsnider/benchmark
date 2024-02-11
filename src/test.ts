@@ -45,7 +45,18 @@ export class Test<T = unknown> {
 	 * @param implementation - The implementation function of the test
 	 */
 	constructor(implementation: () => T | PromiseLike<T>) {
-		this.#implementation = performance.timerify(implementation, {histogram: this.histogram});
+		this.#implementation = () => {
+			const startMs = performance.now();
+			const result = implementation();
+			const endMs = performance.now();
+
+			const durationNs = Math.round((endMs - startMs) * 1e6);
+
+			// Sometimes the duration is 0, seems like it's only when running on arm64 - see https://github.com/nodejs/node/issues/41641
+			this.histogram.record(durationNs || 1);
+
+			return result;
+		};
 	}
 
 	/**
