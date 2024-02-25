@@ -251,7 +251,7 @@ __metadata:
     "@jonahsnider/prettier-config": 1.1.2
     "@jonahsnider/util": 10.3.0
     "@jonahsnider/xo-config": 5.3.0
-    "@microsoft/api-extractor": 7.40.6
+    "@microsoft/api-extractor": 7.41.0
     "@tsconfig/node16": 16.1.1
     "@types/node": 20.11.20
     ava: 6.1.1
@@ -349,17 +349,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@microsoft/api-extractor@npm:7.40.6":
-  version: 7.40.6
-  resolution: "@microsoft/api-extractor@npm:7.40.6"
+"@microsoft/api-extractor@npm:7.41.0":
+  version: 7.41.0
+  resolution: "@microsoft/api-extractor@npm:7.41.0"
   dependencies:
     "@microsoft/api-extractor-model": 7.28.13
     "@microsoft/tsdoc": 0.14.2
     "@microsoft/tsdoc-config": ~0.16.1
     "@rushstack/node-core-library": 4.0.2
     "@rushstack/rig-package": 0.5.2
-    "@rushstack/terminal": 0.9.0
-    "@rushstack/ts-command-line": 4.17.3
+    "@rushstack/terminal": 0.10.0
+    "@rushstack/ts-command-line": 4.17.4
     lodash: ~4.17.15
     resolve: ~1.22.1
     semver: ~7.5.4
@@ -367,7 +367,7 @@ __metadata:
     typescript: 5.3.3
   bin:
     api-extractor: bin/api-extractor
-  checksum: 5d4f83375b3334386eac5ab76b2d67e717d86b0b796698f860ec242f776617528ba4a25922bb096873b602d64653b01376feb4a15da2b0de9f3f8598da97965a
+  checksum: 370595da20c972118509b9f8031031637b6607bb539597a664d7f75235f5977e2bb08ea8eb20c21b0ba30da760e9d8eb7852368180587aeb8ca37da18cba27ca
   languageName: node
   linkType: hard
 
@@ -920,30 +920,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rushstack/terminal@npm:0.9.0":
-  version: 0.9.0
-  resolution: "@rushstack/terminal@npm:0.9.0"
+"@rushstack/terminal@npm:0.10.0":
+  version: 0.10.0
+  resolution: "@rushstack/terminal@npm:0.10.0"
   dependencies:
     "@rushstack/node-core-library": 4.0.2
-    colors: ~1.2.1
+    supports-color: ~8.1.1
   peerDependencies:
     "@types/node": "*"
   peerDependenciesMeta:
     "@types/node":
       optional: true
-  checksum: b186e142e50d52be6fc8298bb75e1efee18cd09cc668393f518ff5f32d6611671e3e657320b53a916c777dee2481f4cfdf2dee6b038b615743c01a7c97765b15
+  checksum: 1a62b2bd26f501608ae0c482b4597c4266752501e6ca61ffa7a00344b396382dbb5a8a6766dd93af9b5aecfbcf861c065f00b3c70461b48ec168feefc9515d9f
   languageName: node
   linkType: hard
 
-"@rushstack/ts-command-line@npm:4.17.3":
-  version: 4.17.3
-  resolution: "@rushstack/ts-command-line@npm:4.17.3"
+"@rushstack/ts-command-line@npm:4.17.4":
+  version: 4.17.4
+  resolution: "@rushstack/ts-command-line@npm:4.17.4"
   dependencies:
-    "@rushstack/terminal": 0.9.0
+    "@rushstack/terminal": 0.10.0
     "@types/argparse": 1.0.38
     argparse: ~1.0.9
     string-argv: ~0.3.1
-  checksum: 688fc89d51830876826392b255c9225f0b1c7b82c63a8006005655e1e47e414b407e2be2935dee5c8401430dfce4882ee18b7cda48df8d8aaf7bd2d07394d777
+  checksum: e81d66f3041a4078c50d4ef3120aad720c2178806add749f154730ef27df81e4427d6ba4ec4c081f97543b84ae103b6466b3bbe18d1d5f1c1f427eb08c78263d
   languageName: node
   linkType: hard
 
@@ -2443,13 +2443,6 @@ __metadata:
   bin:
     color-support: bin.js
   checksum: 9b7356817670b9a13a26ca5af1c21615463b500783b739b7634a0c2047c16cef4b2865d7576875c31c3cddf9dd621fa19285e628f20198b233a5cfdda6d0793b
-  languageName: node
-  linkType: hard
-
-"colors@npm:~1.2.1":
-  version: 1.2.5
-  resolution: "colors@npm:1.2.5"
-  checksum: b6e23de735f68b72d5cdf6fd854ca43d1b66d82dcf54bda0b788083b910164a040f2c4edf23c670d36a7a2d8f1b7d6e62e3292703e4642691e6ccaa1c62d8f74
   languageName: node
   linkType: hard
 
@@ -8632,6 +8625,15 @@ resolve@~1.19.0:
   version: 9.4.0
   resolution: "supports-color@npm:9.4.0"
   checksum: cb8ff8daeaf1db642156f69a9aa545b6c01dd9c4def4f90a49f46cbf24be0c245d392fcf37acd119cd1819b99dad2cc9b7e3260813f64bcfd7f5b18b5a1eefb8
+  languageName: node
+  linkType: hard
+
+"supports-color@npm:~8.1.1":
+  version: 8.1.1
+  resolution: "supports-color@npm:8.1.1"
+  dependencies:
+    has-flag: ^4.0.0
+  checksum: c052193a7e43c6cdc741eb7f378df605636e01ad434badf7324f17fb60c69a880d8d8fcdcb562cf94c2350e57b937d7425ab5b8326c67c2adc48f7c87c1db406
   languageName: node
   linkType: hard
 
