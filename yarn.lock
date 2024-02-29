@@ -251,7 +251,7 @@ __metadata:
     "@jonahsnider/prettier-config": 1.1.2
     "@jonahsnider/util": 10.3.0
     "@jonahsnider/xo-config": 5.3.0
-    "@microsoft/api-extractor": 7.41.1
+    "@microsoft/api-extractor": 7.42.0
     "@tsconfig/node16": 16.1.1
     "@types/node": 20.11.22
     ava: 6.1.2
@@ -349,9 +349,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@microsoft/api-extractor@npm:7.41.1":
-  version: 7.41.1
-  resolution: "@microsoft/api-extractor@npm:7.41.1"
+"@microsoft/api-extractor@npm:7.42.0":
+  version: 7.42.0
+  resolution: "@microsoft/api-extractor@npm:7.42.0"
   dependencies:
     "@microsoft/api-extractor-model": 7.28.13
     "@microsoft/tsdoc": 0.14.2
@@ -361,13 +361,14 @@ __metadata:
     "@rushstack/terminal": 0.10.0
     "@rushstack/ts-command-line": 4.18.0
     lodash: ~4.17.15
+    minimatch: ~3.0.3
     resolve: ~1.22.1
     semver: ~7.5.4
     source-map: ~0.6.1
     typescript: 5.3.3
   bin:
     api-extractor: bin/api-extractor
-  checksum: 3cd5ec7c1bb2942b96d0db6da54948920b7647b6c96269317e2a5c5b06396faf6fc303a1d22ee8dedf68dd32ccb49e589b1f59d5453944ba75ffd8c6bc2953ab
+  checksum: 6e1cd0cf51e73d932bf43224a1999795be44fc053f0fe4d3b647adbe229476e0ec79b25a2f475a6d839f2a9878d5f233234548b493ce28f8038668f6dbfcf5d4
   languageName: node
   linkType: hard
 
@@ -6182,6 +6183,15 @@ __metadata:
   dependencies:
     brace-expansion: ^2.0.1
   checksum: 253487976bf485b612f16bf57463520a14f512662e592e95c571afdab1442a6a6864b6c88f248ce6fc4ff0b6de04ac7aa6c8bb51e868e99d1d65eb0658a708b5
+  languageName: node
+  linkType: hard
+
+"minimatch@npm:~3.0.3":
+  version: 3.0.8
+  resolution: "minimatch@npm:3.0.8"
+  dependencies:
+    brace-expansion: ^1.1.7
+  checksum: 850cca179cad715133132693e6963b0db64ab0988c4d211415b087fc23a3e46321e2c5376a01bf5623d8782aba8bdf43c571e2e902e51fdce7175c7215c29f8b
   languageName: node
   linkType: hard
 
