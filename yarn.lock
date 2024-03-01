@@ -251,7 +251,7 @@ __metadata:
     "@jonahsnider/prettier-config": 1.1.2
     "@jonahsnider/util": 10.3.0
     "@jonahsnider/xo-config": 5.3.0
-    "@microsoft/api-extractor": 7.42.0
+    "@microsoft/api-extractor": 7.42.1
     "@tsconfig/node16": 16.1.1
     "@types/node": 20.11.24
     ava: 6.1.2
@@ -349,9 +349,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@microsoft/api-extractor@npm:7.42.0":
-  version: 7.42.0
-  resolution: "@microsoft/api-extractor@npm:7.42.0"
+"@microsoft/api-extractor@npm:7.42.1":
+  version: 7.42.1
+  resolution: "@microsoft/api-extractor@npm:7.42.1"
   dependencies:
     "@microsoft/api-extractor-model": 7.28.13
     "@microsoft/tsdoc": 0.14.2
@@ -359,7 +359,7 @@ __metadata:
     "@rushstack/node-core-library": 4.0.2
     "@rushstack/rig-package": 0.5.2
     "@rushstack/terminal": 0.10.0
-    "@rushstack/ts-command-line": 4.18.0
+    "@rushstack/ts-command-line": 4.18.1
     lodash: ~4.17.15
     minimatch: ~3.0.3
     resolve: ~1.22.1
@@ -368,7 +368,7 @@ __metadata:
     typescript: 5.3.3
   bin:
     api-extractor: bin/api-extractor
-  checksum: 6e1cd0cf51e73d932bf43224a1999795be44fc053f0fe4d3b647adbe229476e0ec79b25a2f475a6d839f2a9878d5f233234548b493ce28f8038668f6dbfcf5d4
+  checksum: bae32ac78b26e8f95d98af120ffb4b6d7fcf1c3e95f320bc4dbfd08add5d5b998aadf267ffe6538fb7cd6f4ad8a01aec591f58c39b02d617bdae78a0542bea9d
   languageName: node
   linkType: hard
 
@@ -936,15 +936,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rushstack/ts-command-line@npm:4.18.0":
-  version: 4.18.0
-  resolution: "@rushstack/ts-command-line@npm:4.18.0"
+"@rushstack/ts-command-line@npm:4.18.1":
+  version: 4.18.1
+  resolution: "@rushstack/ts-command-line@npm:4.18.1"
   dependencies:
     "@rushstack/terminal": 0.10.0
     "@types/argparse": 1.0.38
     argparse: ~1.0.9
     string-argv: ~0.3.1
-  checksum: ebea877abba39b9917a5906c6bd9f946130298cea700c7bbfb80d9d10f0a31d0d8cfaf45a652fcbf836bc5ef24bc7825cb00aa6821cdc97b8f39924681e80321
+  checksum: 5868ea67b5001b283350ffd2e820e7e9e1a9a28c93345605d953b898f52e80782ff106af13a5fb628639bfc706b88f0c77e46e62c64295c601d76bae741d0f71
   languageName: node
   linkType: hard
 
