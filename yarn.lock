@@ -231,7 +231,7 @@ __metadata:
     "@jonahsnider/prettier-config": 1.1.2
     "@jonahsnider/util": 10.3.0
     "@jonahsnider/xo-config": 5.3.0
-    "@microsoft/api-extractor": 7.42.3
+    "@microsoft/api-extractor": 7.43.0
     "@tsconfig/node16": 16.1.1
     "@types/node": 20.11.30
     ava: 6.1.2
@@ -329,9 +329,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@microsoft/api-extractor@npm:7.42.3":
-  version: 7.42.3
-  resolution: "@microsoft/api-extractor@npm:7.42.3"
+"@microsoft/api-extractor@npm:7.43.0":
+  version: 7.43.0
+  resolution: "@microsoft/api-extractor@npm:7.43.0"
   dependencies:
     "@microsoft/api-extractor-model": 7.28.13
     "@microsoft/tsdoc": 0.14.2
@@ -345,10 +345,10 @@ __metadata:
     resolve: ~1.22.1
     semver: ~7.5.4
     source-map: ~0.6.1
-    typescript: 5.3.3
+    typescript: 5.4.2
   bin:
     api-extractor: bin/api-extractor
-  checksum: 06581dbd80db2520a431b13ae70c5812bc3c707ddd1736b92974593028ca662d776691bc31654d90706ef31a766a73b301bc5f25b14bf04e1642c3431f2f702e
+  checksum: 7015bbd529782209f0d8e5728ae7699707ea60a696a60b2bc688ec88fec62430e82ac77629e59fc40d3b287ea0135a1050509c7436de648bb656e882c97fae3c
   languageName: node
   linkType: hard
 
@@ -9077,6 +9077,16 @@ resolve@~1.19.0:
   languageName: node
   linkType: hard
 
+"typescript@npm:5.4.2":
+  version: 5.4.2
+  resolution: "typescript@npm:5.4.2"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 96d80fde25a09bcb04d399082fb27a808a9e17c2111e43849d2aafbd642d835e4f4ef0de09b0ba795ec2a700be6c4c2c3f62bf4660c05404c948727b5bbfb32a
+  languageName: node
+  linkType: hard
+
 "typescript@npm:^5.1.6":
   version: 5.2.2
   resolution: "typescript@npm:5.2.2"
@@ -9094,6 +9104,16 @@ resolve@~1.19.0:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 4e604a9e107ce0c23b16a2f8d79d0531d4d8fe9ebbb7a8c395c66998c39892f0e0a071ef0b0d4e66420a8ec2b8d6cfd9cdb29ba24f25b37cba072e9282376df9
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@5.4.2#~builtin<compat/typescript>":
+  version: 5.4.2
+  resolution: "typescript@patch:typescript@npm%3A5.4.2#~builtin<compat/typescript>::version=5.4.2&hash=5adc0c"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 797ac213c03a19749181c745647b4cab03d13bf4b6b738b05a3426f46c6b540f908989e839d9b0c89d7a4ee2bdb50493b4d4898d4ef1c897c3e9d0b082e78a67
   languageName: node
   linkType: hard
 
