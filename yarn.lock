@@ -232,7 +232,7 @@ __metadata:
     "@jonahsnider/util": 10.3.0
     "@jonahsnider/xo-config": 5.3.0
     "@microsoft/api-extractor": 7.43.0
-    "@tsconfig/node16": 16.1.1
+    "@tsconfig/node16": 16.1.2
     "@types/node": 20.11.30
     ava: 6.1.2
     c8: 9.1.0
@@ -1131,10 +1131,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/node16@npm:16.1.1":
-  version: 16.1.1
-  resolution: "@tsconfig/node16@npm:16.1.1"
-  checksum: 26d83db06866083b543e73eda33585464362fd0835229b9a5b1185f0353b9b5db9ca4f66a4be53d4ec5d4c219be42b0a7582f8bcc7268f2f77b1c643375e490f
+"@tsconfig/node16@npm:16.1.2":
+  version: 16.1.2
+  resolution: "@tsconfig/node16@npm:16.1.2"
+  checksum: 6ac44eca28ba4df832a4c576b942dc17c377db12df412de769d5c52df73756466a5e550266eb6e970c8dc4248669a0fc91319fd8df7af7263b12f371ad933695
   languageName: node
   linkType: hard
 
