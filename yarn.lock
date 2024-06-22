@@ -241,7 +241,7 @@ __metadata:
     prettier: 3.2.5
     semantic-release: 23.1.1
     tslib: 2.6.3
-    typedoc: 0.26.0
+    typedoc: 0.26.1
     typescript: 5.3.3
     xo: 0.56.0
   languageName: unknown
@@ -8298,7 +8298,7 @@ resolve@~1.19.0:
   languageName: node
   linkType: hard
 
-"shiki@npm:^1.6.5":
+"shiki@npm:^1.9.0":
   version: 1.9.0
   resolution: "shiki@npm:1.9.0"
   dependencies:
@@ -9262,20 +9262,20 @@ resolve@~1.19.0:
   languageName: node
   linkType: hard
 
-"typedoc@npm:0.26.0":
-  version: 0.26.0
-  resolution: "typedoc@npm:0.26.0"
+"typedoc@npm:0.26.1":
+  version: 0.26.1
+  resolution: "typedoc@npm:0.26.1"
   dependencies:
     lunr: ^2.3.9
     markdown-it: ^14.1.0
     minimatch: ^9.0.4
-    shiki: ^1.6.5
+    shiki: ^1.9.0
     yaml: ^2.4.5
   peerDependencies:
     typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x || 5.5.x
   bin:
     typedoc: bin/typedoc
-  checksum: 9b57bea4beef43c1619d8b3551afa96435c38ab1595db52c21a81216157aee25315191642eb79909f1fe07496bfd0dd14baa124a8d450b1643fa7a830f8dd7a6
+  checksum: 75332482f86767798404414b228f64cd3cd8ecc53f0dfccbf74a56fe3cc91c85bd5ec1ff665ad1b8e6a322fd092652f97cbbea57929f84c4309c430c34ebe77a
   languageName: node
   linkType: hard
 
