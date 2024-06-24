@@ -241,7 +241,7 @@ __metadata:
     prettier: 3.2.5
     semantic-release: 23.1.1
     tslib: 2.6.3
-    typedoc: 0.26.1
+    typedoc: 0.26.2
     typescript: 5.3.3
     xo: 0.56.0
   languageName: unknown
@@ -9262,9 +9262,9 @@ resolve@~1.19.0:
   languageName: node
   linkType: hard
 
-"typedoc@npm:0.26.1":
-  version: 0.26.1
-  resolution: "typedoc@npm:0.26.1"
+"typedoc@npm:0.26.2":
+  version: 0.26.2
+  resolution: "typedoc@npm:0.26.2"
   dependencies:
     lunr: ^2.3.9
     markdown-it: ^14.1.0
@@ -9275,7 +9275,7 @@ resolve@~1.19.0:
     typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x || 5.5.x
   bin:
     typedoc: bin/typedoc
-  checksum: 75332482f86767798404414b228f64cd3cd8ecc53f0dfccbf74a56fe3cc91c85bd5ec1ff665ad1b8e6a322fd092652f97cbbea57929f84c4309c430c34ebe77a
+  checksum: c3bf62ddc13c694efe69d88e587bbcaa451363aff32d75a0fa871e92cd14d9fc1ac039a9a2059b1659530d86b0fb2d813b1cd87c7fc17c2148d66c9f90940358
   languageName: node
   linkType: hard
 
