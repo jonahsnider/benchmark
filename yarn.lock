@@ -241,7 +241,7 @@ __metadata:
     prettier: 3.2.5
     semantic-release: 23.1.1
     tslib: 2.6.3
-    typedoc: 0.26.2
+    typedoc: 0.26.3
     typescript: 5.3.3
     xo: 0.56.0
   languageName: unknown
@@ -1019,10 +1019,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@shikijs/core@npm:1.9.0":
-  version: 1.9.0
-  resolution: "@shikijs/core@npm:1.9.0"
-  checksum: 69936121447fd078b0f628fff7286a28db63b4c50183f5fed698b1a9679458470fe7191d2af7fea6adeb6477b86fd6e89e6c40a78bbcc3e21341cd6b6eaa36ce
+"@shikijs/core@npm:1.9.1":
+  version: 1.9.1
+  resolution: "@shikijs/core@npm:1.9.1"
+  checksum: 3eaa5882d7f7065de78fffb2b961b9112e1df2b5d2e5334107da67dc3c7fd7c8249e33a73aacc974f06a912201ea00858ff05f5d323a6d9474aa2cd04ec8f279
   languageName: node
   linkType: hard
 
@@ -6297,12 +6297,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^9.0.4":
-  version: 9.0.4
-  resolution: "minimatch@npm:9.0.4"
+"minimatch@npm:^9.0.5":
+  version: 9.0.5
+  resolution: "minimatch@npm:9.0.5"
   dependencies:
     brace-expansion: ^2.0.1
-  checksum: cf717f597ec3eed7dabc33153482a2e8d49f4fd3c26e58fd9c71a94c5029a0838728841b93f46bf1263b65a8010e2ee800d0dc9b004ab8ba8b6d1ec07cc115b5
+  checksum: 2c035575eda1e50623c731ec6c14f65a85296268f749b9337005210bb2b34e2705f8ef1a358b188f69892286ab99dc42c8fb98a57bde55c8d81b3023c19cea28
   languageName: node
   linkType: hard
 
@@ -8298,12 +8298,12 @@ resolve@~1.19.0:
   languageName: node
   linkType: hard
 
-"shiki@npm:^1.9.0":
-  version: 1.9.0
-  resolution: "shiki@npm:1.9.0"
+"shiki@npm:^1.9.1":
+  version: 1.9.1
+  resolution: "shiki@npm:1.9.1"
   dependencies:
-    "@shikijs/core": 1.9.0
-  checksum: d92bd313b65ae46edd8ca6289f1bfe56a06cdbb022ff7bbfaa262552d20bc55ff21254e4b89dc1ae5a2261602e9bb573ec4023a0fcc384c786ffe15c37721a64
+    "@shikijs/core": 1.9.1
+  checksum: 7f31bbb7c32678de76adb25b8914b4f4bea5d22acb05a62b5110fa57f2d127fe1a9cfebafacbcc378a43bd34ed2a6259e0bb47e7995b3be6be5a037f0f465bb9
   languageName: node
   linkType: hard
 
@@ -9262,20 +9262,20 @@ resolve@~1.19.0:
   languageName: node
   linkType: hard
 
-"typedoc@npm:0.26.2":
-  version: 0.26.2
-  resolution: "typedoc@npm:0.26.2"
+"typedoc@npm:0.26.3":
+  version: 0.26.3
+  resolution: "typedoc@npm:0.26.3"
   dependencies:
     lunr: ^2.3.9
     markdown-it: ^14.1.0
-    minimatch: ^9.0.4
-    shiki: ^1.9.0
+    minimatch: ^9.0.5
+    shiki: ^1.9.1
     yaml: ^2.4.5
   peerDependencies:
     typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x || 5.5.x
   bin:
     typedoc: bin/typedoc
-  checksum: c3bf62ddc13c694efe69d88e587bbcaa451363aff32d75a0fa871e92cd14d9fc1ac039a9a2059b1659530d86b0fb2d813b1cd87c7fc17c2148d66c9f90940358
+  checksum: 3e4fc7cbd455e2adf591b4d01f191fa9518e56a4a2ee659ba1d4d221902656dc1f3572a726443b91bb3586bb485e783d924670f7a9087602153ef04ea2dcbd82
   languageName: node
   linkType: hard
 
