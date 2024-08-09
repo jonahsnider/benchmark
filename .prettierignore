@@ -222,7 +222,7 @@ tsc_*
 
 # API Extractor
 temp
-api.md
+benchmark.api.md
 
 # TypeDoc output
 docs_out

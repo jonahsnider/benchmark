@@ -175,5 +175,5 @@ For example, you could make a suite for "sorting an array" and your tests could 
 A test is a single function that is run many times while its performance is recorded.
 Internally it's represented with the `Test` class which _is_ exported by the package but you probably don't need to use it directly.
 
-[api-overview]: ./api.md
+[api-overview]: ./benchmark.api.md
 [docs]: https://benchmark.jonah.pw
