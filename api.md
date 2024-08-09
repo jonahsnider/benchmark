@@ -11,6 +11,9 @@ import type { RecordableHistogram } from 'node:perf_hooks';
 // @public (undocumented)
 export namespace Benchmark {
     export type Results = Map<Suite.Name, Suite.Results>;
+    export type RunOptions = {
+        sequential?: boolean | undefined;
+    };
 }
 
 // @public
@@ -21,7 +24,7 @@ export class Benchmark {
     addSuite(suite: SuiteLike, options: {
         threaded: true;
     }): Promise<this>;
-    runSuites(abortSignal?: AbortSignal | undefined): Promise<Benchmark.Results>;
+    runSuites(abortSignal?: AbortSignal | undefined, options?: Benchmark.RunOptions): Promise<Benchmark.Results>;
     readonly suites: ReadonlyMap<Suite.Name, SuiteLike>;
 }
 
