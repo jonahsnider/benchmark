@@ -14,6 +14,20 @@ export namespace Benchmark {
 	 * @public
 	 */
 	export type Results = Map<Suite.Name, Suite.Results>;
+
+	/**
+	 * Options for running a {@link (Benchmark:class)}.
+	 *
+	 * @public
+	 */
+	export type RunOptions = {
+		/**
+		 * Whether to run multithreaded suites sequentially or in parallel.
+		 *
+		 * @public
+		 */
+		sequential?: boolean | undefined;
+	};
 }
 
 /**
@@ -123,7 +137,7 @@ export class Benchmark {
 	 *
 	 * @returns A {@link (Benchmark:namespace).Results} `Map`
 	 */
-	async runSuites(abortSignal?: AbortSignal | undefined): Promise<Benchmark.Results> {
+	async runSuites(abortSignal?: AbortSignal | undefined, options?: Benchmark.RunOptions): Promise<Benchmark.Results> {
 		const results: Benchmark.Results = new Map();
 
 		const [multithreaded, singleThreaded] = partition(this.#suites.values(), suite => this.#multithreadedSuites.has(suite.name));
@@ -136,14 +150,22 @@ export class Benchmark {
 			results.set(suite.name, suiteResults);
 		}
 
-		// Multithreaded suites can be run in parallel since they are independent
-		await Promise.all(
-			multithreaded.map(async suite => {
+		if (options?.sequential) {
+			for (const suite of multithreaded) {
+				// eslint-disable-next-line no-await-in-loop
 				const suiteResults = await suite.run(abortSignal);
 
 				results.set(suite.name, suiteResults);
-			}),
-		);
+			}
+		} else {
+			await Promise.all(
+				multithreaded.map(async suite => {
+					const suiteResults = await suite.run(abortSignal);
+
+					results.set(suite.name, suiteResults);
+				}),
+			);
+		}
 
 		return results;
 	}
