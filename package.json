@@ -57,7 +57,7 @@
 		"prettier": "3.2.5",
 		"semantic-release": "24.0.0",
 		"typedoc": "0.26.5",
-		"typescript": "5.3.3",
+		"typescript": "5.5.4",
 		"xo": "0.56.0"
 	},
 	"packageManager": "yarn@4.4.0",
