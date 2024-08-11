@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="node" />
-
 import type { RecordableHistogram } from 'node:perf_hooks';
 
 // @public (undocumented)
