@@ -56,7 +56,7 @@
 		"jest-mock": "29.7.0",
 		"prettier": "3.2.5",
 		"semantic-release": "24.1.0",
-		"typedoc": "0.26.6",
+		"typedoc": "0.26.7",
 		"typescript": "5.5.4",
 		"xo": "0.56.0"
 	},
