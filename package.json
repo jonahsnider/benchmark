@@ -60,7 +60,7 @@
 		"typescript": "5.7.2",
 		"xo": "0.56.0"
 	},
-	"packageManager": "yarn@4.5.3",
+	"packageManager": "yarn@4.6.0",
 	"engines": {
 		"node": ">=16.0.0"
 	}
