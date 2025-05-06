@@ -255,7 +255,7 @@ __metadata:
     "@jonahsnider/xo-config": "npm:5.3.0"
     "@microsoft/api-extractor": "npm:7.52.7"
     "@tsconfig/node16": "npm:16.1.3"
-    "@types/node": "npm:22.15.3"
+    "@types/node": "npm:22.15.11"
     ava: "npm:6.3.0"
     c8: "npm:10.1.3"
     eslint-plugin-prettier: "npm:5.1.3"
@@ -1369,12 +1369,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:22.15.3":
-  version: 22.15.3
-  resolution: "@types/node@npm:22.15.3"
+"@types/node@npm:22.15.11":
+  version: 22.15.11
+  resolution: "@types/node@npm:22.15.11"
   dependencies:
     undici-types: "npm:~6.21.0"
-  checksum: 10c0/2879f012d1aeba0bfdb5fed80d165f4f2cb3d1f2e1f98a24b18d4a211b4ace7d64bf2622784c78355982ffc1081ba79d0934efc2fb8353913e5871a63609661f
+  checksum: 10c0/30019fe6f9f3a6aeade646a6a8af11e3d5fe1458a556b8ae404cea1da7fa496bb7f68ca5fa75deca358cfec80bed04fb7dd0d0203073a4208ec2e91c4037fddf
   languageName: node
   linkType: hard
 
