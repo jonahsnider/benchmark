@@ -1,5 +1,4 @@
-import type {RecordableHistogram} from 'node:perf_hooks';
-import {createHistogram, performance} from 'node:perf_hooks';
+import {type RecordableHistogram, createHistogram, performance} from 'node:perf_hooks';
 
 /**
  * @public

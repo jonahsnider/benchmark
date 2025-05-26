@@ -1,6 +1,5 @@
 import assert from 'node:assert/strict';
-import type {RecordableHistogram} from 'node:perf_hooks';
-import {performance} from 'node:perf_hooks';
+import {type RecordableHistogram, performance} from 'node:perf_hooks';
 import {Test} from './test.js';
 import {AbortError} from './utils.js';
 
@@ -55,7 +54,7 @@ export type SuiteLike = {
 	 *
 	 * @returns The results of running this {@link SuiteLike}
 	 */
-	run(abortSignal?: AbortSignal | undefined): Suite.Results | PromiseLike<Suite.Results>;
+	run(abortSignal?: AbortSignal): Suite.Results | PromiseLike<Suite.Results>;
 };
 
 /**
@@ -247,7 +246,7 @@ export class Suite implements SuiteLike {
 	 *
 	 * @returns The results of running this {@link (Suite:class)}
 	 */
-	async run(abortSignal?: AbortSignal | undefined): Promise<Suite.Results> {
+	async run(abortSignal?: AbortSignal): Promise<Suite.Results> {
 		this.#clearResults();
 
 		await this.#runWarmup(abortSignal);
@@ -272,7 +271,7 @@ export class Suite implements SuiteLike {
 		}
 	}
 
-	async #runTestsWithOptions(options: Suite.RunOptions, abortSignal?: AbortSignal | undefined): Promise<void> {
+	async #runTestsWithOptions(options: Suite.RunOptions, abortSignal?: AbortSignal): Promise<void> {
 		if (options.durationMs === undefined) {
 			for (let count = 0; count < options.trials; count++) {
 				if (abortSignal?.aborted) {
@@ -296,11 +295,11 @@ export class Suite implements SuiteLike {
 		}
 	}
 
-	async #runTests(abortSignal?: AbortSignal | undefined): Promise<void> {
+	async #runTests(abortSignal?: AbortSignal): Promise<void> {
 		await this.#runTestsWithOptions(this.options.run, abortSignal);
 	}
 
-	async #runWarmup(abortSignal?: AbortSignal | undefined): Promise<void> {
+	async #runWarmup(abortSignal?: AbortSignal): Promise<void> {
 		await this.#runTestsWithOptions(this.options.warmup, abortSignal);
 
 		this.#clearResults();
