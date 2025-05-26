@@ -1,9 +1,7 @@
 import assert from 'node:assert/strict';
 import {once} from 'node:events';
-import type {WorkerOptions} from 'node:worker_threads';
-import {Worker} from 'node:worker_threads';
-import type {SuiteLike} from './suite.js';
-import {Suite} from './suite.js';
+import {type WorkerOptions, Worker} from 'node:worker_threads';
+import {type SuiteLike, Suite} from './suite.js';
 import {ThreadWorker} from './types/index.js';
 import {compatibleImport} from './utils.js';
 
@@ -46,7 +44,7 @@ export class Thread implements SuiteLike {
 		this.#worker.unref();
 	}
 
-	async run(abortSignal?: AbortSignal | undefined): Promise<Suite.Results> {
+	async run(abortSignal?: AbortSignal): Promise<Suite.Results> {
 		const runMessage: ThreadWorker.Message = {kind: ThreadWorker.Message.Kind.Run};
 
 		// Worker must be run before an abort signal is sent
@@ -55,24 +53,29 @@ export class Thread implements SuiteLike {
 		const onAbortListener = this.#onAbort.bind(this);
 
 		abortSignal?.addEventListener('abort', onAbortListener, {once: true});
+		const message = once(this.#worker, 'message');
 
-		const message = once(this.#worker, 'message').finally(() => abortSignal?.removeEventListener('abort', onAbortListener));
-		const [response] = (await message) as [ThreadWorker.Response];
+		try {
+			const [response] = (await message) as [ThreadWorker.Response];
 
-		switch (response.kind) {
-			case ThreadWorker.Response.Kind.Results: {
-				return response.results;
+			switch (response.kind) {
+				case ThreadWorker.Response.Kind.Results: {
+					return response.results;
+				}
+
+				case ThreadWorker.Response.Kind.Error: {
+					// Note: Structured clone algorithm has weird behavior with Error instances - see https://github.com/nodejs/help/issues/1558#issuecomment-431142715 and https://github.com/nodejs/node/issues/26692#issuecomment-658010376
+
+					throw response.error;
+				}
+
+				// eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
+				default: {
+					throw new RangeError('Unknown response kind');
+				}
 			}
-
-			case ThreadWorker.Response.Kind.Error: {
-				// Note: Structured clone algorithm has weird behavior with Error instances - see https://github.com/nodejs/help/issues/1558#issuecomment-431142715 and https://github.com/nodejs/node/issues/26692#issuecomment-658010376
-
-				throw response.error;
-			}
-
-			default: {
-				throw new RangeError(`Unknown response kind`);
-			}
+		} finally {
+			abortSignal?.removeEventListener('abort', onAbortListener);
 		}
 	}
 

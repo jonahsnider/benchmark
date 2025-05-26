@@ -4,7 +4,7 @@
 
 ```ts
 
-import type { RecordableHistogram } from 'node:perf_hooks';
+import { RecordableHistogram } from 'node:perf_hooks';
 
 // @public (undocumented)
 export namespace Benchmark {
@@ -16,13 +16,13 @@ export namespace Benchmark {
 
 // @public
 export class Benchmark {
-    addSuite(suite: SuiteLike, options?: undefined | {
+    addSuite(suite: SuiteLike, options?: {
         threaded: false;
     }): this;
     addSuite(suite: SuiteLike, options: {
         threaded: true;
     }): Promise<this>;
-    runSuites(abortSignal?: AbortSignal | undefined, options?: Benchmark.RunOptions): Promise<Benchmark.Results>;
+    runSuites(abortSignal?: AbortSignal, options?: Benchmark.RunOptions): Promise<Benchmark.Results>;
     readonly suites: ReadonlyMap<Suite.Name, SuiteLike>;
 }
 
@@ -54,7 +54,7 @@ export class Suite implements SuiteLike {
     // (undocumented)
     readonly name: Suite.Name;
     readonly options: Suite.Options;
-    run(abortSignal?: AbortSignal | undefined): Promise<Suite.Results>;
+    run(abortSignal?: AbortSignal): Promise<Suite.Results>;
     tests: ReadonlyMap<Test.Name, Test>;
 }
 
@@ -62,7 +62,7 @@ export class Suite implements SuiteLike {
 export type SuiteLike = {
     readonly name: Suite.Name;
     readonly filepath?: string | undefined;
-    run(abortSignal?: AbortSignal | undefined): Suite.Results | PromiseLike<Suite.Results>;
+    run(abortSignal?: AbortSignal): Suite.Results | PromiseLike<Suite.Results>;
 };
 
 // @public (undocumented)

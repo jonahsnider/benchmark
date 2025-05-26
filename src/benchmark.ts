@@ -55,7 +55,7 @@ export namespace Benchmark {
  */
 export class Benchmark {
 	readonly #suites = new Map<Suite.Name, SuiteLike>();
-	#multithreadedSuites = new Set<Suite.Name>();
+	readonly #multithreadedSuites = new Set<Suite.Name>();
 
 	/**
 	 * The {@link SuiteLike}s in this {@link (Benchmark:class)}.
@@ -75,7 +75,7 @@ export class Benchmark {
 	 *
 	 * @returns `this`
 	 */
-	addSuite(suite: SuiteLike, options?: undefined | {threaded: false}): this;
+	addSuite(suite: SuiteLike, options?: {threaded: false}): this;
 	/**
 	 * Add a {@link SuiteLike} to this {@link (Benchmark:class)} by loading it in a separate thread via its filepath.
 	 *
@@ -89,12 +89,13 @@ export class Benchmark {
 	 * @returns `this`
 	 */
 	addSuite(suite: SuiteLike, options: {threaded: true}): Promise<this>;
-	addSuite(suiteLike: SuiteLike, options?: undefined | {threaded: boolean}): this | Promise<this> {
+	addSuite(suiteLike: SuiteLike, options?: {threaded: boolean}): this | Promise<this> {
 		assert.ok(!this.#suites.has(suiteLike.name), new RangeError(`A suite with the name "${suiteLike.name}" already exists`));
 
 		if (options?.threaded) {
 			assert.ok(suiteLike.filepath);
 
+			// eslint-disable-next-line promise/prefer-await-to-then
 			return Thread.init(suiteLike.filepath).then(threadedSuite => {
 				this.#suites.set(threadedSuite.name, threadedSuite);
 				this.#multithreadedSuites.add(threadedSuite.name);
@@ -137,7 +138,7 @@ export class Benchmark {
 	 *
 	 * @returns A {@link (Benchmark:namespace).Results} `Map`
 	 */
-	async runSuites(abortSignal?: AbortSignal | undefined, options?: Benchmark.RunOptions): Promise<Benchmark.Results> {
+	async runSuites(abortSignal?: AbortSignal, options?: Benchmark.RunOptions): Promise<Benchmark.Results> {
 		const results: Benchmark.Results = new Map();
 
 		const [multithreaded, singleThreaded] = partition(this.#suites.values(), suite => this.#multithreadedSuites.has(suite.name));

@@ -49,9 +49,5 @@ parentPort.on('message', async (message: ThreadWorker.Message) => {
 			ac.abort();
 			break;
 		}
-
-		default: {
-			throw new RangeError(`Unknown message kind`);
-		}
 	}
 });
