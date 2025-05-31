@@ -387,14 +387,14 @@ __metadata:
     "@types/node": "npm:22.15.29"
     ava: "npm:6.3.0"
     c8: "npm:10.1.3"
-    eslint-plugin-prettier: "npm:5.4.0"
+    eslint-plugin-prettier: "npm:5.4.1"
     jest-mock: "npm:29.7.0"
     prettier: "npm:3.5.3"
     semantic-release: "npm:24.2.5"
     tslib: "npm:2.8.1"
     typedoc: "npm:0.28.5"
     typescript: "npm:5.8.3"
-    xo: "npm:1.0.0"
+    xo: "npm:1.0.4"
   languageName: unknown
   linkType: soft
 
@@ -4061,7 +4061,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prettier@npm:5.4.0, eslint-plugin-prettier@npm:^5.4.0":
+"eslint-plugin-prettier@npm:5.4.1":
+  version: 5.4.1
+  resolution: "eslint-plugin-prettier@npm:5.4.1"
+  dependencies:
+    prettier-linter-helpers: "npm:^1.0.0"
+    synckit: "npm:^0.11.7"
+  peerDependencies:
+    "@types/eslint": ">=8.0.0"
+    eslint: ">=8.0.0"
+    eslint-config-prettier: ">= 7.0.0 <10.0.0 || >=10.1.0"
+    prettier: ">=3.0.0"
+  peerDependenciesMeta:
+    "@types/eslint":
+      optional: true
+    eslint-config-prettier:
+      optional: true
+  checksum: 10c0/bdd9e9473bf3f995521558eb5e2ee70dd4f06cb8b9a6192523cfed76511924fad31ec9af9807cd99f693dc59085e0a1db8a1d3ccc283e98ab30eb32cc7469649
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-prettier@npm:^5.4.0":
   version: 5.4.0
   resolution: "eslint-plugin-prettier@npm:5.4.0"
   dependencies:
@@ -10092,6 +10112,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"synckit@npm:^0.11.7":
+  version: 0.11.8
+  resolution: "synckit@npm:0.11.8"
+  dependencies:
+    "@pkgr/core": "npm:^0.2.4"
+  checksum: 10c0/a1de5131ee527512afcaafceb2399b2f3e63678e56b831e1cb2dc7019c972a8b654703a3b94ef4166868f87eb984ea252b467c9d9e486b018ec2e6a55c24dfd8
+  languageName: node
+  linkType: hard
+
 "tapable@npm:^2.2.0":
   version: 2.2.2
   resolution: "tapable@npm:2.2.2"
@@ -10995,9 +11024,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"xo@npm:1.0.0":
-  version: 1.0.0
-  resolution: "xo@npm:1.0.0"
+"xo@npm:1.0.4":
+  version: 1.0.4
+  resolution: "xo@npm:1.0.4"
   dependencies:
     "@eslint-community/eslint-plugin-eslint-comments": "npm:^4.5.0"
     "@sindresorhus/tsconfig": "npm:^7.0.0"
@@ -11032,7 +11061,7 @@ __metadata:
     typescript-eslint: "npm:^8.32.1"
   bin:
     xo: dist/cli.js
-  checksum: 10c0/3637de967895f56d7cb5187d445f1ef0a556f190dcf6e71b692f1beaae3a2bb0ac274e55f1d5e45b46c9fdc98bb37b3c865c81cd4600cfdccd6b95de367f8d3c
+  checksum: 10c0/11d737c991dd5e8f0709958f4ef86298e9ffe93cb2d1e1f9830ebe9fdc6ec3d93a2017f9cf9635dc4f2df4de33fdbbd2105fbe6622841ec9e5d4c5d299544042
   languageName: node
   linkType: hard
 
