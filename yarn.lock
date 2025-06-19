@@ -399,7 +399,7 @@ __metadata:
     ava: "npm:6.4.0"
     c8: "npm:10.1.3"
     eslint-plugin-prettier: "npm:5.5.0"
-    jest-mock: "npm:30.0.1"
+    jest-mock: "npm:30.0.2"
     prettier: "npm:3.5.3"
     semantic-release: "npm:24.2.5"
     tslib: "npm:2.8.1"
@@ -6480,14 +6480,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-mock@npm:30.0.1":
-  version: 30.0.1
-  resolution: "jest-mock@npm:30.0.1"
+"jest-mock@npm:30.0.2":
+  version: 30.0.2
+  resolution: "jest-mock@npm:30.0.2"
   dependencies:
     "@jest/types": "npm:30.0.1"
     "@types/node": "npm:*"
-    jest-util: "npm:30.0.1"
-  checksum: 10c0/e41c7bdda05b583b6715169f15db3edaeb63612e2e9cc0a830f09592fb7c8b8f6a972c51da47956ac6893b41c43a912674bd8da25b176d65216163468a66b9b0
+    jest-util: "npm:30.0.2"
+  checksum: 10c0/7728997c1d654475b88e18b7ba33a2a1b9f89ce33a9082bf2d14dcc3e831f372f80c762e481777886a3a04b4489ea5390ecdeb21c4def57fba5b2c77086a3959
   languageName: node
   linkType: hard
 
@@ -6498,9 +6498,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-util@npm:30.0.1":
-  version: 30.0.1
-  resolution: "jest-util@npm:30.0.1"
+"jest-util@npm:30.0.2":
+  version: 30.0.2
+  resolution: "jest-util@npm:30.0.2"
   dependencies:
     "@jest/types": "npm:30.0.1"
     "@types/node": "npm:*"
@@ -6508,7 +6508,7 @@ __metadata:
     ci-info: "npm:^4.2.0"
     graceful-fs: "npm:^4.2.11"
     picomatch: "npm:^4.0.2"
-  checksum: 10c0/ebac59d7747d7b495b5bac555ebbee34a4f930ac97e9804489261ac21c9176cd08d63dac3a40f8e1392c3027eb414a324934fb49718182e27c08ff464021fd9e
+  checksum: 10c0/07de384790b8e5a5925fba5448fa1475790a5b52271fbf99958c18e468da1af940f8b45e330d87766576cf6c5d1f4f41ce51c976483a5079653d9fcdba8aac8e
   languageName: node
   linkType: hard
 
