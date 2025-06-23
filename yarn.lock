@@ -400,7 +400,7 @@ __metadata:
     c8: "npm:10.1.3"
     eslint-plugin-prettier: "npm:5.5.0"
     jest-mock: "npm:30.0.2"
-    prettier: "npm:3.5.3"
+    prettier: "npm:3.6.0"
     semantic-release: "npm:24.2.5"
     tslib: "npm:2.8.1"
     typedoc: "npm:0.28.5"
@@ -8662,7 +8662,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.5.3, prettier@npm:^3.5.3":
+"prettier@npm:3.6.0":
+  version: 3.6.0
+  resolution: "prettier@npm:3.6.0"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 10c0/636897c8084b71ef1f740a46199df0d8f6ed896aa497212cc8cc229d3026b9dca82fa92f61e55924c4708cea11e39a88478e2d93c4818741c55b7408a9ac6d91
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^3.5.3":
   version: 3.5.3
   resolution: "prettier@npm:3.5.3"
   bin:
