@@ -393,7 +393,7 @@ __metadata:
   resolution: "@jonahsnider/benchmark@workspace:."
   dependencies:
     "@jonahsnider/prettier-config": "npm:1.1.2"
-    "@jonahsnider/util": "npm:11.0.0"
+    "@jonahsnider/util": "npm:12.0.0"
     "@jonahsnider/xo-config": "npm:6.0.0"
     "@microsoft/api-extractor": "npm:7.52.8"
     "@tsconfig/node16": "npm:16.1.4"
@@ -421,10 +421,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jonahsnider/util@npm:11.0.0":
-  version: 11.0.0
-  resolution: "@jonahsnider/util@npm:11.0.0"
-  checksum: 10c0/f701a4425bde23a34899fae159411841ce19504c43e4cf14181225e231253c96ffb09a1ddb9d4f00266023b2694652c8467c8850c1a937b17aba37be74afca90
+"@jonahsnider/util@npm:12.0.0":
+  version: 12.0.0
+  resolution: "@jonahsnider/util@npm:12.0.0"
+  checksum: 10c0/c4565b710c26bb7f65ef369ef9ffdf89c6ee0153092bdb2236fa43db00f79f472bcf6a878d764367fc6dd814b47a694bfbd7eb64f4dd13aa96eac89f2915e973
   languageName: node
   linkType: hard
 
