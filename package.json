@@ -47,7 +47,7 @@
 	"devDependencies": {
 		"@jonahsnider/prettier-config": "1.1.2",
 		"@jonahsnider/xo-config": "6.0.0",
-		"@microsoft/api-extractor": "7.52.8",
+		"@microsoft/api-extractor": "7.52.9",
 		"@tsconfig/node16": "16.1.4",
 		"@types/node": "22.16.5",
 		"ava": "6.4.1",
