@@ -8,6 +8,6 @@
 		"sourceMap": true
 	},
 	"exclude": ["node_modules", "tsc_output", "tsc_types", "coverage"],
-	"extends": "@tsconfig/node16",
+	"extends": "@tsconfig/node22",
 	"include": ["src", "examples", "test"]
 }

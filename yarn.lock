@@ -466,7 +466,7 @@ __metadata:
     "@jonahsnider/util": "npm:13.0.0"
     "@jonahsnider/xo-config": "npm:6.0.0"
     "@microsoft/api-extractor": "npm:7.56.0"
-    "@tsconfig/node16": "npm:16.1.8"
+    "@tsconfig/node22": "npm:22.0.5"
     "@types/node": "npm:22.19.7"
     ava: "npm:6.4.1"
     c8: "npm:10.1.3"
@@ -1386,10 +1386,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/node16@npm:16.1.8":
-  version: 16.1.8
-  resolution: "@tsconfig/node16@npm:16.1.8"
-  checksum: 10c0/393f640f732590837bc7598c67c60a24e913a374b4dc2b7e6758c2760d80db65bd9b55159391162d6bc2ec266c3f86ecad8e3fd77977324c076ea7ea8720a0c6
+"@tsconfig/node22@npm:22.0.5":
+  version: 22.0.5
+  resolution: "@tsconfig/node22@npm:22.0.5"
+  checksum: 10c0/c64b1d51e1556da9212463799f5096289d2cc8561eaed10cd0a0a36c25790b4c6bed30c0f846afccf8da75b5750326fa281216a908c2b67ead7b55adaf3eda22
   languageName: node
   linkType: hard
 
