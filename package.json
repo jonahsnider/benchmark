@@ -55,7 +55,7 @@
 		"eslint-plugin-prettier": "5.5.4",
 		"jest-mock": "30.2.0",
 		"prettier": "3.6.2",
-		"semantic-release": "24.2.7",
+		"semantic-release": "24.2.9",
 		"typedoc": "0.28.9",
 		"typescript": "5.9.2",
 		"xo": "1.2.1"
