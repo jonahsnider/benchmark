@@ -24,11 +24,6 @@ jobs:
         run: yarn install --immutable
       - name: Build
         run: yarn run build
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: tsc_output
   lint:
     name: Lint
 
