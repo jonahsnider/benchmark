@@ -280,9 +280,19 @@ export class Suite implements SuiteLike {
 
 				// eslint-disable-next-line no-await-in-loop
 				await this.#runTestsOnce();
+
+				// Periodically yield to the macrotask queue to allow abort signals sent via worker messages to be processed
+				// Without this, microtasks from fast-running tests can starve the event loop
+				if (count % 100 === 99) {
+					// eslint-disable-next-line no-await-in-loop
+					await new Promise(resolve => {
+						setImmediate(resolve);
+					});
+				}
 			}
 		} else {
 			const startTime = performance.now();
+			let iterationCount = 0;
 
 			while (performance.now() - startTime < options.durationMs) {
 				if (abortSignal?.aborted) {
@@ -291,6 +301,15 @@ export class Suite implements SuiteLike {
 
 				// eslint-disable-next-line no-await-in-loop
 				await this.#runTestsOnce();
+
+				// Periodically yield to the macrotask queue to allow abort signals sent via worker messages to be processed
+				// Without this, microtasks from fast-running tests can starve the event loop
+				if (++iterationCount % 100 === 0) {
+					// eslint-disable-next-line no-await-in-loop
+					await new Promise(resolve => {
+						setImmediate(resolve);
+					});
+				}
 			}
 		}
 	}
