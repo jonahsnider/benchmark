@@ -466,7 +466,7 @@ __metadata:
     "@jonahsnider/util": "npm:12.0.0"
     "@jonahsnider/xo-config": "npm:6.0.0"
     "@microsoft/api-extractor": "npm:7.52.10"
-    "@tsconfig/node16": "npm:16.1.4"
+    "@tsconfig/node16": "npm:16.1.8"
     "@types/node": "npm:22.17.1"
     ava: "npm:6.4.1"
     c8: "npm:10.1.3"
@@ -476,7 +476,7 @@ __metadata:
     semantic-release: "npm:25.0.3"
     tslib: "npm:2.8.1"
     typedoc: "npm:0.28.9"
-    typescript: "npm:5.9.2"
+    typescript: "npm:5.9.3"
     xo: "npm:1.2.1"
   languageName: unknown
   linkType: soft
@@ -1346,10 +1346,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/node16@npm:16.1.4":
-  version: 16.1.4
-  resolution: "@tsconfig/node16@npm:16.1.4"
-  checksum: 10c0/6297ab8d64ffe39c2aef31db36f1b5a52697d85a9377eae3859bba819e2092123cf180f49971f485efe862eee2ad19449d2dd2b8c772669bfe6cad0032db9d61
+"@tsconfig/node16@npm:16.1.8":
+  version: 16.1.8
+  resolution: "@tsconfig/node16@npm:16.1.8"
+  checksum: 10c0/393f640f732590837bc7598c67c60a24e913a374b4dc2b7e6758c2760d80db65bd9b55159391162d6bc2ec266c3f86ecad8e3fd77977324c076ea7ea8720a0c6
   languageName: node
   linkType: hard
 
@@ -9992,13 +9992,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.9.2":
-  version: 5.9.2
-  resolution: "typescript@npm:5.9.2"
+"typescript@npm:5.9.3":
+  version: 5.9.3
+  resolution: "typescript@npm:5.9.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10c0/cd635d50f02d6cf98ed42de2f76289701c1ec587a363369255f01ed15aaf22be0813226bff3c53e99d971f9b540e0b3cc7583dbe05faded49b1b0bed2f638a18
+  checksum: 10c0/6bd7552ce39f97e711db5aa048f6f9995b53f1c52f7d8667c1abdc1700c68a76a308f579cd309ce6b53646deb4e9a1be7c813a93baaf0a28ccd536a30270e1c5
   languageName: node
   linkType: hard
 
@@ -10012,13 +10012,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A5.9.2#optional!builtin<compat/typescript>":
-  version: 5.9.2
-  resolution: "typescript@patch:typescript@npm%3A5.9.2#optional!builtin<compat/typescript>::version=5.9.2&hash=5786d5"
+"typescript@patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>":
+  version: 5.9.3
+  resolution: "typescript@patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10c0/34d2a8e23eb8e0d1875072064d5e1d9c102e0bdce56a10a25c0b917b8aa9001a9cf5c225df12497e99da107dc379360bc138163c66b55b95f5b105b50578067e
+  checksum: 10c0/ad09fdf7a756814dce65bc60c1657b40d44451346858eea230e10f2e95a289d9183b6e32e5c11e95acc0ccc214b4f36289dcad4bf1886b0adb84d711d336a430
   languageName: node
   linkType: hard
 
