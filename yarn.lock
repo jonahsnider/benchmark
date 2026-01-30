@@ -389,9 +389,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/types@npm:30.0.5":
-  version: 30.0.5
-  resolution: "@jest/types@npm:30.0.5"
+"@jest/types@npm:30.2.0":
+  version: 30.2.0
+  resolution: "@jest/types@npm:30.2.0"
   dependencies:
     "@jest/pattern": "npm:30.0.1"
     "@jest/schemas": "npm:30.0.5"
@@ -400,7 +400,7 @@ __metadata:
     "@types/node": "npm:*"
     "@types/yargs": "npm:^17.0.33"
     chalk: "npm:^4.1.2"
-  checksum: 10c0/fd097a390e36edacbd2c92a8378ec0cd67abec5e234bab7a80aec6eb8625568052b0c32acf472388d04c4cf384b8fa2871d0d12a56b4b06eaea93f2c6df0ec6c
+  checksum: 10c0/ae121f6963bd9ed1cd9651db7be91bf14c05bff0d0eec4fca9fecf586bea4005e8f1de8cc9b8ef72e424ea96a309d123bef510b55a6a17a3b4b91a39d775e5cd
   languageName: node
   linkType: hard
 
@@ -417,7 +417,7 @@ __metadata:
     ava: "npm:6.4.1"
     c8: "npm:10.1.3"
     eslint-plugin-prettier: "npm:5.5.4"
-    jest-mock: "npm:30.0.5"
+    jest-mock: "npm:30.2.0"
     prettier: "npm:3.6.2"
     semantic-release: "npm:24.2.7"
     tslib: "npm:2.8.1"
@@ -6218,14 +6218,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-mock@npm:30.0.5":
-  version: 30.0.5
-  resolution: "jest-mock@npm:30.0.5"
+"jest-mock@npm:30.2.0":
+  version: 30.2.0
+  resolution: "jest-mock@npm:30.2.0"
   dependencies:
-    "@jest/types": "npm:30.0.5"
+    "@jest/types": "npm:30.2.0"
     "@types/node": "npm:*"
-    jest-util: "npm:30.0.5"
-  checksum: 10c0/207fd79297f514a8e26ede9b4b5035e70212b8850a2f460b51d3cc58e8e7c9585bd2dbc5df2475a3321c4cd114b90e0b24190f00d6eeb88c8f088a8ed00416d5
+    jest-util: "npm:30.2.0"
+  checksum: 10c0/dfc8eb87f4075242f1b31d9dcac606f945c4f6a245d2bb67273738d266bea6345e10de3afa675076d545361bc96b754f764cffb0ccc2e99767484bece981b2f8
   languageName: node
   linkType: hard
 
@@ -6236,17 +6236,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-util@npm:30.0.5":
-  version: 30.0.5
-  resolution: "jest-util@npm:30.0.5"
+"jest-util@npm:30.2.0":
+  version: 30.2.0
+  resolution: "jest-util@npm:30.2.0"
   dependencies:
-    "@jest/types": "npm:30.0.5"
+    "@jest/types": "npm:30.2.0"
     "@types/node": "npm:*"
     chalk: "npm:^4.1.2"
     ci-info: "npm:^4.2.0"
     graceful-fs: "npm:^4.2.11"
     picomatch: "npm:^4.0.2"
-  checksum: 10c0/d3808b5f7720044d0464664c795e2b795ed82edf3b5871db74b8b603c3a0a38107668730348d26f92920ca3b8245a99cbbc2c93e77d0abb1f5e27524079a4ba8
+  checksum: 10c0/896d663554b35258a87ec1a0a0fdd8741fdf4f3239d09fc52fdd88fa5c411a5ece7903bbbbd7d5194743fcb69f62afc3287e90f57736a91e7df95ad421937936
   languageName: node
   linkType: hard
 
