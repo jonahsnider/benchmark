@@ -32,7 +32,6 @@
 		"build": "tsc",
 		"docs": "typedoc",
 		"lint": "xo",
-		"release": "semantic-release",
 		"style": "prettier --check .",
 		"test": "ava",
 		"test:coverage": "c8 --reporter lcov --reporter text-summary --include 'tsc_output/src/**/*.js' --exclude 'tsc_output/src/index.js' --all ava",
@@ -55,7 +54,6 @@
 		"eslint-plugin-prettier": "5.5.5",
 		"jest-mock": "30.2.0",
 		"prettier": "3.8.1",
-		"semantic-release": "25.0.3",
 		"typedoc": "0.28.16",
 		"typescript": "5.9.3",
 		"xo": "1.2.3"

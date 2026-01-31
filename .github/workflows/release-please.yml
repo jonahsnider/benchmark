@@ -1,0 +1,55 @@
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+name: release-please
+
+jobs:
+  release-please:
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run release-please
+        uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
+
+      - name: Checkout Git repository
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/checkout@v6
+
+      - name: Enable Corepack
+        if: ${{ steps.release.outputs.release_created }}
+        run: corepack enable
+
+      - name: Setup Node.js
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/setup-node@v6
+        with:
+          node-version: 'lts/*'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        if: ${{ steps.release.outputs.release_created }}
+        run: yarn install --immutable
+
+      - name: Build
+        if: ${{ steps.release.outputs.release_created }}
+        run: yarn run build
+
+      - name: Generate TSDoc metadata
+        if: ${{ steps.release.outputs.release_created }}
+        run: yarn run validate-api
+
+      - name: Publish to npm
+        if: ${{ steps.release.outputs.release_created }}
+        run: npm publish --provenance --access public
