@@ -1,15 +1,15 @@
 {
 	"compilerOptions": {
 		"declaration": true,
-		"declarationDir": "tsc_types",
+		"ignoreDeprecations": "6.0",
 		"importHelpers": true,
 		"lib": ["WebWorker"],
-		"outDir": "tsc_output",
+		"outDir": "dist",
 		"rewriteRelativeImportExtensions": true,
 		"sourceMap": true,
 		"types": ["node"]
 	},
-	"exclude": ["node_modules", "tsc_output", "tsc_types", "coverage"],
+	"exclude": ["node_modules", "dist", "coverage"],
 	"extends": "@tsconfig/node22",
 	"include": ["src", "examples", "test"]
 }
