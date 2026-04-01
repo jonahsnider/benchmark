@@ -2,8 +2,8 @@ import {createHistogram, performance} from 'node:perf_hooks';
 import {toDigits} from '@jonahsnider/util';
 import test from 'ava';
 import * as mock from 'jest-mock';
-import {Suite} from '../../src/suite.js';
-import {AbortError, SHORT_SUITE, SHORT_TIMED_SUITE} from '../../src/utils.js';
+import {Suite} from '../../src/suite.ts';
+import {AbortError, SHORT_SUITE, SHORT_TIMED_SUITE} from '../../src/utils.ts';
 
 test('runs tests with given number of runs', async t => {
 	const TOTAL_TRIALS = SHORT_SUITE.warmup.trials + SHORT_SUITE.run.trials;

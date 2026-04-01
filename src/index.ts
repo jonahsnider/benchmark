@@ -1,4 +1,4 @@
-export {Benchmark} from './benchmark.js';
-export {Suite} from './suite.js';
-export type {SuiteLike} from './suite.js';
-export {Test} from './test.js';
+export {Benchmark} from './benchmark.ts';
+export {Suite} from './suite.ts';
+export type {SuiteLike} from './suite.ts';
+export {Test} from './test.ts';

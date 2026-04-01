@@ -1,9 +1,9 @@
 import {name} from '@jonahsnider/util';
 import test from 'ava';
-import {Suite} from '../../src/suite.js';
-import {Thread} from '../../src/thread.js';
-import emptySuite from './fixtures/suites/empty.js';
-import invalidSuite from './fixtures/suites/invalid.js';
+import {Suite} from '../../src/suite.ts';
+import {Thread} from '../../src/thread.ts';
+import emptySuite from './fixtures/suites/empty.ts';
+import invalidSuite from './fixtures/suites/invalid.ts';
 
 test(`instantiates a ${name(Thread)}`, async t => {
 	const thread = await Thread.init(emptySuite.filepath!);

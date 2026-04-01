@@ -1,7 +1,7 @@
 import {createHistogram} from 'node:perf_hooks';
 import test from 'ava';
 import * as mock from 'jest-mock';
-import {Test} from '../../src/test.js';
+import {Test} from '../../src/test.ts';
 
 test('runs', async t => {
 	const implementation = mock.fn();

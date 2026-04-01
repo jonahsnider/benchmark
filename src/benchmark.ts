@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {partition} from '@jonahsnider/util';
-import type {Suite, SuiteLike} from './suite.js';
-import {Thread} from './thread.js';
+import type {Suite, SuiteLike} from './suite.ts';
+import {Thread} from './thread.ts';
 
 /**
  * @public

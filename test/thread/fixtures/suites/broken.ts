@@ -1,5 +1,5 @@
-import {Suite} from '../../../../src/suite.js';
-import {SHORT_SUITE} from '../../../../src/utils.js';
+import {Suite} from '../../../../src/suite.ts';
+import {SHORT_SUITE} from '../../../../src/utils.ts';
 
 const suite = new Suite('suite', {...SHORT_SUITE, filepath: import.meta.url});
 

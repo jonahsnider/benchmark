@@ -1,7 +1,7 @@
 import test from 'ava';
-import {Suite} from '../../src/suite.js';
-import {Test} from '../../src/test.js';
-import {SKIP_SUITE} from '../../src/utils.js';
+import {Suite} from '../../src/suite.ts';
+import {Test} from '../../src/test.ts';
+import {SKIP_SUITE} from '../../src/utils.ts';
 
 test('adds a test', t => {
 	const suite = new Suite('name', SKIP_SUITE);

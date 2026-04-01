@@ -1,10 +1,10 @@
 import {createHistogram} from 'node:perf_hooks';
 import test from 'ava';
-import {Benchmark} from '../../src/benchmark.js';
-import {Suite} from '../../src/suite.js';
-import {AbortError, SHORT_SUITE} from '../../src/utils.js';
-import regularSuite from './fixtures/suites/regular.js';
-import emptySuite from './fixtures/suites/empty.js';
+import {Benchmark} from '../../src/benchmark.ts';
+import {Suite} from '../../src/suite.ts';
+import {AbortError, SHORT_SUITE} from '../../src/utils.ts';
+import regularSuite from './fixtures/suites/regular.ts';
+import emptySuite from './fixtures/suites/empty.ts';
 
 test('runs single threaded suites', async t => {
 	const benchmark = new Benchmark();

@@ -1,10 +1,10 @@
 import {name} from '@jonahsnider/util';
 import test from 'ava';
-import {Benchmark} from '../../src/benchmark.js';
-import {Suite} from '../../src/suite.js';
-import {Thread} from '../../src/thread.js';
-import {SKIP_SUITE} from '../../src/utils.js';
-import emptySuite from './fixtures/suites/empty.js';
+import {Benchmark} from '../../src/benchmark.ts';
+import {Suite} from '../../src/suite.ts';
+import {Thread} from '../../src/thread.ts';
+import {SKIP_SUITE} from '../../src/utils.ts';
+import emptySuite from './fixtures/suites/empty.ts';
 
 test(`adds ${name(Suite)} instances`, t => {
 	const benchmark = new Benchmark();

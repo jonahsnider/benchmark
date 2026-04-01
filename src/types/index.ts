@@ -1,1 +1,1 @@
-export * as ThreadWorker from './thread-worker.js';
+export * as ThreadWorker from './thread-worker.ts';

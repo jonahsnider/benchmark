@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {type RecordableHistogram, performance} from 'node:perf_hooks';
-import {Test} from './test.js';
-import {AbortError} from './utils.js';
+import {Test} from './test.ts';
+import {AbortError} from './utils.ts';
 
 /**
  * A suite of related tests that can be run together.

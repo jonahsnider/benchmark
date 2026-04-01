@@ -1,5 +1,5 @@
 import test from 'ava';
-import {AbortError} from '../../src/utils.js';
+import {AbortError} from '../../src/utils.ts';
 
 test('name', t => {
 	const error = new AbortError();

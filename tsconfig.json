@@ -5,6 +5,7 @@
 		"importHelpers": true,
 		"lib": ["WebWorker"],
 		"outDir": "tsc_output",
+		"rewriteRelativeImportExtensions": true,
 		"sourceMap": true,
 		"types": ["node"]
 	},

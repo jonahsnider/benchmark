@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
 import {once} from 'node:events';
 import {type WorkerOptions, Worker} from 'node:worker_threads';
-import {type SuiteLike, Suite} from './suite.js';
-import {ThreadWorker} from './types/index.js';
-import {compatibleImport} from './utils.js';
+import {type SuiteLike, Suite} from './suite.ts';
+import {ThreadWorker} from './types/index.ts';
+import {compatibleImport} from './utils.ts';
 
-const WORKER_PATH = new URL('thread-worker.js', import.meta.url);
+const WORKER_PATH = new URL('thread-worker.ts', import.meta.url);
 
 /**
  * Runs a {@link (Suite:class)} in a separate thread.

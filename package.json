@@ -34,7 +34,7 @@
 		"lint": "xo",
 		"style": "prettier --check .",
 		"test": "ava",
-		"test:coverage": "c8 --reporter lcov --reporter text-summary --include 'tsc_output/src/**/*.js' --exclude 'tsc_output/src/index.js' --all ava",
+		"test:coverage": "c8 --reporter lcov --reporter text-summary --include 'src/**/*.ts' --exclude 'src/index.ts' --all ava",
 		"validate-api": "api-extractor run",
 		"validate-api:local": "api-extractor run --local --verbose"
 	},
