@@ -18,18 +18,19 @@
 	"type": "module",
 	"exports": {
 		".": {
-			"types": "./tsc_output/index.d.ts",
-			"default": "./tsc_output/src/index.js"
+			"types": "./dist/index.d.cts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs"
 		}
 	},
-	"main": "./tsc_output/src/index.js",
-	"types": "./tsc_output/index.d.ts",
+	"main": "./dist/index.cjs",
+	"types": "./dist/index.d.cts",
 	"files": [
-		"tsc_output",
-		"!tsc_output/{test,examples}"
+		"dist",
+		"!dist/{test,examples}"
 	],
 	"scripts": {
-		"build": "tsc",
+		"build": "zshy",
 		"docs": "typedoc",
 		"lint": "xo",
 		"style": "prettier --check .",
@@ -56,13 +57,16 @@
 		"prettier": "3.8.1",
 		"typedoc": "0.28.18",
 		"typescript": "6.0.2",
-		"xo": "1.2.3"
+		"xo": "1.2.3",
+		"zshy": "0.7.0"
 	},
+	"zshy": "./src/index.ts",
 	"packageManager": "yarn@4.13.0",
 	"engines": {
 		"node": ">=22.0.0"
 	},
 	"publishConfig": {
 		"access": "public"
-	}
+	},
+	"module": "./dist/index.js"
 }

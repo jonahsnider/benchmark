@@ -13,7 +13,7 @@ yarn
 
 ## Building
 
-Run the `build` script to compile the TypeScript source code into JavaScript in the `tsc_output` folder.
+Run the `build` script to compile the TypeScript source code into JavaScript in the `dist` folder.
 
 ```sh
 yarn run build
