@@ -5,7 +5,8 @@
 		"importHelpers": true,
 		"lib": ["WebWorker"],
 		"outDir": "tsc_output",
-		"sourceMap": true
+		"sourceMap": true,
+		"types": ["node"]
 	},
 	"exclude": ["node_modules", "tsc_output", "tsc_types", "coverage"],
 	"extends": "@tsconfig/node22",
