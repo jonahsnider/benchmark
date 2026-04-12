@@ -55,7 +55,7 @@
 		"eslint-plugin-prettier": "5.5.5",
 		"jest-mock": "30.3.0",
 		"prettier": "3.8.2",
-		"typedoc": "0.28.18",
+		"typedoc": "0.28.19",
 		"typescript": "6.0.2",
 		"xo": "1.2.3",
 		"zshy": "0.7.0"
