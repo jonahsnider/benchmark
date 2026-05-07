@@ -53,7 +53,7 @@
 		"ava": "7.0.0",
 		"c8": "11.0.0",
 		"eslint-plugin-prettier": "5.5.5",
-		"jest-mock": "30.3.0",
+		"jest-mock": "30.4.0",
 		"prettier": "3.8.3",
 		"typedoc": "0.28.19",
 		"typescript": "6.0.3",
