@@ -57,7 +57,7 @@
 		"prettier": "3.8.3",
 		"typedoc": "0.28.19",
 		"typescript": "6.0.3",
-		"xo": "1.2.3",
+		"xo": "2.0.2",
 		"zshy": "0.7.2"
 	},
 	"zshy": "./src/index.ts",
