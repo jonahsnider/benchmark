@@ -10,6 +10,6 @@
 		"types": ["node"]
 	},
 	"exclude": ["node_modules", "dist", "coverage"],
-	"extends": "@tsconfig/node22",
+	"extends": "@tsconfig/node24",
 	"include": ["src", "examples", "test"]
 }
