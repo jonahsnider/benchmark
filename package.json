@@ -61,7 +61,7 @@
 		"zshy": "0.7.2"
 	},
 	"zshy": "./src/index.ts",
-	"packageManager": "yarn@4.15.0",
+	"packageManager": "yarn@4.16.0",
 	"engines": {
 		"node": ">=22.0.0"
 	},
