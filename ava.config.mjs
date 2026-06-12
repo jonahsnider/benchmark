@@ -1,6 +1,6 @@
 const config = {
 	files: ['test/**/*.test.ts'],
-	extensions: {ts: 'module'},
+	extensions: ['mjs', 'js', 'ts'],
 	nodeArguments: ['--experimental-transform-types'],
 };
 
