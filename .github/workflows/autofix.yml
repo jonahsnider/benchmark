@@ -1,0 +1,34 @@
+name: autofix.ci
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  autofix:
+    name: Autofix
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v6
+      - name: Enable Corepack
+        # Required due to a limitation in setup-node https://github.com/actions/setup-node/issues/480#issuecomment-1820622085
+        run: corepack enable
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 'lts/*'
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install --immutable
+      - name: Apply lint fixes
+        run: yarn run lint --fix
+      - name: Apply format fixes
+        run: yarn prettier --write .
+      - name: Run autofix.ci
+        uses: autofix-ci/action@v1
+        with:
+          commit-message: 'refactor: apply automatic fixes'
