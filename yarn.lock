@@ -373,7 +373,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@jonahsnider/benchmark@workspace:."
   dependencies:
-    "@jonahsnider/prettier-config": "npm:1.1.2"
+    "@jonahsnider/prettier-config": "npm:2.0.1"
     "@jonahsnider/util": "npm:13.0.0"
     "@jonahsnider/xo-config": "npm:6.0.0"
     "@microsoft/api-extractor": "npm:7.59.0"
@@ -392,13 +392,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@jonahsnider/prettier-config@npm:1.1.2":
-  version: 1.1.2
-  resolution: "@jonahsnider/prettier-config@npm:1.1.2"
+"@jonahsnider/prettier-config@npm:2.0.1":
+  version: 2.0.1
+  resolution: "@jonahsnider/prettier-config@npm:2.0.1"
   dependencies:
-    "@types/prettier": "npm:^2.6.3"
-    prettier-config-xo: "npm:2.0.0"
-  checksum: 10c0/e93b2a5a99dada10ff032221672b00abcf70443c2844c33267025df9cd13963d3cdfcc46c84984a51aa96a329f261dd31f8398a3f64498464eb3a1fe46cfaabf
+    "@types/prettier": "npm:^3.0.0"
+    prettier-config-xo: "npm:3.0.0"
+  checksum: 10c0/32106e301852dd204bf77b95575cbcae5dafab1019a488d9dde09f256b9c76708242188b5024c484bb8697f7c0a7cae1529cb532e27c345ab7e6c26119eeb25c
   languageName: node
   linkType: hard
 
@@ -913,10 +913,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prettier@npm:^2.6.3":
-  version: 2.7.0
-  resolution: "@types/prettier@npm:2.7.0"
-  checksum: 10c0/7416351864a6cd41fdb79683b720dc1b6bdc59da81edb52a85674135b385ef6e1a49c7780b0fe9fba2c5383df4ab195769d3cfc9e3a4f831e5bab4143ed5dd38
+"@types/prettier@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@types/prettier@npm:3.0.0"
+  dependencies:
+    prettier: "npm:*"
+  checksum: 10c0/edab8c0c0e56936e89c919cac17e384a9f231ce12062fb3beeb45bc45e7dcc4035dd3d7df3333b0bdd39f3b4501f22267a9dba45e22b9728c139857142e90282
   languageName: node
   linkType: hard
 
@@ -5900,10 +5902,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-config-xo@npm:2.0.0":
-  version: 2.0.0
-  resolution: "prettier-config-xo@npm:2.0.0"
-  checksum: 10c0/6bf31fd562c6fc2a1583cb4b12d850ddc0704ff431e13a4c1aa2051cc9f6376f76d039b1d685f179dd9664979123efca28f1d5c3e1e0c72d43e10d0895310b38
+"prettier-config-xo@npm:3.0.0":
+  version: 3.0.0
+  resolution: "prettier-config-xo@npm:3.0.0"
+  checksum: 10c0/bb72b182ed970af5f197ff7aab3272f214fcb0629608b04e808090b112c2bd13a07537042f5f1bc449b80272f48e445ed07c4e4ab0a08aae4507f744878a5265
   languageName: node
   linkType: hard
 
@@ -5925,7 +5927,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.9.6":
+"prettier@npm:*, prettier@npm:3.9.6":
   version: 3.9.6
   resolution: "prettier@npm:3.9.6"
   bin:
