@@ -373,7 +373,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@jonahsnider/benchmark@workspace:."
   dependencies:
-    "@jonahsnider/prettier-config": "npm:2.0.1"
+    "@jonahsnider/prettier-config": "npm:2.0.2"
     "@jonahsnider/util": "npm:13.0.0"
     "@jonahsnider/xo-config": "npm:6.0.0"
     "@microsoft/api-extractor": "npm:7.59.0"
@@ -392,13 +392,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@jonahsnider/prettier-config@npm:2.0.1":
-  version: 2.0.1
-  resolution: "@jonahsnider/prettier-config@npm:2.0.1"
+"@jonahsnider/prettier-config@npm:2.0.2":
+  version: 2.0.2
+  resolution: "@jonahsnider/prettier-config@npm:2.0.2"
   dependencies:
-    "@types/prettier": "npm:^3.0.0"
     prettier-config-xo: "npm:3.0.0"
-  checksum: 10c0/32106e301852dd204bf77b95575cbcae5dafab1019a488d9dde09f256b9c76708242188b5024c484bb8697f7c0a7cae1529cb532e27c345ab7e6c26119eeb25c
+  peerDependencies:
+    prettier: ^3.0.0
+  checksum: 10c0/0741278c53fd5ba301246def9081bf7bb46672f02822e7f301e3d3d3c7c110c14ca80230af1a5fa6283448a23c6bb66be5dfdc1f1d78eb4acac490629a1d8cd1
   languageName: node
   linkType: hard
 
@@ -910,15 +911,6 @@ __metadata:
   dependencies:
     undici-types: "npm:~7.18.0"
   checksum: 10c0/a5bc08f49b9581dcdca90e02cd77197a3c799840807664942e5cd5161a553d4d2ae8064f7e3294410d748d7d098b5c1848be7fa50c06f29c4193ab16be4e59eb
-  languageName: node
-  linkType: hard
-
-"@types/prettier@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@types/prettier@npm:3.0.0"
-  dependencies:
-    prettier: "npm:*"
-  checksum: 10c0/edab8c0c0e56936e89c919cac17e384a9f231ce12062fb3beeb45bc45e7dcc4035dd3d7df3333b0bdd39f3b4501f22267a9dba45e22b9728c139857142e90282
   languageName: node
   linkType: hard
 
@@ -5927,7 +5919,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:*, prettier@npm:3.9.6":
+"prettier@npm:3.9.6":
   version: 3.9.6
   resolution: "prettier@npm:3.9.6"
   bin:
