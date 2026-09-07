@@ -1,13 +1,13 @@
-import {isMainThread, parentPort, workerData} from 'node:worker_threads';
+import { isMainThread, parentPort, workerData } from 'node:worker_threads';
 import assert from 'node:assert/strict';
-import type {Suite} from './suite.ts';
-import {ThreadWorker} from './types/index.ts';
-import {compatibleImport} from './utils.ts';
+import type { Suite } from './suite.ts';
+import { ThreadWorker } from './types/index.ts';
+import { compatibleImport } from './utils.ts';
 
 assert.ok(!isMainThread, new Error('This file should be run in a thread'));
 assert.ok(parentPort);
 
-const {suitePath} = workerData as ThreadWorker.Data;
+const { suitePath } = workerData as ThreadWorker.Data;
 
 let suite: Suite;
 

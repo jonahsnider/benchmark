@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
-import {once} from 'node:events';
-import {type WorkerOptions, Worker} from 'node:worker_threads';
-import {type SuiteLike, Suite} from './suite.ts';
-import {ThreadWorker} from './types/index.ts';
-import {compatibleImport} from './utils.ts';
+import { once } from 'node:events';
+import { type WorkerOptions, Worker } from 'node:worker_threads';
+import { type SuiteLike, Suite } from './suite.ts';
+import { ThreadWorker } from './types/index.ts';
+import { compatibleImport } from './utils.ts';
 
 const WORKER_PATH = new URL('thread-worker.ts', import.meta.url);
 
@@ -45,14 +45,14 @@ export class Thread implements SuiteLike {
 	}
 
 	async run(abortSignal?: AbortSignal): Promise<Suite.Results> {
-		const runMessage: ThreadWorker.Message = {kind: ThreadWorker.Message.Kind.Run};
+		const runMessage: ThreadWorker.Message = { kind: ThreadWorker.Message.Kind.Run };
 
 		// Worker must be run before an abort signal is sent
 		this.#worker.postMessage(runMessage);
 
 		const onAbortListener = this.#onAbort.bind(this);
 
-		abortSignal?.addEventListener('abort', onAbortListener, {once: true});
+		abortSignal?.addEventListener('abort', onAbortListener, { once: true });
 		const message = once(this.#worker, 'message');
 
 		try {
@@ -94,7 +94,7 @@ export class Thread implements SuiteLike {
 	}
 
 	#onAbort(): void {
-		const abortMessage = {kind: ThreadWorker.Message.Kind.Abort};
+		const abortMessage = { kind: ThreadWorker.Message.Kind.Abort };
 
 		this.#worker.postMessage(abortMessage);
 	}

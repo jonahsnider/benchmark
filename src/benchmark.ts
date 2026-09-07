@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
-import {partition} from '@jonahsnider/util';
-import type {Suite, SuiteLike} from './suite.ts';
-import {Thread} from './thread.ts';
+import { partition } from '@jonahsnider/util';
+import type { Suite, SuiteLike } from './suite.ts';
+import { Thread } from './thread.ts';
 
 /**
  * @public
@@ -75,7 +75,7 @@ export class Benchmark {
 	 *
 	 * @returns `this`
 	 */
-	addSuite(suite: SuiteLike, options?: {threaded: false}): this;
+	addSuite(suite: SuiteLike, options?: { threaded: false }): this;
 	/**
 	 * Add a {@link SuiteLike} to this {@link (Benchmark:class)} by loading it in a separate thread via its filepath.
 	 *
@@ -88,15 +88,15 @@ export class Benchmark {
 	 *
 	 * @returns `this`
 	 */
-	addSuite(suite: SuiteLike, options: {threaded: true}): Promise<this>;
-	addSuite(suiteLike: SuiteLike, options?: {threaded: boolean}): this | Promise<this> {
+	addSuite(suite: SuiteLike, options: { threaded: true }): Promise<this>;
+	addSuite(suiteLike: SuiteLike, options?: { threaded: boolean }): this | Promise<this> {
 		assert.ok(!this.#suites.has(suiteLike.name), new RangeError(`A suite with the name "${suiteLike.name}" already exists`));
 
 		if (options?.threaded) {
 			assert.ok(suiteLike.filepath);
 
 			// eslint-disable-next-line promise/prefer-await-to-then
-			return Thread.init(suiteLike.filepath).then(threadedSuite => {
+			return Thread.init(suiteLike.filepath).then((threadedSuite) => {
 				this.#suites.set(threadedSuite.name, threadedSuite);
 				this.#multithreadedSuites.add(threadedSuite.name);
 
@@ -141,7 +141,7 @@ export class Benchmark {
 	async runSuites(abortSignal?: AbortSignal, options?: Benchmark.RunOptions): Promise<Benchmark.Results> {
 		const results: Benchmark.Results = new Map();
 
-		const [multithreaded, singleThreaded] = partition(this.#suites.values(), suite => this.#multithreadedSuites.has(suite.name));
+		const [multithreaded, singleThreaded] = partition(this.#suites.values(), (suite) => this.#multithreadedSuites.has(suite.name));
 
 		// Single-threaded suites are executed serially to avoid any interference
 		for (const suite of singleThreaded) {
@@ -160,7 +160,7 @@ export class Benchmark {
 			}
 		} else {
 			await Promise.all(
-				multithreaded.map(async suite => {
+				multithreaded.map(async (suite) => {
 					const suiteResults = await suite.run(abortSignal);
 
 					results.set(suite.name, suiteResults);

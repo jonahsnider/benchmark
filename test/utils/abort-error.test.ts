@@ -1,20 +1,20 @@
-import test from 'ava';
-import {AbortError} from '../../src/utils.ts';
+import { expect, test } from 'vite-plus/test';
+import { AbortError } from '../../src/utils.ts';
 
-test('name', t => {
+test('name', () => {
 	const error = new AbortError();
 
-	t.is(error.name, 'AbortError');
+	expect(error.name).toBe('AbortError');
 });
 
-test('message', t => {
+test('message', () => {
 	const error = new AbortError();
 
-	t.is(error.message, 'The operation was aborted');
+	expect(error.message).toBe('The operation was aborted');
 });
 
-test('code', t => {
+test('code', () => {
 	const error = new AbortError();
 
-	t.is(error.code, 'ABORT_ERR');
+	expect(error.code).toBe('ABORT_ERR');
 });

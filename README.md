@@ -7,7 +7,7 @@ A Node.js benchmarking library with support for multithreading and TurboFan opti
 This library is published on the npm registry and can be installed with your package manager of choice:
 
 ```sh
-yarn add @jonahsnider/benchmark
+pnpm add @jonahsnider/benchmark
 # or
 npm i @jonahsnider/benchmark
 ```
@@ -26,7 +26,7 @@ This is a basic example that doesn't take advantage of multithreading (which is 
 You can view the example [here](./examples/basic/index.ts) or by following the guide below:
 
 ```js
-import {Benchmark, Suite} from '@jonahsnider/benchmark';
+import { Benchmark, Suite } from '@jonahsnider/benchmark';
 
 // 1. Create benchmark
 const benchmark = new Benchmark();
@@ -85,7 +85,7 @@ This is required since each file will be loaded in a separate thread.
 In a new directory called `./suites/` create a file called `substring.js`:
 
 ```js
-import {Suite} from '@jonahsnider/benchmark';
+import { Suite } from '@jonahsnider/benchmark';
 
 // 1. Create suite
 const suite = new Suite('substring', {
@@ -128,7 +128,7 @@ If you want to create other suites you can do that now.
 Once every suite is created we need to create the main file in `./index.js`:
 
 ```js
-import {Benchmark} from '@jonahsnider/benchmark';
+import { Benchmark } from '@jonahsnider/benchmark';
 // You may want to create a ./suites/index.js file which exports each suite
 import substringSuite from './suites/substring.js';
 
@@ -136,7 +136,7 @@ import substringSuite from './suites/substring.js';
 const benchmark = new Benchmark();
 
 // 4. Register suites with {threaded: true} - you must `await` this since loading is async
-await benchmark.addSuite(substringSuite, {threaded: true});
+await benchmark.addSuite(substringSuite, { threaded: true });
 
 // 5. Run benchmark
 const results = await benchmark.runSuites();
