@@ -1,0 +1,6 @@
+[build]
+command = "pnpm run docs"
+publish = "docs_out"
+
+[build.environment]
+NODE_VERSION = "24"
