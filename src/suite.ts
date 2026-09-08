@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
-import {type RecordableHistogram, performance} from 'node:perf_hooks';
-import {Test} from './test.ts';
-import {AbortError} from './utils.ts';
+import { type RecordableHistogram, performance } from 'node:perf_hooks';
+import { Test } from './test.ts';
+import { AbortError } from './utils.ts';
 
 /**
  * A suite of related tests that can be run together.
@@ -285,7 +285,7 @@ export class Suite implements SuiteLike {
 				// Without this, microtasks from fast-running tests can starve the event loop
 				if (count % 100 === 99) {
 					// eslint-disable-next-line no-await-in-loop
-					await new Promise(resolve => {
+					await new Promise((resolve) => {
 						setImmediate(resolve);
 					});
 				}
@@ -306,7 +306,7 @@ export class Suite implements SuiteLike {
 				// Without this, microtasks from fast-running tests can starve the event loop
 				if (++iterationCount % 100 === 0) {
 					// eslint-disable-next-line no-await-in-loop
-					await new Promise(resolve => {
+					await new Promise((resolve) => {
 						setImmediate(resolve);
 					});
 				}

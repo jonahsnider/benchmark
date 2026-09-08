@@ -1,28 +1,27 @@
-import {createHistogram} from 'node:perf_hooks';
-import test from 'ava';
-import * as mock from 'jest-mock';
-import {Test} from '../../src/test.ts';
+import { createHistogram } from 'node:perf_hooks';
+import { expect, test, vi } from 'vite-plus/test';
+import { Test } from '../../src/test.ts';
 
-test('runs', async t => {
-	const implementation = mock.fn();
+test('runs', async () => {
+	const implementation = vi.fn();
 
 	const instance = new Test(implementation);
 
-	t.is(implementation.mock.calls.length, 0);
+	expect(implementation).not.toHaveBeenCalled();
 
 	await instance.run();
 
-	t.is(implementation.mock.calls.length, 1);
+	expect(implementation).toHaveBeenCalledOnce();
 });
 
-test('updates the histogram', async t => {
+test('updates the histogram', async () => {
 	// eslint-disable-next-line @typescript-eslint/no-empty-function
 	const instance = new Test(() => {});
 
-	t.deepEqual(instance.histogram, createHistogram());
-	t.is(instance.histogram.percentiles.size, 1);
+	expect(instance.histogram).toEqual(createHistogram());
+	expect(instance.histogram.percentiles.size).toBe(1);
 
 	await instance.run();
 
-	t.is(instance.histogram.percentiles.size, 2);
+	expect(instance.histogram.percentiles.size).toBe(2);
 });

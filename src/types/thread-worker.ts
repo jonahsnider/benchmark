@@ -1,4 +1,4 @@
-import type {Suite} from '../suite.ts';
+import type { Suite } from '../suite.ts';
 
 export type Data = {
 	suitePath: string;

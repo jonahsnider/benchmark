@@ -1,12 +1,12 @@
-import {createHistogram} from 'node:perf_hooks';
-import test from 'ava';
-import {Benchmark} from '../../src/benchmark.ts';
-import {Suite} from '../../src/suite.ts';
-import {AbortError, SHORT_SUITE} from '../../src/utils.ts';
+import { createHistogram } from 'node:perf_hooks';
+import { expect, test } from 'vite-plus/test';
+import { Benchmark } from '../../src/benchmark.ts';
+import { Suite } from '../../src/suite.ts';
+import { AbortError, SHORT_SUITE } from '../../src/utils.ts';
 import regularSuite from './fixtures/suites/regular.ts';
 import emptySuite from './fixtures/suites/empty.ts';
 
-test('runs single threaded suites', async t => {
+test('runs single threaded suites', async () => {
 	const benchmark = new Benchmark();
 
 	// eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -18,8 +18,7 @@ test('runs single threaded suites', async t => {
 
 	const results = await benchmark.runSuites();
 
-	t.deepEqual(
-		results,
+	expect(results).toEqual(
 		new Map([
 			[
 				'suite a',
@@ -39,16 +38,15 @@ test('runs single threaded suites', async t => {
 	);
 });
 
-test('runs multithreaded suites', async t => {
+test('runs multithreaded suites', async () => {
 	const benchmark = new Benchmark();
 
 	benchmark.addSuite(emptySuite);
-	await benchmark.addSuite(regularSuite, {threaded: true});
+	await benchmark.addSuite(regularSuite, { threaded: true });
 
 	const results = await benchmark.runSuites();
 
-	t.deepEqual(
-		results,
+	expect(results).toEqual(
 		new Map([
 			['empty suite', new Map()],
 			[
@@ -62,26 +60,26 @@ test('runs multithreaded suites', async t => {
 	);
 });
 
-test('uses AbortSignals without threads', async t => {
+test('uses AbortSignals without threads', async () => {
 	const ac = new AbortController();
 	const benchmark = new Benchmark();
 
 	benchmark.addSuite(regularSuite);
 
-	const assertion = t.throwsAsync(benchmark.runSuites(ac.signal), {instanceOf: AbortError});
+	const assertion = expect(benchmark.runSuites(ac.signal)).rejects.toBeInstanceOf(AbortError);
 
 	ac.abort();
 
 	await assertion;
 });
 
-test('uses AbortSignals with threads', async t => {
+test('uses AbortSignals with threads', async () => {
 	const ac = new AbortController();
 	const benchmark = new Benchmark();
 
-	await benchmark.addSuite(regularSuite, {threaded: true});
+	await benchmark.addSuite(regularSuite, { threaded: true });
 
-	const assertion = t.throwsAsync(benchmark.runSuites(ac.signal), {name: 'Error', message: 'The operation was aborted'});
+	const assertion = expect(benchmark.runSuites(ac.signal)).rejects.toMatchObject({ name: 'Error', message: 'The operation was aborted' });
 
 	ac.abort();
 

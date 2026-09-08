@@ -26,30 +26,20 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
         uses: actions/checkout@v7
 
-      - name: Enable Corepack
+      - name: Setup Vite+
         if: ${{ steps.release.outputs.release_created }}
-        run: corepack enable
-
-      - name: Setup Node.js
-        if: ${{ steps.release.outputs.release_created }}
-        uses: actions/setup-node@v7
+        uses: voidzero-dev/setup-vp@v1
         with:
-          node-version: 'lts/*'
-          registry-url: 'https://registry.npmjs.org'
-          cache: 'yarn'
-
-      - name: Install dependencies
-        if: ${{ steps.release.outputs.release_created }}
-        run: yarn install --immutable
+          cache: true
 
       - name: Build
         if: ${{ steps.release.outputs.release_created }}
-        run: yarn run build
+        run: vp pack
 
       - name: Generate TSDoc metadata
         if: ${{ steps.release.outputs.release_created }}
-        run: yarn run validate-api
+        run: vp run validate-api
 
       - name: Publish to npm
         if: ${{ steps.release.outputs.release_created }}
-        run: npm publish --provenance --access public
+        run: pnpm publish --provenance --access public

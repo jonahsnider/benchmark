@@ -1,15 +1,14 @@
-import {createHistogram} from 'node:perf_hooks';
-import {fileURLToPath} from 'node:url';
-import test from 'ava';
-import {Thread} from '../../src/thread.ts';
+import { createHistogram } from 'node:perf_hooks';
+import { fileURLToPath } from 'node:url';
+import { expect, test } from 'vite-plus/test';
+import { Thread } from '../../src/thread.ts';
 
-test('runs', async t => {
+test('runs', async () => {
 	const thread = await Thread.init(fileURLToPath(new URL('fixtures/suites/regular.ts', import.meta.url)));
 
 	const results = await thread.run();
 
-	t.deepEqual(
-		results,
+	expect(results).toEqual(
 		new Map([
 			['test a', createHistogram()],
 			['test b', createHistogram()],
@@ -17,22 +16,22 @@ test('runs', async t => {
 	);
 });
 
-test('handles errors in tests', async t => {
+test('handles errors in tests', async () => {
 	const thread = await Thread.init(fileURLToPath(new URL('fixtures/suites/broken.ts', import.meta.url)));
 
-	await t.throwsAsync(thread.run(), {instanceOf: Error, message: 'broken test'});
+	await expect(thread.run()).rejects.toThrow('broken test');
 });
 
-test('handles errors in worker loading', async t => {
-	await t.throwsAsync(Thread.init('./missing-file.ts'), {message: /^Cannot find module '.+missing-file\.ts' imported from .+$/});
+test('handles errors in worker loading', async () => {
+	await expect(Thread.init('./missing-file.ts')).rejects.toThrow(/^Cannot find module '.+missing-file\.ts' imported from .+$/);
 });
 
-test('uses AbortSignals', async t => {
+test('uses AbortSignals', async () => {
 	const ac = new AbortController();
 	const thread = await Thread.init(fileURLToPath(new URL('fixtures/suites/regular.ts', import.meta.url)));
 
 	// Structured clone algorithm or worker_threads removes the error code property and changes the name
-	const assertion = t.throwsAsync(thread.run(ac.signal), {name: 'Error', message: 'The operation was aborted'});
+	const assertion = expect(thread.run(ac.signal)).rejects.toMatchObject({ name: 'Error', message: 'The operation was aborted' });
 
 	ac.abort();
 

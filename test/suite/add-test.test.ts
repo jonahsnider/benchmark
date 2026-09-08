@@ -1,30 +1,30 @@
-import test from 'ava';
-import {Suite} from '../../src/suite.ts';
-import {Test} from '../../src/test.ts';
-import {SKIP_SUITE} from '../../src/utils.ts';
+import { expect, test } from 'vite-plus/test';
+import { Suite } from '../../src/suite.ts';
+import { Test } from '../../src/test.ts';
+import { SKIP_SUITE } from '../../src/utils.ts';
 
-test('adds a test', t => {
+test('adds a test', () => {
 	const suite = new Suite('name', SKIP_SUITE);
 
-	t.deepEqual(suite.tests, new Map());
+	expect(suite.tests).toEqual(new Map());
 
 	// eslint-disable-next-line @typescript-eslint/no-empty-function
 	suite.addTest('test', () => {});
 
 	// eslint-disable-next-line @typescript-eslint/no-empty-function
-	t.deepEqual(suite.tests, new Map([['test', new Test(() => {})]]));
+	expect(suite.tests).toEqual(new Map([['test', new Test(() => {})]]));
 });
 
-test('adds a Test instance', t => {
+test('adds a Test instance', () => {
 	const suite = new Suite('name', SKIP_SUITE);
 
-	t.deepEqual(suite.tests, new Map());
+	expect(suite.tests).toEqual(new Map());
 
 	// eslint-disable-next-line @typescript-eslint/no-empty-function
 	const test = new Test(() => {});
 
 	suite.addTest('test', test);
 
-	t.deepEqual(suite.tests, new Map([['test', test]]));
-	t.is(suite.tests.get('test'), test);
+	expect(suite.tests).toEqual(new Map([['test', test]]));
+	expect(suite.tests.get('test')).toBe(test);
 });
