@@ -62,13 +62,13 @@
 		"@tsconfig/recommended": "1.0.13",
 		"@tsconfig/strictest": "2.0.8",
 		"@types/node": "24.13.4",
-		"@vitest/coverage-v8": "4.1.11",
+		"@vitest/coverage-v8": "5.0.0",
 		"knip": "6.35.1",
 		"typedoc": "0.28.20",
 		"typescript": "7.0.2",
 		"vite": "npm:@voidzero-dev/vite-plus-core@0.3.1",
 		"vite-plus": "0.3.1",
-		"vitest": "4.1.11"
+		"vitest": "5.0.0"
 	},
 	"devEngines": {
 		"runtime": {
