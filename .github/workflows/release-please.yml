@@ -28,7 +28,7 @@ jobs:
 
       - name: Setup Vite+
         if: ${{ steps.release.outputs.release_created }}
-        uses: voidzero-dev/setup-vp@v1.15.0
+        uses: voidzero-dev/setup-vp@v1.19.0
         with:
           cache: true
 
