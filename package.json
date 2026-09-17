@@ -63,7 +63,7 @@
 		"@tsconfig/strictest": "2.0.8",
 		"@types/node": "24.13.5",
 		"@vitest/coverage-v8": "4.1.11",
-		"knip": "6.35.1",
+		"knip": "6.36.0",
 		"typedoc": "0.28.20",
 		"typescript": "7.0.2",
 		"vite": "npm:@voidzero-dev/vite-plus-core@0.3.2",
