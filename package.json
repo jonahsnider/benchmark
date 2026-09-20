@@ -61,7 +61,7 @@
 		"@tsconfig/node24": "24.0.5",
 		"@tsconfig/recommended": "1.0.13",
 		"@tsconfig/strictest": "2.0.8",
-		"@types/node": "24.13.5",
+		"@types/node": "24.13.6",
 		"@vitest/coverage-v8": "4.1.11",
 		"knip": "6.37.0",
 		"typedoc": "0.28.20",
