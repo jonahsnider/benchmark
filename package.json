@@ -66,8 +66,8 @@
 		"knip": "6.38.0",
 		"typedoc": "0.28.20",
 		"typescript": "7.0.2",
-		"vite": "npm:@voidzero-dev/vite-plus-core@0.3.3",
-		"vite-plus": "0.3.3",
+		"vite": "npm:@voidzero-dev/vite-plus-core@1.0.0",
+		"vite-plus": "1.0.0",
 		"vitest": "4.1.11"
 	},
 	"devEngines": {
