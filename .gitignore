@@ -227,3 +227,4 @@ temp
 
 # TypeDoc output
 docs_out
+.vitest/
