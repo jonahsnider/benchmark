@@ -58,7 +58,7 @@
 		"@tsconfig/strictest": "2.0.8",
 		"@types/node": "24.19.0",
 		"@vitest/coverage-v8": "catalog:",
-		"knip": "6.38.0",
+		"knip": "6.39.0",
 		"typedoc": "0.28.20",
 		"typescript": "7.0.2",
 		"vite": "catalog:",
