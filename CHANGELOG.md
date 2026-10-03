@@ -1,5 +1,16 @@
 # Changelog
 
+## [7.0.0](https://github.com/jonahsnider/benchmark/compare/v6.0.1...v7.0.0) (2026-10-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* stop distributing CommonJS builds
+
+### Features
+
+* stop distributing CommonJS builds ([30ed53b](https://github.com/jonahsnider/benchmark/commit/30ed53b79d8f1b4f95fa553ea7784a07f0d70231))
+
 ## [6.0.1](https://github.com/jonahsnider/benchmark/compare/v6.0.0...v6.0.1) (2026-01-31)
 
 
