@@ -12,13 +12,14 @@ jobs:
       - uses: voidzero-dev/setup-vp@v1.21.2
         with:
           cache: true
-      - run: vp check
-      - run: vp test --coverage
+      - parallel:
+          - run: vp check
+          - run: vp test --coverage
+          - run: vp exec knip
+          - run: vp pack
+      - run: vp run validate-api
       - uses: codecov/codecov-action@v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/lcov.info
           fail_ci_if_error: true
-      - run: vp exec knip
-      - run: vp pack
-      - run: vp run validate-api
