@@ -1,4 +1,14 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": ["github>jonahsnider/renovate-config"]
+	"extends": ["github>jonahsnider/renovate-config"],
+	"customManagers": [
+		{
+			"customType": "jsonata",
+			"fileFormat": "toml",
+			"managerFilePatterns": ["/^netlify\\.toml$/"],
+			"matchStrings": ["{ \"currentValue\": build.environment.NODE_VERSION }"],
+			"depNameTemplate": "node",
+			"datasourceTemplate": "node-version"
+		}
+	]
 }
