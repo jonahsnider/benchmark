@@ -31,7 +31,6 @@ export default defineConfig({
 			include: ['src/**/*.ts'],
 			reporter: ['lcov', 'text-summary'],
 		},
-		execArgv: ['--experimental-transform-types'],
 		include: ['test/**/*.test.ts'],
 	},
 });

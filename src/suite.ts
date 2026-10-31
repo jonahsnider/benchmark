@@ -124,6 +124,11 @@ export namespace Suite {
  */
 export class Suite implements SuiteLike {
 	readonly #tests = new Map<Test.Name, Test>();
+	readonly name: Suite.Name;
+	/**
+	 * Options for running this {@link (Suite:class)} and its warmup.
+	 */
+	readonly options: Suite.Options;
 
 	/**
 	 * The tests in this {@link (Suite:class)}.
@@ -164,13 +169,10 @@ export class Suite implements SuiteLike {
 	 * @param name - The name of the {@link (Suite:class)}
 	 * @param options - Options for the {@link (Suite:class)}
 	 */
-	constructor(
-		public readonly name: Suite.Name,
-		/**
-		 * Options for running this {@link (Suite:class)} and its warmup.
-		 */
-		public readonly options: Suite.Options,
-	) {}
+	constructor(name: Suite.Name, options: Suite.Options) {
+		this.name = name;
+		this.options = options;
+	}
 
 	/**
 	 * Adds a test to this {@link (Suite:class)}.

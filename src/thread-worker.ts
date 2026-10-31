@@ -1,7 +1,7 @@
 import { isMainThread, parentPort, workerData } from 'node:worker_threads';
 import assert from 'node:assert/strict';
 import type { Suite } from './suite.ts';
-import { ThreadWorker } from './types/index.ts';
+import type { ThreadWorker } from './types/index.ts';
 import { compatibleImport } from './utils.ts';
 
 assert.ok(!isMainThread, new Error('This file should be run in a thread'));
@@ -22,14 +22,14 @@ async function run(): Promise<void> {
 		const results = await suite.run(ac.signal);
 
 		const response: ThreadWorker.Response = {
-			kind: ThreadWorker.Response.Kind.Results,
+			kind: 'results',
 			results,
 		};
 
 		parentPort!.postMessage(response);
 	} catch (error) {
 		const response: ThreadWorker.Response = {
-			kind: ThreadWorker.Response.Kind.Error,
+			kind: 'error',
 			error,
 		};
 
@@ -39,13 +39,13 @@ async function run(): Promise<void> {
 
 parentPort.on('message', async (message: ThreadWorker.Message) => {
 	switch (message.kind) {
-		case ThreadWorker.Message.Kind.Run: {
+		case 'run': {
 			await run();
 
 			break;
 		}
 
-		case ThreadWorker.Message.Kind.Abort: {
+		case 'abort': {
 			ac.abort();
 			break;
 		}

@@ -1,6 +1,7 @@
 {
 	"compilerOptions": {
 		"declaration": true,
+		"erasableSyntaxOnly": true,
 		"ignoreDeprecations": "6.0",
 		"importHelpers": true,
 		"lib": ["WebWorker"],
