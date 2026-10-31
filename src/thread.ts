@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { once } from 'node:events';
 import { type WorkerOptions, Worker } from 'node:worker_threads';
 import { type SuiteLike, Suite } from './suite.ts';
-import { ThreadWorker } from './types/index.ts';
+import type { ThreadWorker } from './types/index.ts';
 import { compatibleImport } from './utils.ts';
 
 const WORKER_PATH = new URL('thread-worker.ts', import.meta.url);
@@ -45,7 +45,7 @@ export class Thread implements SuiteLike {
 	}
 
 	async run(abortSignal?: AbortSignal): Promise<Suite.Results> {
-		const runMessage: ThreadWorker.Message = { kind: ThreadWorker.Message.Kind.Run };
+		const runMessage: ThreadWorker.Message = { kind: 'run' };
 
 		// Worker must be run before an abort signal is sent
 		this.#worker.postMessage(runMessage);
@@ -59,11 +59,11 @@ export class Thread implements SuiteLike {
 			const [response] = (await message) as [ThreadWorker.Response];
 
 			switch (response.kind) {
-				case ThreadWorker.Response.Kind.Results: {
+				case 'results': {
 					return response.results;
 				}
 
-				case ThreadWorker.Response.Kind.Error: {
+				case 'error': {
 					// Note: Structured clone algorithm has weird behavior with Error instances - see https://github.com/nodejs/help/issues/1558#issuecomment-431142715 and https://github.com/nodejs/node/issues/26692#issuecomment-658010376
 
 					throw response.error;
@@ -94,7 +94,7 @@ export class Thread implements SuiteLike {
 	}
 
 	#onAbort(): void {
-		const abortMessage = { kind: ThreadWorker.Message.Kind.Abort };
+		const abortMessage: ThreadWorker.Message = { kind: 'abort' };
 
 		this.#worker.postMessage(abortMessage);
 	}
